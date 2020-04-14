@@ -1,9 +1,6 @@
 const path = require('path');
 
 module.exports = {
-  siteMetadata: {
-    title: 'Storycopter',
-  },
   plugins: [
     {
       resolve: `gatsby-plugin-material-ui`,

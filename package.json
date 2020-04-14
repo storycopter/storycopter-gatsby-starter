@@ -41,7 +41,7 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "clean": "gatsby clean",
+    "clean": "gatsby clean && npx rimraf **/node_modules/",
     "deploy": "gatsby build && netlify deploy --dir=public --prod",
     "publish": "npm publish --access=public",
     "release": "yarn run release-it --access public --ci",
