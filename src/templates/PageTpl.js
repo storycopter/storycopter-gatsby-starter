@@ -6,7 +6,7 @@ import ThemeProvider from '@material-ui/styles/ThemeProvider';
 
 import Layout from './partials/Layout';
 import { componentMap, docTheme } from '@storycopter/ui';
-import findChildImageSharp from './utils/findChildImageSharp';
+import constructImageObj from './utils/constructImageObj';
 
 export default function PageTpl({
   data: {
@@ -34,7 +34,7 @@ export default function PageTpl({
           // construct backgImage object
           const backgImage = {
             ...settings.backgImage,
-            ...findChildImageSharp(pageFiles, settings.backgImage.name),
+            ...constructImageObj(pageFiles, settings.backgImage.name),
           };
 
           return <Component {...settings} key={id} backgImage={backgImage} />;
@@ -75,6 +75,7 @@ export const pageQuery = graphql`
     files: allFile(filter: { relativeDirectory: { eq: $uid } }) {
       edges {
         node {
+          base
           childImageSharp {
             resize(quality: 95, width: 1400) {
               originalName
@@ -87,6 +88,7 @@ export const pageQuery = graphql`
               ...GatsbyImageSharpFixed
             }
           }
+          publicURL
         }
       }
     }

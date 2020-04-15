@@ -1,36 +1,36 @@
 {
   "meta": {
-    "title": "A new story",
-    "publisher": null,
-    "summary": "This is a sample Storycopter story.",
-    "coverEnabled": false,
+    "title": "Storycopter Alpha",
+    "publisher": "Storycopter News",
+    "summary": "A new interactive documentary production suite for the Web.",
+    "coverEnabled": true,
     "coverImage": {
-      "name": null
+      "name": "cover.png"
     }
   },
   "brand": {
-    "backgColor": null,
-    "brandColor": null,
+    "backgColor": "#ffffff",
+    "brandColor": "#ebb85f",
     "faviconEnabled": true,
-    "logoEnabled": false,
+    "logoEnabled": true,
     "favicon": {
       "name": "favicon.ico"
     },
     "logo": {
-      "name": null
+      "name": "logo.png"
     },
-    "textColor": null,
-    "typography": null
+    "textColor": "#000000",
+    "typography": "modern"
   },
   "motivation": {
     "enabled": true,
-    "label": null,
-    "link": null
+    "label": "Visit Storycopter.com!",
+    "link": "https://storycopter.com"
   },
   "sound": {
-    "enabled": false,
+    "enabled": true,
     "track": {
-      "name": null
+      "name": "track.mp3"
     }
   }
 }

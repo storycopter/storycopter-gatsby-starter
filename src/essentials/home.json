@@ -13,18 +13,18 @@
       "id": "001",
       "order": 0,
       "settings": {
-        "align": "left",
-        "backgColor": null,
+        "align": "center",
+        "backgColor": "#ebb85f",
         "backgImage": {
-          "name": null
+          "name": "headline-cover.svg"
         },
-        "backgImageEnabled": false,
+        "backgImageEnabled": true,
         "fullSize": true,
         "maskColor": null,
-        "subtitle": null,
+        "subtitle": "A new interactive documentary production suite for the Web.",
         "text": "",
-        "textColor": null,
-        "title": "Opening Titles"
+        "textColor": "#000000",
+        "title": "Storycopter"
       },
       "type": "headline"
     }
