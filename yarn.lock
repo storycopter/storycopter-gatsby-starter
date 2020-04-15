@@ -1544,10 +1544,10 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-2.1.0.tgz#6ad4ca610f696098e92954ab431ff83bea0ce13f"
   integrity sha512-lXKXfypKo644k4Da4yXkPCrwcvn6SlUW2X2zFbuflKHNjf0w9htru01bo26uMhleMXsDmnZ12eJLdrAZa9MANg==
 
-"@storycopter/ui@*":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@storycopter/ui/-/ui-0.0.5.tgz#99875b6c87120bce01ae30f0466ab9693d0ccabb"
-  integrity sha512-VmQF1RmE11dnewnJxWMG85n3f39uzLjbY3PvZLWq/KFSSVQBpOBxV1qsnLT0O9o+muj1zCIEecKiekylfsQwLg==
+"@storycopter/ui@0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@storycopter/ui/-/ui-0.0.11.tgz#884485e146cd3f7932b3eeb6643e2b3abfca879d"
+  integrity sha512-n4IOf/FuTIwCI7BrTkjD3zRhD9vdpvBOs/kirhbibuZalbuwNMPY3XxAl5MmfbAMwhXcEEJbqghdj040IGoPIg==
   dependencies:
     "@material-ui/core" "4.9.10"
     "@material-ui/icons" "4.9.1"
@@ -1555,7 +1555,6 @@
     gatsby-image "2.3.2"
     material-ui-popup-state "1.5.4"
     polished "3.5.1"
-    react "16.13.1"
     react-slick "0.25.2"
     styled-components "5.1.0"
 

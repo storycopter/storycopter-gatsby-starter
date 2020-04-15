@@ -6,10 +6,10 @@ import { Link } from 'gatsby';
 
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 
-import { docTheme } from '@storycopter/ui/src/themes';
-import { Action, ActionBar, Headline } from '@storycopter/ui/src/components';
-import { track } from '@storycopter/ui/src/settings';
-import { setSpace, setType } from '@storycopter/ui/src/mixins';
+import { docTheme } from '@storycopter/ui/lib/themes';
+import { Action, ActionBar, Headline } from '@storycopter/ui/lib/components';
+import { track } from '@storycopter/ui/lib/settings';
+import { setSpace, setType } from '@storycopter/ui/lib/mixins';
 
 import Layout from './partials/Layout';
 import consolidateBackgImage from './utils/consolidateBackgImage';

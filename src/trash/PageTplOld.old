@@ -4,8 +4,8 @@ import { graphql } from 'gatsby';
 
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 
-import { componentMap } from '@storycopter/ui/src/components';
-import { docTheme } from '@storycopter/ui/src/themes';
+import { componentMap } from '@storycopter/ui/lib/components';
+import { docTheme } from '@storycopter/ui/lib/themes';
 
 import Layout from './partials/Layout';
 import consolidateBackgImage from './utils/consolidateBackgImage';
