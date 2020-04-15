@@ -1,5 +1,9 @@
 {
   "meta": {
+    "coverEnabled": true,
+    "coverImage": {
+      "name": "dummy.png"
+    },
     "path": "/essentialsDummy",
     "title": "string",
     "uid": "essentialsDummy"
@@ -12,7 +16,7 @@
         "align": "string",
         "backgColor": "string",
         "backgImage": {
-          "name": "string"
+          "name": "dummy.png"
         },
         "backgImageEnabled": true,
         "fullSize": true,

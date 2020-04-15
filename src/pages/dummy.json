@@ -2,7 +2,7 @@
   "meta": {
     "coverEnabled": true,
     "coverImage": {
-      "name": "string"
+      "name": "dummy.png"
     },
     "order": 0,
     "path": "/pagesDummy",
@@ -18,7 +18,7 @@
         "align": "string",
         "backgColor": "string",
         "backgImage": {
-          "name": null
+          "name": "dummy.png"
         },
         "backgImageEnabled": true,
         "fullSize": true,

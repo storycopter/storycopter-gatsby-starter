@@ -2,7 +2,7 @@
   "meta": {
     "coverEnabled": false,
     "coverImage": {
-      "name": "cover-1586450178511.jpg"
+      "name": null
     },
     "path": "/",
     "title": "Opening Titles",
@@ -11,21 +11,19 @@
   "elements": [
     {
       "id": "001",
-      "invert": true,
       "order": 0,
       "settings": {
         "align": "left",
         "backgColor": null,
         "backgImage": {
-          "name": "cover-1586450178511.jpg"
+          "name": null
         },
         "backgImageEnabled": false,
         "fullSize": true,
-        "images": [],
-        "maskColor": "rgba(255, 169, 0, 1)",
-        "subtitle": "Some text",
+        "maskColor": null,
+        "subtitle": null,
         "text": "",
-        "textColor": "#000000",
+        "textColor": null,
         "title": "Opening Titles"
       },
       "type": "headline"

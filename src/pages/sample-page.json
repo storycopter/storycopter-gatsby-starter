@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "coverEnabled": false,
+    "coverImage": {
+      "name": null
+    },
+    "path": "/",
+    "title": "Sample page",
+    "uid": "sample-page"
+  },
+  "elements": [
+    {
+      "id": "00000",
+      "order": 0,
+      "settings": {
+        "align": "left",
+        "backgColor": null,
+        "backgImage": {
+          "name": null
+        },
+        "backgImageEnabled": false,
+        "fullSize": true,
+        "maskColor": null,
+        "subtitle": null,
+        "text": "",
+        "textColor": null,
+        "title": "Sample page"
+      },
+      "type": "headline"
+    }
+  ]
+}

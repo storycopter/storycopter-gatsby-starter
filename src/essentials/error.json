@@ -1,5 +1,9 @@
 {
   "meta": {
+    "coverEnabled": false,
+    "coverImage": {
+      "name": null
+    },
     "path": "/404",
     "title": "Error",
     "uid": "error"
