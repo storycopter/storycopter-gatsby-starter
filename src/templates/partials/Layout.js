@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Baseline from '@storycopter/ui/src/themes/styles/Baseline';
+import { Baseline } from '@storycopter/ui';
 
 export default function Layout({ pageContext, ...props }) {
   // console.group('Layout.js');

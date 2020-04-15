@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import { withTheme } from '@material-ui/styles';
 import { Link } from 'gatsby';
 
-import { Action } from '@storycopter/ui/src/components';
-import { color } from '@storycopter/ui/src/settings';
-import { setSpace, setType } from '@storycopter/ui/src/mixins';
+import { Action } from '@storycopter/ui/lib/components';
+import { color } from '@storycopter/ui/lib/settings';
+import { setSpace, setType } from '@storycopter/ui/lib/mixins';
 
 const TileEl = styled(({ ...props }) => <div {...props} />)`
   border: none;

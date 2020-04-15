@@ -6,7 +6,7 @@ import { graphql, StaticQuery } from 'gatsby';
 
 import { withTheme } from '@material-ui/styles';
 
-import Baseline from '@storycopter/ui/src/themes/styles/Baseline';
+import Baseline from '@storycopter/ui/lib/themes/styles/Baseline';
 
 import FooBar from './FooBar';
 import Shortcuts from './Shortcuts';

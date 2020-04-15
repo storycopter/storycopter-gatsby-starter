@@ -10,9 +10,9 @@ import Tooltip from '@material-ui/core/Tooltip';
 import VolumeOffIcon from '@material-ui/icons/VolumeOff';
 import VolumeUpIcon from '@material-ui/icons/VolumeUp';
 
-import { CreditsIcon } from '@storycopter/ui/src/elements';
-import { breakpoint } from '@storycopter/ui/src/settings';
-import { setHeight, setSpace } from '@storycopter/ui/src/mixins';
+import { CreditsIcon } from '@storycopter/ui/lib/elements';
+import { breakpoint } from '@storycopter/ui/lib/settings';
+import { setHeight, setSpace } from '@storycopter/ui/lib/mixins';
 
 const Side = styled(({ lx, rx, ...props }) => <div {...props} />)`
   display: flex;

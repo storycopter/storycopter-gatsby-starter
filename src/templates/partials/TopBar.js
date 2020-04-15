@@ -17,9 +17,9 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { withTheme } from '@material-ui/styles';
 
-import { PointerIcon, ShareIcon } from '@storycopter/ui/src/elements';
-import { breakpoint, color, time, track } from '@storycopter/ui/src/settings';
-import { setHeight, setSpace } from '@storycopter/ui/src/mixins';
+import { PointerIcon, ShareIcon } from '@storycopter/ui/lib/elements';
+import { breakpoint, color, time, track } from '@storycopter/ui/lib/settings';
+import { setHeight, setSpace } from '@storycopter/ui/lib/mixins';
 
 const Side = styled(({ lx, rx, ...props }) => <div {...props} />)`
   display: flex;

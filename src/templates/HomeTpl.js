@@ -5,8 +5,7 @@ import { graphql } from 'gatsby';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 
 import Layout from './partials/Layout';
-import componentMap from '@storycopter/ui/src/components/componentMap';
-import docTheme from '@storycopter/ui/src/themes/docTheme';
+import { componentMap, docTheme } from '@storycopter/ui';
 import findChildImageSharp from './utils/findChildImageSharp';
 
 export default function HomeTpl({

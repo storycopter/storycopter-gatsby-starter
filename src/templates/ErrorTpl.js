@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 
 import Layout from './partials/Layout';
-import docTheme from '@storycopter/ui/src/themes/docTheme';
+import { docTheme } from '@storycopter/ui';
 
 export default function ErrorTpl(props) {
   console.group('ErrorTpl.js');

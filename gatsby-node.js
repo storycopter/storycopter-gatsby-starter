@@ -6,7 +6,9 @@ exports.onCreateWebpackConfig = ({ actions, getConfig, stage }) => {
   if (stage.startsWith('develop') && config.resolve) {
     config.resolve.alias = {
       ...config.resolve.alias,
-      'react-dom': '@hot-loader/react-dom',
+      react: path.resolve('./node_modules/react'),
+      'react-dom': path.resolve('./node_modules/react-dom'),
+      // 'react-dom': '@hot-loader/react-dom',
     };
   }
   actions.setWebpackConfig({
