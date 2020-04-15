@@ -115,6 +115,7 @@ exports.createPages = async ({ graphql, actions }) => {
     {
       gql: 'allEssentialsJson',
       src: allEssentials,
+      tpl: null,
     },
     {
       gql: 'allPagesJson',
@@ -128,27 +129,33 @@ exports.createPages = async ({ graphql, actions }) => {
     edges.forEach(({ node }) => {
       const { path, uid } = node.meta;
 
-      // skip the dummy pages (used to sanitise Gatsby’s graphql queries)
       const dummyPages = ['essentialsDummy', 'pagesDummy', 'siteDummy'];
+
+      // skip the dummy pages (used to sanitise Gatsby’s graphql queries)
       if (dummyPages.includes(uid)) return null;
+
       const pages = _.filter(allPages.data.allPagesJson.edges, function (o) {
         if (!dummyPages.includes(o.node.meta.uid)) return o.node.meta;
-      });
+      }).map(o => o.node.meta);
+
       const essentials = _.filter(allEssentials.data.allEssentialsJson.edges, function (o) {
         if (!dummyPages.includes(o.node.meta.uid)) return o.node.meta;
-      });
+      }).map(o => o.node.meta);
+
       const siteData = _.filter(allSiteData.data.allSiteJson.edges, o =>
         !dummyPages.includes(o.node.meta.uid) ? o : null
-      ).map(o => o.node);
+      ).map(o => o.node)[0];
+
+      console.log('—— this', uid, creator.tpl, creator.tpl || tpls[uid]);
 
       createPage({
-        component: creator.tpl ? creator.tpl : tpls[uid],
+        component: creator.tpl || tpls[uid],
         context: {
           uid: uid,
           contextData: {
-            allPages: pages.map(page => page.node.meta),
-            allEssentials: essentials.map(page => page.node.meta),
-            allSiteData: siteData[0],
+            allEssentials: essentials,
+            allPages: pages,
+            allSiteData: siteData,
           },
         },
         path: path,

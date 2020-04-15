@@ -21,7 +21,6 @@ export default function Layout({
 
   return (
     <>
-      <Baseline />
       <Helmet defer={false} encodeSpecialCharacters={true} titleTemplate={`${meta.title} • %s`} defaultTitle="Chapter">
         <link rel="icon" href={favicon} type="image/ico" sizes="16x16" />
         <meta name="description" content={meta.summary} />
@@ -29,6 +28,7 @@ export default function Layout({
         <meta property="og:image" content={image} />
         <meta property="og:type" content="website" />
       </Helmet>
+      <Baseline />
       <div {...props} />
     </>
   );
