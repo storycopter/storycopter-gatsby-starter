@@ -1544,10 +1544,10 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-2.1.0.tgz#6ad4ca610f696098e92954ab431ff83bea0ce13f"
   integrity sha512-lXKXfypKo644k4Da4yXkPCrwcvn6SlUW2X2zFbuflKHNjf0w9htru01bo26uMhleMXsDmnZ12eJLdrAZa9MANg==
 
-"@storycopter/ui@0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@storycopter/ui/-/ui-0.0.4.tgz#b2284913ff965041dc0a42a43428cd8cc2344dfb"
-  integrity sha512-xozsexyXuhqurJB6A0dYP8y9vXd9B+/7T2Q+nwHqUQejZv8YzBS4jQsbWCvrTSzd804Kxfb8g6KeX0ewXjxtPw==
+"@storycopter/ui@*":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@storycopter/ui/-/ui-0.0.5.tgz#99875b6c87120bce01ae30f0466ab9693d0ccabb"
+  integrity sha512-VmQF1RmE11dnewnJxWMG85n3f39uzLjbY3PvZLWq/KFSSVQBpOBxV1qsnLT0O9o+muj1zCIEecKiekylfsQwLg==
   dependencies:
     "@material-ui/core" "4.9.10"
     "@material-ui/icons" "4.9.1"
