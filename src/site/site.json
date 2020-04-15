@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Storycopter",
-    "publisher": "Storycopter",
+    "title": "A new story",
+    "publisher": null,
     "summary": "This is a sample Storycopter story.",
     "coverEnabled": false,
     "coverImage": {
@@ -11,10 +11,10 @@
   "brand": {
     "backgColor": null,
     "brandColor": null,
-    "faviconEnabled": false,
+    "faviconEnabled": true,
     "logoEnabled": false,
     "favicon": {
-      "name": null
+      "name": "favicon.ico"
     },
     "logo": {
       "name": null

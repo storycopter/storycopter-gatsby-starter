@@ -6,7 +6,8 @@
     "coverEnabled": true,
     "coverImage": {
       "name": "dummy.png"
-    }
+    },
+    "uid": "siteDummy"
   },
   "brand": {
     "backgColor": "string",

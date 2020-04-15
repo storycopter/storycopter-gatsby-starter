@@ -78,6 +78,7 @@ exports.createPages = async ({ graphql, actions }) => {
               publisher
               summary
               title
+              uid
             }
             brand {
               backgColor
@@ -128,14 +129,17 @@ exports.createPages = async ({ graphql, actions }) => {
       const { path, uid } = node.meta;
 
       // skip the dummy pages (used to sanitise Gatsby’s graphql queries)
-      const dummyPages = ['essentialsDummy', 'pagesDummy'];
+      const dummyPages = ['essentialsDummy', 'pagesDummy', 'siteDummy'];
       if (dummyPages.includes(uid)) return null;
-      const pages = _.filter(allPages.data.allPagesJson.edges, function(o) {
+      const pages = _.filter(allPages.data.allPagesJson.edges, function (o) {
         if (!dummyPages.includes(o.node.meta.uid)) return o.node.meta;
       });
-      const essentials = _.filter(allEssentials.data.allEssentialsJson.edges, function(o) {
+      const essentials = _.filter(allEssentials.data.allEssentialsJson.edges, function (o) {
         if (!dummyPages.includes(o.node.meta.uid)) return o.node.meta;
       });
+      const siteData = _.filter(allSiteData.data.allSiteJson.edges, o =>
+        !dummyPages.includes(o.node.meta.uid) ? o : null
+      ).map(o => o.node);
 
       createPage({
         component: creator.tpl ? creator.tpl : tpls[uid],
@@ -144,7 +148,7 @@ exports.createPages = async ({ graphql, actions }) => {
           contextData: {
             allPages: pages.map(page => page.node.meta),
             allEssentials: essentials.map(page => page.node.meta),
-            allSiteData: allSiteData.data.allSiteJson.edges[0].node,
+            allSiteData: siteData[0],
           },
         },
         path: path,
