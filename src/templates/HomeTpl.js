@@ -5,8 +5,8 @@ import { graphql } from 'gatsby';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 
 import Layout from './partials/Layout';
-import { componentMap, docTheme } from '@storycopter/ui';
 import constructImageObj from './utils/constructImageObj';
+import { componentMap, docTheme } from '@storycopter/ui';
 
 export default function HomeTpl({
   data: {
@@ -29,9 +29,6 @@ export default function HomeTpl({
           const Component = componentMap[type];
 
           // construct backgImage object
-
-          const backgSharped = constructImageObj(pageFiles, settings.backgImage.name);
-
           const backgImage = {
             ...settings.backgImage,
             ...constructImageObj(pageFiles, settings.backgImage.name),

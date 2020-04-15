@@ -20,10 +20,10 @@
         },
         "backgImageEnabled": true,
         "fullSize": true,
-        "maskColor": null,
+        "maskColor": "rgba(239, 180, 63, 0.1)",
         "subtitle": "A new interactive documentary production suite for the Web.",
         "text": "",
-        "textColor": "#000000",
+        "textColor": "#ffffff",
         "title": "Storycopter"
       },
       "type": "headline"
