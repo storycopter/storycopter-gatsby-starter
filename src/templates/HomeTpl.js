@@ -30,8 +30,8 @@ export default function HomeTpl({
 
           // construct backgImage object
           const backgImage = {
-            ...settings.backgImage,
-            ...constructImageObj(pageFiles, settings.backgImage.name),
+            ...settings?.backgImage,
+            ...constructImageObj(pageFiles, settings?.backgImage?.name),
           };
 
           return <Component {...settings} key={id} backgImage={backgImage} fullSize />;

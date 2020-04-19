@@ -5,19 +5,20 @@ import { Baseline } from '@storycopter/ui';
 
 export default function Layout({
   pageContext: {
-    contextData: { allSiteData: siteData },
+    contextData: { allSiteData },
   },
+  location,
   ...props
 }) {
-  // console.group('Layout.js');
-  // console.log({ siteData });
-  // console.groupEnd();
-
-  const { brand, meta, sound } = siteData;
+  const { brand, meta, sound } = allSiteData;
 
   const audio = sound.enabled && sound.track.name ? `/${sound.track.name}` : null;
   const favicon = brand.favicon.name ? `/${brand.favicon.name}` : null;
   const image = brand.coverEnabled && brand.cover.name ? `/${brand.cover.name}` : null;
+
+  // console.group('Layout.js');
+  // console.log({ props });
+  // console.groupEnd();
 
   return (
     <>

@@ -146,8 +146,6 @@ exports.createPages = async ({ graphql, actions }) => {
         !dummyPages.includes(o.node.meta.uid) ? o : null
       ).map(o => o.node)[0];
 
-      console.log('—— this', uid, creator.tpl, creator.tpl || tpls[uid]);
-
       createPage({
         component: creator.tpl || tpls[uid],
         context: {

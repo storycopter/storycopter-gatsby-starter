@@ -5,8 +5,9 @@ import { graphql } from 'gatsby';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 
 import Layout from './partials/Layout';
-import { componentMap, docTheme } from '@storycopter/ui';
+import componentMap from '@storycopter/ui/src/components/componentMap';
 import constructImageObj from './utils/constructImageObj';
+import docTheme from '@storycopter/ui/src/themes/docTheme';
 
 export default function PageTpl({
   data: {
@@ -20,24 +21,28 @@ export default function PageTpl({
   // console.log('pageMeta', pageMeta);
   // console.log('pageFiles', pageFiles);
   // console.log('pageContext', pageContext);
+  // console.log('pageElements', pageElements);
   // console.groupEnd();
 
   return (
     <ThemeProvider theme={docTheme}>
       <Layout pageContext={pageContext} location={pageProps.location}>
         {_.sortBy(pageElements, [o => o.order]).map(({ id, type, settings }, i) => {
-          // TODO: don’t do this
-          if (type !== 'headline') return null;
-
           const Component = componentMap[type];
 
-          // construct backgImage object
+          // construct backgImage object (e.g. Headline)
           const backgImage = {
-            ...settings.backgImage,
-            ...constructImageObj(pageFiles, settings.backgImage.name),
+            ...settings?.backgImage,
+            ...constructImageObj(pageFiles, settings?.backgImage?.name),
           };
 
-          return <Component {...settings} key={id} backgImage={backgImage} />;
+          // construct images object (e.g. Gallery)
+          const images = settings?.images?.map(image => ({
+            ...image,
+            ...constructImageObj(pageFiles, image.name),
+          }));
+
+          return <Component {...settings} key={id} backgImage={backgImage} images={images} />;
         })}
       </Layout>
     </ThemeProvider>
@@ -63,6 +68,11 @@ export const pageQuery = graphql`
           backgImage {
             name
           }
+          images {
+            caption
+            name
+            order
+          }
           fullSize
           maskColor
           subtitle
@@ -77,14 +87,14 @@ export const pageQuery = graphql`
         node {
           base
           childImageSharp {
-            resize(quality: 95, width: 1400) {
+            resize(quality: 95, width: 1000) {
               originalName
               src
             }
-            fluid(maxWidth: 2000, quality: 95, cropFocus: CENTER, fit: COVER) {
+            fluid(maxHeight: 800, quality: 95, cropFocus: CENTER, fit: COVER) {
               ...GatsbyImageSharpFluid
             }
-            fixed(width: 1400, height: 900, quality: 95, cropFocus: CENTER, fit: COVER) {
+            fixed(height: 800, quality: 95, cropFocus: CENTER, fit: COVER) {
               ...GatsbyImageSharpFixed
             }
           }

@@ -24,7 +24,6 @@
         "fullSize": true,
         "images": [
           {
-            "alt": "string",
             "caption": "string",
             "name": "string",
             "order": 0
