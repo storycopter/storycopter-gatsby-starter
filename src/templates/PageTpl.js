@@ -5,9 +5,8 @@ import { graphql } from 'gatsby';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 
 import Layout from './partials/Layout';
-import componentMap from '@storycopter/ui/src/components/componentMap';
+import { componentMap, docTheme } from '@storycopter/ui';
 import constructImageObj from './utils/constructImageObj';
-import docTheme from '@storycopter/ui/src/themes/docTheme';
 
 export default function PageTpl({
   data: {
