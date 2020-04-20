@@ -1,20 +1,41 @@
 import React from 'react';
+import _ from 'lodash';
 import { graphql } from 'gatsby';
 
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 
 import Layout from './partials/Layout';
-import { docTheme } from '@storycopter/ui';
+import constructImageObj from './utils/constructImageObj';
+import { componentMap, docTheme } from '@storycopter/ui';
 
-export default function CreditsTpl(props) {
-  console.group('CreditsTpl.js');
-  console.log(props);
-  console.groupEnd();
+export default function CreditsTpl({
+  data: {
+    essential: { elements: pageElements, meta: pageMeta },
+    files: { edges: pageFiles },
+  },
+  pageContext,
+  ...pageProps
+}) {
+  // console.group('CreditsTpl.js');
+  // console.log('pageMeta', pageMeta);
+  // console.log('pageFiles', pageFiles);
+  // console.log('pageContext', pageContext);
+  // console.groupEnd();
 
   return (
     <ThemeProvider theme={docTheme}>
-      <Layout contextData={props.pageContext.contextData}>
-        <h1>Credits</h1>
+      <Layout pageContext={pageContext} location={pageProps.location}>
+        {_.sortBy(pageElements, [o => o.order]).map(({ id, type, settings }, i) => {
+          const Component = componentMap[type];
+
+          // construct backgImage object
+          const backgImage = {
+            ...settings?.backgImage,
+            ...constructImageObj(pageFiles, settings?.backgImage?.name),
+          };
+
+          return <Component {...settings} key={id} backgImage={backgImage} fullSize />;
+        })}
       </Layout>
     </ThemeProvider>
   );
@@ -27,6 +48,45 @@ export const pageQuery = graphql`
         path
         title
         uid
+      }
+      elements {
+        id
+        order
+        type
+        settings {
+          align
+          backgColor
+          backgImageEnabled
+          backgImage {
+            name
+          }
+          fullSize
+          maskColor
+          subtitle
+          text
+          textColor
+          title
+        }
+      }
+    }
+    files: allFile(filter: { relativeDirectory: { eq: $uid } }) {
+      edges {
+        node {
+          base
+          childImageSharp {
+            resize(quality: 95, width: 1400) {
+              originalName
+              src
+            }
+            fluid(maxWidth: 2000, quality: 95, cropFocus: CENTER, fit: COVER) {
+              ...GatsbyImageSharpFluid
+            }
+            fixed(width: 1400, height: 900, quality: 95, cropFocus: CENTER, fit: COVER) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+          publicURL
+        }
       }
     }
   }
