@@ -19,7 +19,7 @@
           "name": "image-h.png"
         },
         "backgImageEnabled": true,
-        "fullSize": null,
+        "fullSize": true,
         "maskColor": "rgba(239, 180, 63, 0.1)",
         "subtitle": "A subtitle",
         "text": "Some text",
@@ -33,15 +33,49 @@
       "order": 1,
       "settings": {
         "backgColor": "#ffffff",
-        "fullSize": true,
-        "maskColor": "rgba(0,0,0,0.75)",
+        "fullSize": null,
+        "maskColor": "rgba(255,255,255,0.75)",
         "images": [
           { "order": 0, "caption": "Horizontal Image", "name": "image-h.png" },
           { "order": 1, "caption": "Vertical Image", "name": "image-v.png" }
         ],
-        "textColor": "#666666"
+        "textColor": "#000"
       },
-      "type": "gallery"
+      "type": "slideshow"
+    },
+    {
+      "id": "003",
+      "order": 2,
+      "settings": {
+        "align": "center",
+        "backgColor": null,
+        "backgImage": {
+          "name": "image-h.png"
+        },
+        "backgImageEnabled": true,
+        "fullSize": null,
+        "maskColor": "rgba(239, 180, 63, 0.1)",
+        "subtitle": "A subtitle",
+        "text": "Some text",
+        "textColor": "#ffffff",
+        "title": "A title"
+      },
+      "type": "headline"
+    },
+    {
+      "id": "004",
+      "order": 3,
+      "settings": {
+        "backgColor": "#ffffff",
+        "fullSize": true,
+        "maskColor": "rgba(255,255,255,0.75)",
+        "images": [
+          { "order": 0, "caption": "Horizontal Image", "name": "image-h.png" },
+          { "order": 1, "caption": "Vertical Image", "name": "image-v.png" }
+        ],
+        "textColor": "#000"
+      },
+      "type": "slideshow"
     }
   ]
 }
