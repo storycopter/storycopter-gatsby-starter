@@ -68,6 +68,7 @@ export const pageQuery = graphql`
             name
           }
           images {
+            backgImageEnabled
             caption
             name
             order
