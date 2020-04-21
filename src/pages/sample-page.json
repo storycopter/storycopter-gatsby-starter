@@ -35,7 +35,7 @@
       "settings": {
         "backgColor": "#ffffff",
         "fullSize": null,
-        "maskColor": "rgba(255,255,255,0.75)",
+        "maskColor": "rgba(255,255,255,0.5)",
         "images": [
           {
             "backgImageEnabled": true,
@@ -85,7 +85,7 @@
       "settings": {
         "backgColor": "#ffffff",
         "fullSize": true,
-        "maskColor": "rgba(255,255,255,0.75)",
+        "maskColor": "rgba(255,255,255,0.5)",
         "images": [
           {
             "backgImageEnabled": true,
