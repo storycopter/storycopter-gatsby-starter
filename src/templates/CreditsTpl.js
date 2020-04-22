@@ -4,9 +4,11 @@ import { graphql } from 'gatsby';
 
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 
+import { componentMap } from '@storycopter/ui';
+
 import Layout from './partials/Layout';
 import constructImageObj from './utils/constructImageObj';
-import { componentMap, docTheme } from '@storycopter/ui';
+import docTheme from './theme/docTheme';
 
 export default function CreditsTpl({
   data: {

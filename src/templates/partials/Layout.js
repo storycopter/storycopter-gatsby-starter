@@ -1,7 +1,6 @@
+import './Baseline.css';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-
-import { Baseline } from '@storycopter/ui';
 
 export default function Layout({
   pageContext: {
@@ -29,7 +28,6 @@ export default function Layout({
         <meta property="og:image" content={image} />
         <meta property="og:type" content="website" />
       </Helmet>
-      <Baseline />
       <div {...props} />
     </>
   );

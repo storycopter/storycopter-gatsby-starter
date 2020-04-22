@@ -5,19 +5,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-material-ui`,
       options: {
-        // stylesProvider: {
-        // injectFirst: true,
-        // },
+        stylesProvider: {
+          injectFirst: true,
+        },
       },
     },
-    `gatsby-plugin-styled-components`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-transformer-json`,
-      options: {},
-    },
+    `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
