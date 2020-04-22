@@ -84,7 +84,7 @@
       "order": 3,
       "settings": {
         "backgColor": null,
-        "fullSize": false,
+        "fullSize": true,
         "maskColor": "rgba(255, 255, 255, 0.6)",
         "images": [
           {

@@ -3,14 +3,13 @@ const _ = require('lodash');
 
 exports.onCreateWebpackConfig = ({ actions, getConfig, stage }) => {
   const config = getConfig();
-  if (stage.startsWith('develop') && config.resolve) {
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      react: path.resolve('./node_modules/react'),
-      'react-dom': path.resolve('./node_modules/react-dom'),
-      // 'react-dom': '@hot-loader/react-dom',
-    };
-  }
+
+  config.resolve.alias = {
+    ...config.resolve.alias,
+    react: path.resolve('./node_modules/react'),
+    'react-dom': path.resolve('./node_modules/react-dom'),
+  };
+
   actions.setWebpackConfig({
     resolve: {
       modules: [path.resolve(__dirname, 'src/templates'), 'node_modules'],

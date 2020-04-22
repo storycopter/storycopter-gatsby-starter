@@ -2,13 +2,9 @@ import React from 'react';
 import _ from 'lodash';
 import { graphql } from 'gatsby';
 
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
-
 import { componentMap } from '@storycopter/ui';
 
-import Layout from './partials/Layout';
 import constructImageObj from './utils/constructImageObj';
-import docTheme from './theme/docTheme';
 
 export default function CreditsTpl({
   data: {
@@ -25,21 +21,19 @@ export default function CreditsTpl({
   // console.groupEnd();
 
   return (
-    <ThemeProvider theme={docTheme}>
-      <Layout pageContext={pageContext} location={pageProps.location}>
-        {_.sortBy(pageElements, [o => o.order]).map(({ id, type, settings }, i) => {
-          const Component = componentMap[type];
+    <>
+      {_.sortBy(pageElements, [o => o.order]).map(({ id, type, settings }, i) => {
+        const Component = componentMap[type];
 
-          // construct backgImage object
-          const backgImage = {
-            ...settings?.backgImage,
-            ...constructImageObj(pageFiles, settings?.backgImage?.name),
-          };
+        // construct backgImage object
+        const backgImage = {
+          ...settings?.backgImage,
+          ...constructImageObj(pageFiles, settings?.backgImage?.name),
+        };
 
-          return <Component {...settings} key={id} backgImage={backgImage} fullSize />;
-        })}
-      </Layout>
-    </ThemeProvider>
+        return <Component {...settings} key={id} backgImage={backgImage} fullSize />;
+      })}
+    </>
   );
 }
 

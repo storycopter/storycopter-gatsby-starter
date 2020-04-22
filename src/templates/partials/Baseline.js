@@ -1,5 +1,9 @@
-/* RESET */
+import React from 'react';
+import { createGlobalStyle } from 'styled-components';
 
+import { colors } from '@storycopter/ui';
+
+const BaseStyles = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -65,8 +69,13 @@ body * {
 }
 
 ::selection {
-  /* background: ${colors.flare[200]}; */
+  background: ${colors.flare[200]};
 }
 ::-moz-selection {
-  /* background: ${colors.flare[200]}; */
+  background: ${colors.flare[200]};
+}
+`;
+
+export default function Baseline() {
+  return <BaseStyles />;
 }
