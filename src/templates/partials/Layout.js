@@ -1,9 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import Baseline from './Baseline';
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
-import theme from './theme';
+import { Baseline, docTheme } from '@storycopter/ui';
 
 export default function Layout({
   pageContext: {
@@ -19,9 +18,9 @@ export default function Layout({
   const favicon = brand.favicon.name ? `/${brand.favicon.name}` : null;
   const image = brand.coverEnabled && brand.cover.name ? `/${brand.cover.name}` : null;
 
-  console.group('Layout.js');
-  console.log({ props });
-  console.groupEnd();
+  // console.group('Layout.js');
+  // console.log({ props });
+  // console.groupEnd();
 
   return (
     <>
@@ -33,7 +32,7 @@ export default function Layout({
         <meta property="og:image" content={image} />
         <meta property="og:type" content="website" />
       </Helmet>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={docTheme}>{children}</ThemeProvider>
     </>
   );
 }

@@ -1,11 +1,9 @@
-const path = require('path');
-
 module.exports = {
   plugins: [
     `gatsby-plugin-material-ui`,
-    'gatsby-plugin-styled-components',
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-json`,
     {
