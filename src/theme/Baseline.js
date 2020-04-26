@@ -1,5 +1,6 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
+import { withTheme } from '@material-ui/core/styles';
 
 const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
@@ -66,8 +67,14 @@ body * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+::selection {
+  background: ${theme => theme?.brand?.brandColor || '#efb43f'};
+}
+::-moz-selection {
+  background: ${theme => theme?.brand?.brandColor || '#efb43f'};
+}
 `;
 
-export default function Baseline() {
-  return <GlobalStyle />;
+export default function Baseline({ theme }) {
+  return <GlobalStyle {...theme} />;
 }

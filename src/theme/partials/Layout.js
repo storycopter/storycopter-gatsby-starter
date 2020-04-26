@@ -25,7 +25,6 @@ export default function Layout({
   const image = brand.coverEnabled && brand.cover.name ? `/${brand.cover.name}` : null;
 
   console.group('Layout.js');
-  // console.log({ allSiteData });
   console.log({ DocTheme });
   console.log({ props });
   console.groupEnd();
@@ -65,8 +64,8 @@ export default function Layout({
           props,
         };
         return (
-          <>
-            <DocBaseline />
+          <ThemeProvider theme={{ ...DocTheme, brand: brand }}>
+            <DocBaseline theme={{ ...DocTheme, brand: brand }} />
             <Helmet
               defer={false}
               encodeSpecialCharacters={true}
@@ -78,12 +77,10 @@ export default function Layout({
               <meta property="og:image" content={image} />
               <meta property="og:type" content="website" />
             </Helmet>
-            <ThemeProvider theme={DocTheme}>
-              <Topbar {...barProps} />
-              {children}
-              <Foobar {...barProps} />
-            </ThemeProvider>
-          </>
+            <Topbar {...barProps} />
+            {children}
+            <Foobar {...barProps} />
+          </ThemeProvider>
         );
       }}
     />
