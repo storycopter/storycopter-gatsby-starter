@@ -1,21 +1,21 @@
 const path = require('path');
 const _ = require('lodash');
 
-exports.onCreateWebpackConfig = ({ actions, getConfig, stage }) => {
-  const config = getConfig();
+// exports.onCreateWebpackConfig = ({ actions, getConfig, stage }) => {
+//   const config = getConfig();
 
-  config.resolve.alias = {
-    ...config.resolve.alias,
-    react: path.resolve('./node_modules/react'),
-    'react-dom': path.resolve('./node_modules/react-dom'),
-  };
+//   config.resolve.alias = {
+//     ...config.resolve.alias,
+//     react: path.resolve('./node_modules/react'),
+//     'react-dom': path.resolve('./node_modules/react-dom'),
+//   };
 
-  // actions.setWebpackConfig({
-  //   resolve: {
-  //     modules: [path.resolve(__dirname, 'src/theme'), 'node_modules'],
-  //   },
-  // });
-};
+// actions.setWebpackConfig({
+//   resolve: {
+//     modules: [path.resolve(__dirname, 'src/theme'), 'node_modules'],
+//   },
+// });
+// };
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -144,6 +144,12 @@ exports.createPages = async ({ graphql, actions }) => {
       const siteData = _.filter(allSiteData.data.allSiteJson.edges, o =>
         !dummyPages.includes(o.node.meta.uid) ? o : null
       ).map(o => o.node)[0];
+
+      // console.group('gatsby-node.js');
+      // console.log({ essentials });
+      // console.log({ pages });
+      // console.log({ siteData });
+      // console.groupEnd();
 
       createPage({
         component: creator.tpl || tpls[uid],
