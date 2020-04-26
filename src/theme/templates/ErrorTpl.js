@@ -2,19 +2,18 @@ import React from 'react';
 import _ from 'lodash';
 import { graphql } from 'gatsby';
 
-import { componentMap } from '@storycopter/ui';
+import componentMap from '@theme/components/componentMap';
+import constructImageObj from '@theme/utils/constructImageObj';
 
-import constructImageObj from './utils/constructImageObj';
-
-export default function ContentsTpl({
+export default function ErrorTpl({
   data: {
-    essential: { elements: pageElements, meta: pageMeta },
+    page: { elements: pageElements, meta: pageMeta },
     files: { edges: pageFiles },
   },
   pageContext,
   ...pageProps
 }) {
-  // console.group('ContentsTpl.js');
+  // console.group('ErrorTpl.js');
   // console.log('pageMeta', pageMeta);
   // console.log('pageFiles', pageFiles);
   // console.log('pageContext', pageContext);
@@ -38,8 +37,8 @@ export default function ContentsTpl({
 }
 
 export const pageQuery = graphql`
-  query ContentsTplQuery($uid: String!) {
-    essential: essentialsJson(meta: { uid: { eq: $uid } }) {
+  query ErrorTplQuery($uid: String!) {
+    page: essentialsJson(meta: { uid: { eq: $uid } }) {
       meta {
         path
         title

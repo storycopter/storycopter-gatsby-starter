@@ -1,0 +1,141 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { State, Store } from "@sambego/storybook-state";
+import { action } from '@storybook/addon-actions';
+import { text, withKnobs } from '@storybook/addon-knobs';
+
+import Headline from './Headline';
+
+export const headlineStore = new Store({
+  subtitle: "A subtitle belonging to the Headline. Such item can contain lenghty text.",
+  text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  title: "A title of the Headline",
+});
+
+export const onHeadlineUpdate = (payload) => { 
+  action('onHeadlineUpdate')(payload);
+  headlineStore.set(payload);
+}
+
+<Meta title="Components/Headline" />
+
+# Headline
+
+`@import { Headline } from '@storycopter/ui';`
+
+## Props
+
+<Props of={Headline} />
+
+## Variations
+
+<Preview>
+  <Story name="plain">
+    <Headline
+      subtitle="A subtitle belonging to the Headline. Such item can contain lenghty text."
+      text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      title="A title of the Headline"
+    />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="w/ text color">
+    <Headline
+      textColor="#e6b655"
+      subtitle="A subtitle belonging to the Headline. Such item can contain lenghty text."
+      text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      title="A title of the Headline"
+    />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="w/ background color">
+    <Headline
+      backgColor="#e6b655"
+      subtitle="A subtitle belonging to the Headline. Such item can contain lenghty text."
+      text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      title="A title of the Headline"
+    />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="w/ background image">
+    <Headline
+      backgImage={{"name":"image-h.png","base":"image-h.png","childImageSharp":{"resize":{"originalName":"image-h.png","src":"/static/750dc0c9885bfd9d4f95b95e9d134d4c/5c63f/image-h.png"},"fluid":{"base64":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsSAAALEgHS3X78AAACS0lEQVQoz1WSS0wTURSGb+LOBQs3LjAhUQRW7txoMNGFkRhMWzuFFizYGohNWypW2tIH6kYTFyZdaNgaN6QVETqdTh/adqYvJGAkYt+NSHunM1N0494zUyQx+XNzF/c75//PPagUVBYDyh/rahzWtCgtpvWtiK4FdxCpxvQdLn6Pixm56PTXLLm5ubtV+Jz6lKRIuv9cP6quqoAvBZQHIeKIOSIJLjEjsAs8Y+dTD4Sk6SDl3cmn8vkv29t7GYYdGhpAW29G91YUpaACqjTJY1LNxQxifknMecXMophxCqxDSNu4tKPO+BvZ5e/k/Jne0+iZ9VLYPwI8mG+s3cbUWJcXWKdYeCrxknxi1iNk3SLr6DBzh4ylFZ99aR9GL2yXk8uj31ZUxYCi3oVJAtOTYs4nY49BHVABtNTJ+YScV8h6xOziH9aAzvb26G+e33l7q7aq2t8gZFiNo1NCxiVCq5wH2vI5H2a9Tcbbzvg6UjnJTjNqRD0nTyCE3Hcv/E7o/s2MwJEJPmXjmYcwMIF1NeKPajHQQiPhbKY9Mv8EvgBprg8O9J1SXe3jaUhLyJIy45ix/fE+n7Q0E9ZK2Fyn5+rR+XrMXova2xkvDBJHdMi/eGPkyuBz88VfCW2THIe0rYhW5sda1AT436cM5Q+GKjlbDZtqEUuFsuK0i0+aIR167b72yjkMc27TWnjKxabhPP5t2JyfIU3xHVF+ryuv6SsbhkpoBidMmBoHjwhTmsO4lovIfejJrv7blrBG2qKgqiSXqKxPwSJ20/0FXuyl+fUAN8QAAAAASUVORK5CYII=","aspectRatio":1.775,"src":"/image-h.png","srcSet":"/static/750dc0c9885bfd9d4f95b95e9d134d4c/4a076/image-h.png 355w,\n/static/750dc0c9885bfd9d4f95b95e9d134d4c/62657/image-h.png 710w,\n/image-h.png 1420w,\n/image-h.png 1920w","sizes":"(max-width: 1420px) 100vw, 1420px"},"fixed":{"base64":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsSAAALEgHS3X78AAACS0lEQVQoz1WSS0wTURSGb+LOBQs3LjAhUQRW7txoMNGFkRhMWzuFFizYGohNWypW2tIH6kYTFyZdaNgaN6QVETqdTh/adqYvJGAkYt+NSHunM1N0494zUyQx+XNzF/c75//PPagUVBYDyh/rahzWtCgtpvWtiK4FdxCpxvQdLn6Pixm56PTXLLm5ubtV+Jz6lKRIuv9cP6quqoAvBZQHIeKIOSIJLjEjsAs8Y+dTD4Sk6SDl3cmn8vkv29t7GYYdGhpAW29G91YUpaACqjTJY1LNxQxifknMecXMophxCqxDSNu4tKPO+BvZ5e/k/Jne0+iZ9VLYPwI8mG+s3cbUWJcXWKdYeCrxknxi1iNk3SLr6DBzh4ylFZ99aR9GL2yXk8uj31ZUxYCi3oVJAtOTYs4nY49BHVABtNTJ+YScV8h6xOziH9aAzvb26G+e33l7q7aq2t8gZFiNo1NCxiVCq5wH2vI5H2a9Tcbbzvg6UjnJTjNqRD0nTyCE3Hcv/E7o/s2MwJEJPmXjmYcwMIF1NeKPajHQQiPhbKY9Mv8EvgBprg8O9J1SXe3jaUhLyJIy45ix/fE+n7Q0E9ZK2Fyn5+rR+XrMXova2xkvDBJHdMi/eGPkyuBz88VfCW2THIe0rYhW5sda1AT436cM5Q+GKjlbDZtqEUuFsuK0i0+aIR167b72yjkMc27TWnjKxabhPP5t2JyfIU3xHVF+ryuv6SsbhkpoBidMmBoHjwhTmsO4lovIfejJrv7blrBG2qKgqiSXqKxPwSJ20/0FXuyl+fUAN8QAAAAASUVORK5CYII=","width":1420,"height":800,"src":"/image-h.png","srcSet":"/image-h.png 1x"}},"publicURL":"/image-h.png"}}
+      subtitle="A subtitle belonging to the Headline. Such item can contain lenghty text."
+      text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      title="A title of the Headline"
+    />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="w/ alignment">
+    <Headline
+      align="center"
+      subtitle="A subtitle belonging to the Headline. Such item can contain lenghty text."
+      text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      title="A title of the Headline"
+    />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="w/ mask">
+    <Headline
+      backgImage={{"name":"image-h.png","base":"image-h.png","childImageSharp":{"resize":{"originalName":"image-h.png","src":"/static/750dc0c9885bfd9d4f95b95e9d134d4c/5c63f/image-h.png"},"fluid":{"base64":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsSAAALEgHS3X78AAACS0lEQVQoz1WSS0wTURSGb+LOBQs3LjAhUQRW7txoMNGFkRhMWzuFFizYGohNWypW2tIH6kYTFyZdaNgaN6QVETqdTh/adqYvJGAkYt+NSHunM1N0494zUyQx+XNzF/c75//PPagUVBYDyh/rahzWtCgtpvWtiK4FdxCpxvQdLn6Pixm56PTXLLm5ubtV+Jz6lKRIuv9cP6quqoAvBZQHIeKIOSIJLjEjsAs8Y+dTD4Sk6SDl3cmn8vkv29t7GYYdGhpAW29G91YUpaACqjTJY1LNxQxifknMecXMophxCqxDSNu4tKPO+BvZ5e/k/Jne0+iZ9VLYPwI8mG+s3cbUWJcXWKdYeCrxknxi1iNk3SLr6DBzh4ylFZ99aR9GL2yXk8uj31ZUxYCi3oVJAtOTYs4nY49BHVABtNTJ+YScV8h6xOziH9aAzvb26G+e33l7q7aq2t8gZFiNo1NCxiVCq5wH2vI5H2a9Tcbbzvg6UjnJTjNqRD0nTyCE3Hcv/E7o/s2MwJEJPmXjmYcwMIF1NeKPajHQQiPhbKY9Mv8EvgBprg8O9J1SXe3jaUhLyJIy45ix/fE+n7Q0E9ZK2Fyn5+rR+XrMXova2xkvDBJHdMi/eGPkyuBz88VfCW2THIe0rYhW5sda1AT436cM5Q+GKjlbDZtqEUuFsuK0i0+aIR167b72yjkMc27TWnjKxabhPP5t2JyfIU3xHVF+ryuv6SsbhkpoBidMmBoHjwhTmsO4lovIfejJrv7blrBG2qKgqiSXqKxPwSJ20/0FXuyl+fUAN8QAAAAASUVORK5CYII=","aspectRatio":1.775,"src":"/image-h.png","srcSet":"/static/750dc0c9885bfd9d4f95b95e9d134d4c/4a076/image-h.png 355w,\n/static/750dc0c9885bfd9d4f95b95e9d134d4c/62657/image-h.png 710w,\n/image-h.png 1420w,\n/image-h.png 1920w","sizes":"(max-width: 1420px) 100vw, 1420px"},"fixed":{"base64":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsSAAALEgHS3X78AAACS0lEQVQoz1WSS0wTURSGb+LOBQs3LjAhUQRW7txoMNGFkRhMWzuFFizYGohNWypW2tIH6kYTFyZdaNgaN6QVETqdTh/adqYvJGAkYt+NSHunM1N0494zUyQx+XNzF/c75//PPagUVBYDyh/rahzWtCgtpvWtiK4FdxCpxvQdLn6Pixm56PTXLLm5ubtV+Jz6lKRIuv9cP6quqoAvBZQHIeKIOSIJLjEjsAs8Y+dTD4Sk6SDl3cmn8vkv29t7GYYdGhpAW29G91YUpaACqjTJY1LNxQxifknMecXMophxCqxDSNu4tKPO+BvZ5e/k/Jne0+iZ9VLYPwI8mG+s3cbUWJcXWKdYeCrxknxi1iNk3SLr6DBzh4ylFZ99aR9GL2yXk8uj31ZUxYCi3oVJAtOTYs4nY49BHVABtNTJ+YScV8h6xOziH9aAzvb26G+e33l7q7aq2t8gZFiNo1NCxiVCq5wH2vI5H2a9Tcbbzvg6UjnJTjNqRD0nTyCE3Hcv/E7o/s2MwJEJPmXjmYcwMIF1NeKPajHQQiPhbKY9Mv8EvgBprg8O9J1SXe3jaUhLyJIy45ix/fE+n7Q0E9ZK2Fyn5+rR+XrMXova2xkvDBJHdMi/eGPkyuBz88VfCW2THIe0rYhW5sda1AT436cM5Q+GKjlbDZtqEUuFsuK0i0+aIR167b72yjkMc27TWnjKxabhPP5t2JyfIU3xHVF+ryuv6SsbhkpoBidMmBoHjwhTmsO4lovIfejJrv7blrBG2qKgqiSXqKxPwSJ20/0FXuyl+fUAN8QAAAAASUVORK5CYII=","width":1420,"height":800,"src":"/image-h.png","srcSet":"/image-h.png 1x"}},"publicURL":"/image-h.png"}}
+      maskColor="rgba(0,0,0,0.3)"
+      subtitle="A subtitle belonging to the Headline. Such item can contain lenghty text."
+      title="A title of the Headline"
+    />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="full size">
+    <Headline
+      fullSize={true}
+      subtitle="A subtitle belonging to the Headline. Such item can contain lenghty text."
+      text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      title="A title of the Headline"
+    />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="variations">
+    <Headline
+      align="center"
+      fullSize={true}
+      color="white"
+      backgImage={{"name":"image-h.png","base":"image-h.png","childImageSharp":{"resize":{"originalName":"image-h.png","src":"/static/750dc0c9885bfd9d4f95b95e9d134d4c/5c63f/image-h.png"},"fluid":{"base64":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsSAAALEgHS3X78AAACS0lEQVQoz1WSS0wTURSGb+LOBQs3LjAhUQRW7txoMNGFkRhMWzuFFizYGohNWypW2tIH6kYTFyZdaNgaN6QVETqdTh/adqYvJGAkYt+NSHunM1N0494zUyQx+XNzF/c75//PPagUVBYDyh/rahzWtCgtpvWtiK4FdxCpxvQdLn6Pixm56PTXLLm5ubtV+Jz6lKRIuv9cP6quqoAvBZQHIeKIOSIJLjEjsAs8Y+dTD4Sk6SDl3cmn8vkv29t7GYYdGhpAW29G91YUpaACqjTJY1LNxQxifknMecXMophxCqxDSNu4tKPO+BvZ5e/k/Jne0+iZ9VLYPwI8mG+s3cbUWJcXWKdYeCrxknxi1iNk3SLr6DBzh4ylFZ99aR9GL2yXk8uj31ZUxYCi3oVJAtOTYs4nY49BHVABtNTJ+YScV8h6xOziH9aAzvb26G+e33l7q7aq2t8gZFiNo1NCxiVCq5wH2vI5H2a9Tcbbzvg6UjnJTjNqRD0nTyCE3Hcv/E7o/s2MwJEJPmXjmYcwMIF1NeKPajHQQiPhbKY9Mv8EvgBprg8O9J1SXe3jaUhLyJIy45ix/fE+n7Q0E9ZK2Fyn5+rR+XrMXova2xkvDBJHdMi/eGPkyuBz88VfCW2THIe0rYhW5sda1AT436cM5Q+GKjlbDZtqEUuFsuK0i0+aIR167b72yjkMc27TWnjKxabhPP5t2JyfIU3xHVF+ryuv6SsbhkpoBidMmBoHjwhTmsO4lovIfejJrv7blrBG2qKgqiSXqKxPwSJ20/0FXuyl+fUAN8QAAAAASUVORK5CYII=","aspectRatio":1.775,"src":"/image-h.png","srcSet":"/static/750dc0c9885bfd9d4f95b95e9d134d4c/4a076/image-h.png 355w,\n/static/750dc0c9885bfd9d4f95b95e9d134d4c/62657/image-h.png 710w,\n/image-h.png 1420w,\n/image-h.png 1920w","sizes":"(max-width: 1420px) 100vw, 1420px"},"fixed":{"base64":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsSAAALEgHS3X78AAACS0lEQVQoz1WSS0wTURSGb+LOBQs3LjAhUQRW7txoMNGFkRhMWzuFFizYGohNWypW2tIH6kYTFyZdaNgaN6QVETqdTh/adqYvJGAkYt+NSHunM1N0494zUyQx+XNzF/c75//PPagUVBYDyh/rahzWtCgtpvWtiK4FdxCpxvQdLn6Pixm56PTXLLm5ubtV+Jz6lKRIuv9cP6quqoAvBZQHIeKIOSIJLjEjsAs8Y+dTD4Sk6SDl3cmn8vkv29t7GYYdGhpAW29G91YUpaACqjTJY1LNxQxifknMecXMophxCqxDSNu4tKPO+BvZ5e/k/Jne0+iZ9VLYPwI8mG+s3cbUWJcXWKdYeCrxknxi1iNk3SLr6DBzh4ylFZ99aR9GL2yXk8uj31ZUxYCi3oVJAtOTYs4nY49BHVABtNTJ+YScV8h6xOziH9aAzvb26G+e33l7q7aq2t8gZFiNo1NCxiVCq5wH2vI5H2a9Tcbbzvg6UjnJTjNqRD0nTyCE3Hcv/E7o/s2MwJEJPmXjmYcwMIF1NeKPajHQQiPhbKY9Mv8EvgBprg8O9J1SXe3jaUhLyJIy45ix/fE+n7Q0E9ZK2Fyn5+rR+XrMXova2xkvDBJHdMi/eGPkyuBz88VfCW2THIe0rYhW5sda1AT436cM5Q+GKjlbDZtqEUuFsuK0i0+aIR167b72yjkMc27TWnjKxabhPP5t2JyfIU3xHVF+ryuv6SsbhkpoBidMmBoHjwhTmsO4lovIfejJrv7blrBG2qKgqiSXqKxPwSJ20/0FXuyl+fUAN8QAAAAASUVORK5CYII=","width":1420,"height":800,"src":"/image-h.png","srcSet":"/image-h.png 1x"}},"publicURL":"/image-h.png"}}
+      maskColor="rgba(255,255,255,0.5)"
+      subtitle="A subtitle belonging to the Headline. Such item can contain lenghty text."
+      text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      textColor="#000000"
+      title="A title of the Headline"
+      updateSelf={(payload) => console.log("updateSelf(): ", payload)}
+    />
+  </Story>
+</Preview>
+
+<Preview>
+  <Story name="editable">
+    <State store={headlineStore}>
+      {state => 
+        <Headline
+          backgImage={{"name":"image-h.png","base":"image-h.png","childImageSharp":{"resize":{"originalName":"image-h.png","src":"/static/750dc0c9885bfd9d4f95b95e9d134d4c/5c63f/image-h.png"},"fluid":{"base64":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsSAAALEgHS3X78AAACS0lEQVQoz1WSS0wTURSGb+LOBQs3LjAhUQRW7txoMNGFkRhMWzuFFizYGohNWypW2tIH6kYTFyZdaNgaN6QVETqdTh/adqYvJGAkYt+NSHunM1N0494zUyQx+XNzF/c75//PPagUVBYDyh/rahzWtCgtpvWtiK4FdxCpxvQdLn6Pixm56PTXLLm5ubtV+Jz6lKRIuv9cP6quqoAvBZQHIeKIOSIJLjEjsAs8Y+dTD4Sk6SDl3cmn8vkv29t7GYYdGhpAW29G91YUpaACqjTJY1LNxQxifknMecXMophxCqxDSNu4tKPO+BvZ5e/k/Jne0+iZ9VLYPwI8mG+s3cbUWJcXWKdYeCrxknxi1iNk3SLr6DBzh4ylFZ99aR9GL2yXk8uj31ZUxYCi3oVJAtOTYs4nY49BHVABtNTJ+YScV8h6xOziH9aAzvb26G+e33l7q7aq2t8gZFiNo1NCxiVCq5wH2vI5H2a9Tcbbzvg6UjnJTjNqRD0nTyCE3Hcv/E7o/s2MwJEJPmXjmYcwMIF1NeKPajHQQiPhbKY9Mv8EvgBprg8O9J1SXe3jaUhLyJIy45ix/fE+n7Q0E9ZK2Fyn5+rR+XrMXova2xkvDBJHdMi/eGPkyuBz88VfCW2THIe0rYhW5sda1AT436cM5Q+GKjlbDZtqEUuFsuK0i0+aIR167b72yjkMc27TWnjKxabhPP5t2JyfIU3xHVF+ryuv6SsbhkpoBidMmBoHjwhTmsO4lovIfejJrv7blrBG2qKgqiSXqKxPwSJ20/0FXuyl+fUAN8QAAAAASUVORK5CYII=","aspectRatio":1.775,"src":"/image-h.png","srcSet":"/static/750dc0c9885bfd9d4f95b95e9d134d4c/4a076/image-h.png 355w,\n/static/750dc0c9885bfd9d4f95b95e9d134d4c/62657/image-h.png 710w,\n/image-h.png 1420w,\n/image-h.png 1920w","sizes":"(max-width: 1420px) 100vw, 1420px"},"fixed":{"base64":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAIAAADwazoUAAAACXBIWXMAAAsSAAALEgHS3X78AAACS0lEQVQoz1WSS0wTURSGb+LOBQs3LjAhUQRW7txoMNGFkRhMWzuFFizYGohNWypW2tIH6kYTFyZdaNgaN6QVETqdTh/adqYvJGAkYt+NSHunM1N0494zUyQx+XNzF/c75//PPagUVBYDyh/rahzWtCgtpvWtiK4FdxCpxvQdLn6Pixm56PTXLLm5ubtV+Jz6lKRIuv9cP6quqoAvBZQHIeKIOSIJLjEjsAs8Y+dTD4Sk6SDl3cmn8vkv29t7GYYdGhpAW29G91YUpaACqjTJY1LNxQxifknMecXMophxCqxDSNu4tKPO+BvZ5e/k/Jne0+iZ9VLYPwI8mG+s3cbUWJcXWKdYeCrxknxi1iNk3SLr6DBzh4ylFZ99aR9GL2yXk8uj31ZUxYCi3oVJAtOTYs4nY49BHVABtNTJ+YScV8h6xOziH9aAzvb26G+e33l7q7aq2t8gZFiNo1NCxiVCq5wH2vI5H2a9Tcbbzvg6UjnJTjNqRD0nTyCE3Hcv/E7o/s2MwJEJPmXjmYcwMIF1NeKPajHQQiPhbKY9Mv8EvgBprg8O9J1SXe3jaUhLyJIy45ix/fE+n7Q0E9ZK2Fyn5+rR+XrMXova2xkvDBJHdMi/eGPkyuBz88VfCW2THIe0rYhW5sda1AT436cM5Q+GKjlbDZtqEUuFsuK0i0+aIR167b72yjkMc27TWnjKxabhPP5t2JyfIU3xHVF+ryuv6SsbhkpoBidMmBoHjwhTmsO4lovIfejJrv7blrBG2qKgqiSXqKxPwSJ20/0FXuyl+fUAN8QAAAAASUVORK5CYII=","width":1420,"height":800,"src":"/image-h.png","srcSet":"/image-h.png 1x"}},"publicURL":"/image-h.png"}}
+          isEditable
+          maskColor="rgba(255,255,255,0.5)"
+          onElementUpdate={onHeadlineUpdate}
+          subtitle={state.subtitle}
+          text={state.text}
+          textColor="#000000"
+          title={state.title}
+        />
+      }
+    </State>
+  </Story>
+</Preview>

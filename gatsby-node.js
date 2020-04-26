@@ -1,31 +1,31 @@
 const path = require('path');
 const _ = require('lodash');
 
-exports.onCreateWebpackConfig = ({ actions, getConfig, stage }) => {
-  const config = getConfig();
+// exports.onCreateWebpackConfig = ({ actions, getConfig, stage }) => {
+// const config = getConfig();
 
-  config.resolve.alias = {
-    ...config.resolve.alias,
-    react: path.resolve('./node_modules/react'),
-    'react-dom': path.resolve('./node_modules/react-dom'),
-  };
+// config.resolve.alias = {
+// ...config.resolve.alias,
+// react: path.resolve('./node_modules/react'),
+// 'react-dom': path.resolve('./node_modules/react-dom'),
+// };
 
-  actions.setWebpackConfig({
-    resolve: {
-      modules: [path.resolve(__dirname, 'src/templates'), 'node_modules'],
-    },
-  });
-};
+// actions.setWebpackConfig({
+//   resolve: {
+//     modules: [path.resolve(__dirname, 'src/theme'), 'node_modules'],
+//   },
+// });
+// };
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   const tpls = {
-    page: path.resolve(__dirname, 'src/templates/PageTpl.js'),
-    contents: path.resolve(__dirname, 'src/templates/ContentsTpl.js'),
-    credits: path.resolve(__dirname, 'src/templates/CreditsTpl.js'),
-    error: path.resolve(__dirname, 'src/templates/ErrorTpl.js'),
-    home: path.resolve(__dirname, 'src/templates/HomeTpl.js'),
+    page: path.resolve(__dirname, 'src/theme/templates/PageTpl.js'),
+    contents: path.resolve(__dirname, 'src/theme/templates/ContentsTpl.js'),
+    credits: path.resolve(__dirname, 'src/theme/templates/CreditsTpl.js'),
+    error: path.resolve(__dirname, 'src/theme/templates/ErrorTpl.js'),
+    home: path.resolve(__dirname, 'src/theme/templates/HomeTpl.js'),
   };
 
   const allEssentials = await graphql(`

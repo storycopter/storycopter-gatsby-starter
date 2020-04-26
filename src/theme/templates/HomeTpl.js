@@ -2,19 +2,18 @@ import React from 'react';
 import _ from 'lodash';
 import { graphql } from 'gatsby';
 
-import { componentMap } from '@storycopter/ui';
+import componentMap from '@theme/components/componentMap';
+import constructImageObj from '@theme/utils/constructImageObj';
 
-import constructImageObj from './utils/constructImageObj';
-
-export default function ErrorTpl({
+export default function HomeTpl({
   data: {
-    essential: { elements: pageElements, meta: pageMeta },
+    page: { elements: pageElements, meta: pageMeta },
     files: { edges: pageFiles },
   },
   pageContext,
   ...pageProps
 }) {
-  // console.group('ErrorTpl.js');
+  // console.group('HomeTpl.js');
   // console.log('pageMeta', pageMeta);
   // console.log('pageFiles', pageFiles);
   // console.log('pageContext', pageContext);
@@ -31,15 +30,23 @@ export default function ErrorTpl({
           ...constructImageObj(pageFiles, settings?.backgImage?.name),
         };
 
-        return <Component {...settings} key={id} backgImage={backgImage} fullSize />;
+        // construct images object (e.g. Gallery)
+        const images = settings?.images?.map(image => ({
+          ...image,
+          ...constructImageObj(pageFiles, image.name),
+        }));
+
+        return (
+          <Component {...settings} key={`${pageMeta.uid}-${id}`} backgImage={backgImage} images={images} fullSize />
+        );
       })}
     </>
   );
 }
 
 export const pageQuery = graphql`
-  query ErrorTplQuery($uid: String!) {
-    essential: essentialsJson(meta: { uid: { eq: $uid } }) {
+  query HomeTplQuery($uid: String!) {
+    page: essentialsJson(meta: { uid: { eq: $uid } }) {
       meta {
         path
         title
