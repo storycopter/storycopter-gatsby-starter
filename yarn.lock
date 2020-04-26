@@ -863,7 +863,7 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.1.2", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.3", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.1.5", "@babel/runtime@^7.2.0", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.4.5", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.3", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7", "@babel/runtime@^7.9.2":
   version "7.9.2"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.2.tgz#d90df0583a3a252f09aaa619665367bae518db06"
   integrity sha512-NE2DtOdufG7R5vnfQUTehdTfNycfUANEtCa9PssN9O/xmTzP4E08UI797ixaei6hBEVL9BI/PsdJS5x7mWoB9Q==
@@ -1384,6 +1384,13 @@
     "@babel/runtime" "^7.4.4"
     "@material-ui/utils" "^4.9.6"
     prop-types "^15.7.2"
+
+"@material-ui/types@^4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@material-ui/types/-/types-4.1.1.tgz#b65e002d926089970a3271213a3ad7a21b17f02b"
+  integrity sha512-AN+GZNXytX9yxGi0JOfxHrRTbhFybjUJ05rnsBVjcB+16e466Z0Xe5IxawuOayVZgTBNDxmPKo5j4V6OnMtaSQ==
+  dependencies:
+    "@types/react" "*"
 
 "@material-ui/types@^5.0.1":
   version "5.0.1"
@@ -3392,7 +3399,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.5:
+classnames@^2.2.5, classnames@^2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
@@ -6179,7 +6186,7 @@ gatsby-graphiql-explorer@^0.3.5:
   dependencies:
     "@babel/runtime" "^7.8.7"
 
-gatsby-image@^2.3.5:
+gatsby-image@2.3.5:
   version "2.3.5"
   resolved "https://registry.yarnpkg.com/gatsby-image/-/gatsby-image-2.3.5.tgz#4af29abf3e3e0bd3a6d9168bc44461d58fbc0f91"
   integrity sha512-FRbmYrE+bFENiI2QGUwy0SKvNTOsxYHh6qNMdO3qwil0mtkiQax64ydExdEq1BciUVbvMqomd5n/yKu+cnuJVg==
@@ -6211,7 +6218,7 @@ gatsby-page-utils@^0.1.4:
     lodash "^4.17.15"
     micromatch "^3.1.10"
 
-gatsby-plugin-alias-imports@^1.0.5:
+gatsby-plugin-alias-imports@1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-alias-imports/-/gatsby-plugin-alias-imports-1.0.5.tgz#44c0856d77acb74b58b89ec725dadd8f5d5b327d"
   integrity sha512-q58JrSjuVNh4NApamqElR0zqwm55FOb9vFAVb2i2ftPRu0uYzWJkbOz2IN3vSw7a+5PmGzX7VL8XDFXlNHrMNA==
@@ -6247,7 +6254,7 @@ gatsby-plugin-react-helmet@3.2.5:
   dependencies:
     "@babel/runtime" "^7.8.7"
 
-gatsby-plugin-sharp@^2.5.7:
+gatsby-plugin-sharp@2.5.7:
   version "2.5.7"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-2.5.7.tgz#1fb9b65a49a842293fb5c3b032a0de6cfcc325cf"
   integrity sha512-TYY0+XKBwSzi3XNcRdusVe3uKrYbozqNgTgEp2Qji9yvNscXYAD/0nCPZ42Dyhfm+R2IeRMLzeajXQy7ZUwQBg==
@@ -6407,7 +6414,7 @@ gatsby-transformer-json@2.3.4:
     "@babel/runtime" "^7.8.7"
     bluebird "^3.7.2"
 
-gatsby-transformer-sharp@^2.4.7:
+gatsby-transformer-sharp@2.4.7:
   version "2.4.7"
   resolved "https://registry.yarnpkg.com/gatsby-transformer-sharp/-/gatsby-transformer-sharp-2.4.7.tgz#c9ad2616287780041fe32496d08b8a1ff302af47"
   integrity sha512-7/fMY/N+2TMqBUBq6CJMJ6ag6Y6wWXACYYWkPnb9hxtwbY7tOwnIxjstcgqbRjW56rmsyX+HWzegCXlZ0uSJEA==
@@ -9207,6 +9214,16 @@ markdown-table@^2.0.0:
   dependencies:
     repeat-string "^1.0.0"
 
+material-ui-popup-state@^1.5.4:
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/material-ui-popup-state/-/material-ui-popup-state-1.5.4.tgz#56cf7f7f8016a07057cfc45f8e58893258cbfed2"
+  integrity sha512-aHPrOZeOy4o5PDQ8WlFvxlxSB5m6G+Co/1uD4Eh7Uml6wxJUbRr9ZPHzdvaQ2TMFyYAExGFrPquVuNE8X9ZkXw==
+  dependencies:
+    "@babel/runtime" "^7.1.5"
+    "@material-ui/types" "^4.1.1"
+    classnames "^2.2.6"
+    prop-types "^15.0.0"
+
 math-random@^1.0.1:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/math-random/-/math-random-1.0.4.tgz#5dd6943c938548267016d4e34f057583080c514c"
@@ -11422,7 +11439,7 @@ prompts@^2.3.1:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.5.10, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -11773,7 +11790,7 @@ react-side-effect@^2.1.0:
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.0.tgz#1ce4a8b4445168c487ed24dab886421f74d380d3"
   integrity sha512-IgmcegOSi5SNX+2Snh1vqmF0Vg/CbkycU9XZbOHJlZ6kMzTmi3yc254oB1WCkgA7OQtIAoLmcSFuHTc/tlcqXg==
 
-react-slick@^0.25.2:
+react-slick@0.25.2:
   version "0.25.2"
   resolved "https://registry.yarnpkg.com/react-slick/-/react-slick-0.25.2.tgz#56331b67d47d8bcfe2dceb6acab1c8fd5bd1f6bc"
   integrity sha512-8MNH/NFX/R7zF6W/w+FS5VXNyDusF+XDW1OU0SzODEU7wqYB+ZTGAiNJ++zVNAVqCAHdyCybScaUB+FCZOmBBw==

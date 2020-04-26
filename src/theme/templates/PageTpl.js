@@ -89,11 +89,14 @@ export const pageQuery = graphql`
               originalName
               src
             }
-            fluid(maxHeight: 800, quality: 95, cropFocus: CENTER, fit: COVER) {
+            fluid: fluid(maxHeight: 800, quality: 95, cropFocus: CENTER, fit: COVER) {
               ...GatsbyImageSharpFluid
             }
-            fixed(height: 800, quality: 95, cropFocus: CENTER, fit: COVER) {
+            fixed: fixed(height: 800, quality: 95, cropFocus: CENTER, fit: COVER) {
               ...GatsbyImageSharpFixed
+            }
+            fluidLandscape: fluid(maxHeight: 600, maxWidth: 800, quality: 95, fit: COVER) {
+              ...GatsbyImageSharpFluid
             }
           }
           publicURL

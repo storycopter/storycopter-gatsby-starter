@@ -26,7 +26,7 @@ export default function Layout({
 
   console.group('Layout.js');
   // console.log({ allSiteData });
-  // console.log({ DocTheme });
+  console.log({ DocTheme });
   console.log({ props });
   console.groupEnd();
 

@@ -4,7 +4,7 @@
     "coverImage": {
       "name": "dummy.png"
     },
-    "order": 0,
+    "order": 99999,
     "path": "/pagesDummy",
     "summary": "Some text",
     "title": "string",

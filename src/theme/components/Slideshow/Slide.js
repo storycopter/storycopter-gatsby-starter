@@ -148,7 +148,7 @@ export default function Slide({
       <div
         className={slideClasses.root}
         style={{
-          ...props.style,
+          ...props?.style,
           backgroundColor: backgColor || 'transparent',
           backgroundImage: image.backgImageEnabled ? `url("${image.publicURL}")` : 'none',
           minHeight: fullSize ? canvasHeight || '100vh' : '50vh',

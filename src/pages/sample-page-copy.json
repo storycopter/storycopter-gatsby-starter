@@ -2,8 +2,9 @@
   "meta": {
     "coverEnabled": false,
     "coverImage": {
-      "name": null
+      "name": "image-v.png"
     },
+    "order": 1,
     "path": "/sample-page-copy",
     "title": "Sample page copy",
     "uid": "sample-page-copy",

@@ -4,10 +4,10 @@
     "coverImage": {
       "name": "image-h.png"
     },
-    "order": 0,
-    "path": "/sample-page",
-    "title": "Sample page",
-    "uid": "sample-page",
+    "order": 3,
+    "path": "/another-sample-page",
+    "title": "Another sample page",
+    "uid": "another-sample-page",
     "summary": ""
   },
   "elements": [

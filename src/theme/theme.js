@@ -21,7 +21,7 @@ export default createMuiTheme({
   overrides: {
     MuiIconButton: {
       root: {
-        borderRadius: 8,
+        borderRadius: mui.spacing(1),
         color: colors.grey[100],
         padding: mui.spacing(0.75),
         '&:hover': {

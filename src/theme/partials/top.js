@@ -261,37 +261,6 @@ class TopBar extends Component {
               <Side lx>
                 <Toolbar>
                   <Grid container spacing={1}>
-                    {pages.length > 1 && !isEssential ? (
-                      <Grid item>
-                        <Tooltip
-                          enterDelay={500}
-                          onClose={() => this.setState({ tooltip: null })}
-                          onOpen={() => this.setState({ tooltip: 'pages' })}
-                          open={!isTransitioning && tooltip === 'pages'}
-                          title="Table of contents">
-                          <div style={{ display: 'inline-block' }}>
-                            <Link onClick={this.onLinkWTransitionClick} to="/contents">
-                              <IconButton>
-                                <MenuIcon />
-                              </IconButton>
-                            </Link>
-                          </div>
-                        </Tooltip>
-                      </Grid>
-                    ) : (
-                      <Tooltip
-                        enterDelay={500}
-                        onClose={() => this.setState({ tooltip: null })}
-                        onOpen={() => this.setState({ tooltip: 'replay' })}
-                        open={!isTransitioning && tooltip === 'replay'}
-                        title="Return home">
-                        <div style={{ display: 'inline-block' }}>
-                          <Link onClick={this.onLinkWTransitionClick} to="/">
-                            {site.meta.publisher}
-                          </Link>
-                        </div>
-                      </Tooltip>
-                    )}
                     {!isEssential ? (
                       <Grid item>
                         {prevPage ? (
@@ -417,56 +386,7 @@ class TopBar extends Component {
                   ) : null}
                 </Breadcrumbs>
               </Main>
-              <Side rx>
-                <Toolbar>
-                  <Grid container spacing={1}>
-                    <Grid item>
-                      <Tooltip
-                        enterDelay={500}
-                        onClose={() => this.setState({ tooltip: null })}
-                        onOpen={() => this.setState({ tooltip: 'share' })}
-                        open={!isTransitioning && tooltip === 'share'}
-                        title="Share">
-                        <div style={{ display: 'inline-block' }}>
-                          <IconButton {...bindTrigger(popupState)}>
-                            <ShareIcon />
-                          </IconButton>
-                        </div>
-                      </Tooltip>
-                    </Grid>
-                    <Grid item>
-                      <Tooltip
-                        enterDelay={500}
-                        onClose={() => this.setState({ tooltip: null })}
-                        onOpen={() => this.setState({ tooltip: 'cta' })}
-                        open={!isTransitioning && tooltip === 'cta'}
-                        title="Take action">
-                        <div style={{ display: 'inline-block' }}>
-                          <IconButton>
-                            <PointerIcon />
-                          </IconButton>
-                        </div>
-                      </Tooltip>
-                    </Grid>
-                  </Grid>
-                </Toolbar>
-              </Side>
             </Element>
-            <Menu
-              {...bindMenu(popupState)}
-              getContentAnchorEl={null}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}>
-              <MenuItem onClick={popupState.close}>Facebook</MenuItem>
-              <MenuItem onClick={popupState.close}>Twitter</MenuItem>
-              <MenuItem onClick={popupState.close}>Email</MenuItem>
-            </Menu>
           </div>
         )}
       </PopupState>
