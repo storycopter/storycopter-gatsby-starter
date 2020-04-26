@@ -12,7 +12,6 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import Paper from '@material-ui/core/Paper';
 
 import Slide from '@material-ui/core/Slide';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -31,12 +30,15 @@ const PAGE_DETAILS_CARD_WIDTH = 200;
 const useStyles = (pageCount, isHovered) =>
   makeStyles(theme => ({
     root: {
-      backgroundColor: isHovered ? colors.shadow[800] : 'transparent',
+      ...console.log('doctheme', theme),
+      backgroundColor: isHovered ? colors.shadow[100] : 'transparent',
       boxShadow: 'none',
+      color: colors.grey[100],
       padding: theme.spacing(1),
-      transition: `background ${theme.transitions.duration.standard}`,
+      transition: `backgroundColor ${theme.transitions.duration.standard}ms`,
+      zIndex: 2,
       '&:hover': {
-        backgroundColor: colors.shadow[800],
+        backgroundColor: colors.shadow[100],
       },
       [theme.breakpoints.up('md')]: {
         padding: theme.spacing(1),
@@ -44,17 +46,6 @@ const useStyles = (pageCount, isHovered) =>
       [theme.breakpoints.up('xl')]: {
         padding: theme.spacing(1),
       },
-      // '&:before': {
-      // backgroundImage: `linear-gradient(${colors.shadow[500]}, transparent)`,
-      // content: `' '`,
-      // height: '33%',
-      // left: '-50px',
-      // maxHeight: '300px',
-      // filter: 'blur(3px)',
-      // position: 'fixed',
-      // right: '-50px',
-      // top: '-50px',
-      // },
     },
     left: {},
     middle: {
@@ -68,6 +59,14 @@ const useStyles = (pageCount, isHovered) =>
       height: '60px',
       maxWidth: '150px',
     },
+    // prevBtn: {
+    //   borderTopRightRadius: 0,
+    //   borderBottomRightRadius: 0,
+    // },
+    // nextBtn: {
+    //   borderTopLeftRadius: 0,
+    //   borderBottomLeftRadius: 0,
+    // },
     titleLink: {
       display: 'inline-block',
     },
@@ -88,7 +87,7 @@ const useStyles = (pageCount, isHovered) =>
       zIndex: 1,
     },
     breadcrumbsTrack: {
-      background: colors.shadow[200],
+      background: colors.shadow[100],
       borderTop: `1px solid ${colors.flare[400]}`,
       bottom: 0,
       height: theme.spacing(2),
@@ -118,11 +117,10 @@ const useStyles = (pageCount, isHovered) =>
     breadcrumbMarker: {
       borderRadius: theme.spacing(1),
       display: 'inline-block',
-      height: theme.spacing(3.5),
+      height: theme.spacing(4),
       overflow: 'hidden',
       position: 'relative',
-      transition: `background ${theme.transitions.duration.standard}`,
-      width: theme.spacing(3.5),
+      width: theme.spacing(4),
       zIndex: 2,
       '&:hover': {
         background: 'transparent',
@@ -133,11 +131,12 @@ const useStyles = (pageCount, isHovered) =>
       borderRadius: '1px',
       color: 'transparent',
       fontSize: '1px',
-      height: theme.spacing(1.5),
+      height: theme.spacing(1.4),
       left: '50%',
+      lineHeight: 0,
       position: 'absolute',
       textIndent: '-9000px',
-      top: '50%',
+      top: theme.spacing(2.3),
       transform: 'translate(-50%,-50%)',
       width: theme.spacing(0.5),
       zIndex: 3,
@@ -150,9 +149,12 @@ const useStyles = (pageCount, isHovered) =>
     },
     cardHead: {
       lineHeight: 0,
+      padding: theme.spacing(1),
     },
     cardBody: {
-      padding: theme.spacing(1),
+      paddingBottom: theme.spacing(1),
+      paddingLeft: theme.spacing(1),
+      paddingRight: theme.spacing(1),
     },
   }));
 
@@ -192,7 +194,7 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
   // console.log({ allPages });
   // console.log({ allSiteData });
   // console.log({ allStaticFiles });
-  // console.log({ pageData });
+  console.log({ props });
   // console.log({ popperPage });
   console.groupEnd();
 
@@ -228,24 +230,22 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
                       </Tooltip>
                     </Grid>
                     {allPages.length > 1 && !isEssential ? (
-                      <>
-                        <Grid item>
-                          <Tooltip title="Previous page">
-                            <Link to={pageIndex - 1 >= 0 ? allPages[pageIndex - 1].path : '/'}>
-                              <IconButton>
-                                <NavigateBeforeIcon />
-                              </IconButton>
-                            </Link>
-                          </Tooltip>
-                          <Tooltip title="Next page">
-                            <Link to={pageIndex + 1 >= allPages.length ? '/credits' : allPages[pageIndex + 1].path}>
-                              <IconButton>
-                                <NavigateNextIcon />
-                              </IconButton>
-                            </Link>
-                          </Tooltip>
-                        </Grid>
-                      </>
+                      <Grid item>
+                        <Tooltip title="Previous page">
+                          <Link to={pageIndex - 1 >= 0 ? allPages[pageIndex - 1].path : '/'}>
+                            <IconButton className={classes.prevBtn}>
+                              <NavigateBeforeIcon />
+                            </IconButton>
+                          </Link>
+                        </Tooltip>
+                        <Tooltip title="Next page">
+                          <Link to={pageIndex + 1 >= allPages.length ? '/credits' : allPages[pageIndex + 1].path}>
+                            <IconButton className={classes.nextBtn}>
+                              <NavigateNextIcon />
+                            </IconButton>
+                          </Link>
+                        </Tooltip>
+                      </Grid>
                     ) : null}
                   </>
                 )}
@@ -294,17 +294,15 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
                       }
                     : null;
 
-                  console.log('page: ', { coverImage });
-
                   return (
                     <div
                       className={classes.breadcrumb}
                       key={page.uid}
                       onMouseEnter={() => setPopperPage({ ...page, coverImage })}>
                       <Link className={classes.breadcrumbLink} to={page.path}>
-                        <IconButton className={classes.breadcrumbMarker} {...bindHover(popupState)}>
+                        <div className={classes.breadcrumbMarker} {...bindHover(popupState)}>
                           <span className={classes.breadcrumbTick}>{i + 1}</span>
-                        </IconButton>
+                        </div>
                       </Link>
                     </div>
                   );

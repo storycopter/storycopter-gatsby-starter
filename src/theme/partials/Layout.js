@@ -8,6 +8,7 @@ import DocBaseline from '@theme/Baseline';
 import DocTheme from '@theme/theme';
 import Foobar from '@theme/partials/Foobar';
 import Topbar from '@theme/partials/Topbar';
+import Vignette from '@theme/partials/Vignette';
 
 export default function Layout({
   pageContext: {
@@ -24,10 +25,10 @@ export default function Layout({
   const favicon = brand.favicon.name ? `/${brand.favicon.name}` : null;
   const image = brand.coverEnabled && brand.cover.name ? `/${brand.cover.name}` : null;
 
-  console.group('Layout.js');
-  console.log({ DocTheme });
-  console.log({ props });
-  console.groupEnd();
+  // console.group('Layout.js');
+  // console.log({ DocTheme });
+  // console.log({ props });
+  // console.groupEnd();
 
   return (
     <StaticQuery
@@ -77,6 +78,7 @@ export default function Layout({
               <meta property="og:image" content={image} />
               <meta property="og:type" content="website" />
             </Helmet>
+            <Vignette />
             <Topbar {...barProps} />
             {children}
             <Foobar {...barProps} />

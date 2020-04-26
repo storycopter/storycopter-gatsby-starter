@@ -22,10 +22,13 @@ export default createMuiTheme({
     MuiIconButton: {
       root: {
         borderRadius: mui.spacing(1),
-        color: colors.grey[100],
+        color: colors.flare[900],
         padding: mui.spacing(0.75),
+        transition: `background ${mui.transitions.duration.standard}ms, backdropFilter ${mui.transitions.duration.standard}ms`,
         '&:hover': {
-          backgroundColor: colors.shadow[300],
+          backdropFilter: 'blur(5px)',
+          backgroundColor: colors.flare[200],
+          // backgroundColor: colors.flare[300],
         },
       },
     },
