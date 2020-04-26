@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
+import Fullscreen from 'react-full-screen';
 
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 
@@ -11,15 +12,15 @@ import Topbar from '@theme/partials/Topbar';
 import Vignette from '@theme/partials/Vignette';
 
 export default function Layout({
-  pageContext: {
-    contextData: { allEssentials, allPages, allSiteData },
-  },
+  pageContext: { allEssentials, allPages, allSiteData },
   location,
   children,
   ...props
 }) {
   const { brand, meta, sound } = allSiteData;
   const pageData = props.data;
+
+  const [fullScreen, setFullScreen] = useState(false);
 
   const audio = sound.enabled && sound.track.name ? `/${sound.track.name}` : null;
   const favicon = brand.favicon.name ? `/${brand.favicon.name}` : null;
@@ -65,24 +66,26 @@ export default function Layout({
           props,
         };
         return (
-          <ThemeProvider theme={{ ...DocTheme, brand: brand }}>
-            <DocBaseline theme={{ ...DocTheme, brand: brand }} />
-            <Helmet
-              defer={false}
-              encodeSpecialCharacters={true}
-              titleTemplate={`${meta.title} • %s`}
-              defaultTitle="Chapter">
-              <link rel="icon" href={favicon} type="image/ico" sizes="16x16" />
-              <meta name="description" content={meta.summary} />
-              <meta property="og:audio" content={audio} />
-              <meta property="og:image" content={image} />
-              <meta property="og:type" content="website" />
-            </Helmet>
-            <Vignette />
-            <Topbar {...barProps} />
-            {children}
-            <Foobar {...barProps} />
-          </ThemeProvider>
+          <Fullscreen enabled={fullScreen} onChange={val => setFullScreen(val)}>
+            <ThemeProvider theme={{ ...DocTheme, brand: brand }}>
+              <DocBaseline theme={{ ...DocTheme, brand: brand }} />
+              <Helmet
+                defer={false}
+                encodeSpecialCharacters={true}
+                titleTemplate={`${meta.title} • %s`}
+                defaultTitle="Chapter">
+                <link rel="icon" href={favicon} type="image/ico" sizes="16x16" />
+                <meta name="description" content={meta.summary} />
+                <meta property="og:audio" content={audio} />
+                <meta property="og:image" content={image} />
+                <meta property="og:type" content="website" />
+              </Helmet>
+              <Vignette />
+              <Topbar {...barProps} />
+              {children}
+              <Foobar {...barProps} onFullScreenToggle={() => setFullScreen(prevState => !prevState)} />
+            </ThemeProvider>
+          </Fullscreen>
         );
       }}
     />

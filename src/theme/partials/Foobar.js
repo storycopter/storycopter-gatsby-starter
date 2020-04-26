@@ -93,7 +93,7 @@ export default function Foobar(props) {
                 ) : null}
                 <Grid item>
                   <Tooltip title="Full screen">
-                    <IconButton edge="end">
+                    <IconButton edge="end" onClick={props.onFullScreenToggle}>
                       <FullScreenIcon />
                     </IconButton>
                   </Tooltip>

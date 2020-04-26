@@ -73,6 +73,11 @@ body * {
 ::-moz-selection {
   background: ${theme => theme?.brand?.brandColor || '#efb43f'};
 }
+
+.fullscreen-enabled {
+  overflow: auto;
+}
+
 `;
 
 export default function Baseline({ theme }) {
