@@ -1,14 +1,14 @@
 {
   "meta": {
-    "coverEnabled": false,
+    "coverEnabled": true,
     "coverImage": {
       "name": "image-h.png"
     },
     "order": 0,
-    "path": "/sample-page",
-    "title": "Sample page",
-    "uid": "sample-page",
-    "summary": ""
+    "path": "/intro",
+    "title": "Intro",
+    "uid": "intro",
+    "summary": "Short page summary"
   },
   "elements": [
     {
@@ -26,7 +26,7 @@
         "subtitle": "A subtitle",
         "text": "Some text",
         "textColor": "#ffffff",
-        "title": "A title"
+        "title": "Intro"
       },
       "type": "headline"
     },
@@ -76,7 +76,7 @@
         "subtitle": "A subtitle",
         "text": "Some text",
         "textColor": "#ffffff",
-        "title": "A title"
+        "title": "A second headline"
       },
       "type": "headline"
     },

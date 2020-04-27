@@ -1,0 +1,34 @@
+{
+  "meta": {
+    "coverEnabled": false,
+    "coverImage": {
+      "name": ""
+    },
+    "order": 1,
+    "path": "/beginning",
+    "summary": "A page summary",
+    "title": "Beginning",
+    "uid": "beginning"
+  },
+  "elements": [
+    {
+      "settings": {
+        "align": "center",
+        "backgColor": null,
+        "backgImage": {
+          "name": null
+        },
+        "backgImageEnabled": false,
+        "fullSize": true,
+        "maskColor": null,
+        "subtitle": "A subtitle",
+        "text": "Some text",
+        "textColor": null,
+        "title": "Beginning"
+      },
+      "type": "headline",
+      "id": "beginning-1588013069796",
+      "order": 0
+    }
+  ]
+}
