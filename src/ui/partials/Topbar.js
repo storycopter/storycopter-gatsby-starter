@@ -136,17 +136,12 @@ const useStyles = (pageCount, isHovered) =>
     popover: {
       marginTop: theme.spacing(1.5),
     },
-    card: {
-      width: `${PAGE_DETAILS_CARD_WIDTH}px`,
-    },
+    card: {},
     cardHead: {
       lineHeight: 0,
-      padding: theme.spacing(0.2),
     },
     cardBody: {
-      paddingBottom: theme.spacing(0.5),
-      paddingLeft: theme.spacing(0.5),
-      paddingRight: theme.spacing(0.5),
+      margin: theme.spacing(1),
     },
   }));
 
@@ -326,15 +321,17 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
           direction="column"
           justify="flex-start"
           spacing={0}>
-          <Grid className={classes.cardHead} item style={{ width: `${PAGE_DETAILS_CARD_WIDTH}px` }}>
-            {popperPage?.coverImage?.childImageSharp ? (
-              <Img fluid={popperPage?.coverImage?.childImageSharp?.fluidLandscape} width={PAGE_DETAILS_CARD_WIDTH} />
-            ) : (
-              <img src={popperPage?.coverImage?.publicURL} width={PAGE_DETAILS_CARD_WIDTH} />
-            )}
-          </Grid>
+          {popperPage?.coverImage ? (
+            <Grid className={classes.cardHead} item style={{ width: `${PAGE_DETAILS_CARD_WIDTH}px` }}>
+              {popperPage?.coverImage?.childImageSharp ? (
+                <Img fluid={popperPage?.coverImage?.childImageSharp?.fluidLandscape} width={PAGE_DETAILS_CARD_WIDTH} />
+              ) : (
+                <img src={popperPage?.coverImage?.publicURL} width={PAGE_DETAILS_CARD_WIDTH} />
+              )}
+            </Grid>
+          ) : null}
           <Grid className={classes.cardBody} item>
-            <Typography className={classes.typography} component="h2" variant="subtitle2">
+            <Typography className={classes.typography} component="h2" variant="subtitle1">
               {popperPage?.title}
             </Typography>
           </Grid>
