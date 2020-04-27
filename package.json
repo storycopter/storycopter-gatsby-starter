@@ -1,6 +1,6 @@
 {
   "name": "@storycopter/idoc",
-  "version": "0.0.4",
+  "version": "0.0.10",
   "main": "index.js",
   "license": "BSD-3-Clause",
   "dependencies": {
@@ -54,7 +54,6 @@
     "lib:clean": "rm -rf ./lib",
     "lib:publish": "npm publish --access=public",
     "lib:start": "nodemon --watch src --exec yarn build",
-    "publish": "yarn lib:build && yarn lib:publish",
     "site:build": "gatsby build",
     "site:clean": "gatsby clean && npx rimraf **/node_modules/",
     "site:deploy": "gatsby build && netlify deploy --dir=public --prod",
