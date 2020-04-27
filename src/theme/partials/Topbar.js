@@ -1,6 +1,6 @@
 import Img from 'gatsby-image';
 import Link from 'gatsby-link';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import _ from 'lodash';
 import { usePopupState, bindHover, bindPopover } from 'material-ui-popup-state/hooks';
 import Popover from 'material-ui-popup-state/HoverPopover';
@@ -56,17 +56,9 @@ const useStyles = (pageCount, isHovered) =>
       justifyContent: 'flex-end',
     },
     logo: {
-      height: '60px',
+      height: '50px',
       maxWidth: '150px',
     },
-    // prevBtn: {
-    //   borderTopRightRadius: 0,
-    //   borderBottomRightRadius: 0,
-    // },
-    // nextBtn: {
-    //   borderTopLeftRadius: 0,
-    //   borderBottomLeftRadius: 0,
-    // },
     titleLink: {
       display: 'inline-block',
     },
@@ -149,10 +141,10 @@ const useStyles = (pageCount, isHovered) =>
     },
     cardHead: {
       lineHeight: 0,
-      padding: theme.spacing(0.5),
+      padding: theme.spacing(0.2),
     },
     cardBody: {
-      paddingBottom: theme.spacing(1),
+      paddingBottom: theme.spacing(0.5),
       paddingLeft: theme.spacing(0.5),
       paddingRight: theme.spacing(0.5),
     },
@@ -181,12 +173,10 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
   const pageIndex = _.findIndex(allPages, o => o.uid === pageData?.page?.meta?.uid);
 
   // construct logo object
-  const logo = logo?.name
-    ? {
-        ...allSiteData?.brand?.logo,
-        ...constructImageObj(allStaticFiles?.edges, allSiteData?.brand?.logo?.name),
-      }
-    : null;
+  const logo = {
+    ...allSiteData?.brand?.logo,
+    ...constructImageObj(allStaticFiles.edges, allSiteData.brand?.logo?.name),
+  };
 
   const classes = useStyles(allPages.length, popupState.isOpen || barHover)();
 
@@ -211,8 +201,12 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
                 {isEssential ? (
                   <Grid item>
                     <Link to="/">
-                      {logo?.childImageSharp ? (
-                        <Img alt={allSiteData?.meta?.publisher} fluid={logo?.childImageSharp?.fluid} />
+                      {logo.childImageSharp ? (
+                        <Img
+                          alt={allSiteData?.meta?.publisher}
+                          className={classes.logo}
+                          fluid={logo?.childImageSharp?.fluid}
+                        />
                       ) : logo?.publicURL ? (
                         <img alt={allSiteData?.meta?.publisher} className={classes.logo} src={logo?.publicURL} />
                       ) : (

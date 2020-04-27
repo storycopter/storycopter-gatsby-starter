@@ -8,7 +8,7 @@ const useStyles = () =>
   makeStyles(theme => ({
     root: {
       boxShadow: `0 0 100px ${colors.shadow[700]} inset`,
-      filter: 'blur(1px)',
+      filter: 'blur(1px) grayscale(100%)',
       bottom: '-1%',
       left: '-6%',
       pointerEvents: 'none',

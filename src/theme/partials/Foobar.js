@@ -21,6 +21,7 @@ const useStyles = () =>
   makeStyles(theme => ({
     root: {
       background: 'transparent',
+      pointerEvents: 'none',
       bottom: 0,
       boxShadow: 'none',
       color: theme.brand.textColor,
@@ -35,12 +36,19 @@ const useStyles = () =>
         padding: theme.spacing(1),
       },
     },
-    left: {},
+    left: {
+      '& > *': {
+        pointerEvents: 'auto',
+      },
+    },
     middle: { textAlign: 'center' },
     right: {
       alignItems: 'center',
       justifyContent: 'flex-end',
       filter: 'none',
+      '& > *': {
+        pointerEvents: 'auto',
+      },
     },
   }));
 

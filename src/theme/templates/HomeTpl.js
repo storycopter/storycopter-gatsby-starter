@@ -1,23 +1,39 @@
+import Link from 'gatsby-link';
 import React from 'react';
 import _ from 'lodash';
 import { graphql } from 'gatsby';
 
+import Button from '@material-ui/core/Button';
+import makeStyles from '@material-ui/styles/makeStyles';
+
 import componentMap from '@theme/components/componentMap';
 import constructImageObj from '@theme/utils/constructImageObj';
+import { Typography } from '@material-ui/core';
+
+const useStyles = (pageCount, isHovered) =>
+  makeStyles(theme => ({
+    cta: {
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
+    },
+  }));
 
 export default function HomeTpl({
   data: {
     page: { elements: pageElements, meta: pageMeta },
     files: { edges: pageFiles },
   },
-  pageContext,
+  pageContext: { allEssentials, allPages, allSiteData },
   ...pageProps
 }) {
-  // console.group('HomeTpl.js');
+  const classes = useStyles()();
+
+  console.group('HomeTpl.js');
   // console.log('pageMeta', pageMeta);
-  // console.log('pageFiles', pageFiles);
   // console.log('pageContext', pageContext);
-  // console.groupEnd();
+  // console.log('pageFiles', pageFiles);
+  console.log('pageProps', pageProps);
+  console.groupEnd();
 
   return (
     <>
@@ -37,7 +53,36 @@ export default function HomeTpl({
         }));
 
         return (
-          <Component {...settings} key={`${pageMeta.uid}-${id}`} backgImage={backgImage} images={images} fullSize />
+          <Component
+            {...settings}
+            key={`${pageMeta.uid}-${id}`}
+            backgImage={backgImage}
+            images={images}
+            fullSize
+            children={
+              allPages.length > 1 ? (
+                <>
+                  <Link className={classes.cta} to={'/contents'}>
+                    <Button component="span">Explore pages</Button>
+                  </Link>{' '}
+                  <Typography component="span" variant="body2">
+                    or
+                  </Typography>{' '}
+                  <Link className={classes.cta} to={_.sortBy(allPages, o => o.order)[0].path}>
+                    <Button component="span" variant="contained">
+                      Launch story
+                    </Button>
+                  </Link>
+                </>
+              ) : (
+                <Link className={classes.cta} to={_.sortBy(allPages, o => o.order)[0].path}>
+                  <Button component="span" variant="contained">
+                    Launch story
+                  </Button>
+                </Link>
+              )
+            }
+          />
         );
       })}
     </>
