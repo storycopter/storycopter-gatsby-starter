@@ -1,8 +1,20 @@
 import React from 'react';
 
 import makeStyles from '@material-ui/core/styles/makeStyles';
+import Fade from '@material-ui/core/Fade';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 import colors from '@ui/settings/colors';
+
+function HideOnScroll(props) {
+  const { children, window } = props;
+  const trigger = useScrollTrigger();
+  return (
+    <Fade appear={false} direction="down" in={!trigger}>
+      {children}
+    </Fade>
+  );
+}
 
 const useStyles = () =>
   makeStyles(theme => ({
@@ -27,5 +39,9 @@ const useStyles = () =>
 
 export default function Vignette() {
   const classes = useStyles()();
-  return <div className={classes.root} />;
+  return (
+    <HideOnScroll>
+      <div className={classes.root} />
+    </HideOnScroll>
+  );
 }
