@@ -2,7 +2,7 @@ import React from 'react';
 
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
-import colors from '@theme/settings/colors';
+import colors from '@ui/settings/colors';
 
 const useStyles = () =>
   makeStyles(theme => ({

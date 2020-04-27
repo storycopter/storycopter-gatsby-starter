@@ -13,9 +13,9 @@ import Tooltip from '@material-ui/core/Tooltip';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
-import CreditsIcon from '@theme/elements/icons/CreditsIcon';
-import FullScreenIcon from '@theme/elements/icons/FullScreenIcon';
-import SoundIcon from '@theme/elements/icons/SoundIcon';
+import CreditsIcon from '@ui/elements/icons/CreditsIcon';
+import FullScreenIcon from '@ui/elements/icons/FullScreenIcon';
+import SoundIcon from '@ui/elements/icons/SoundIcon';
 
 const useStyles = () =>
   makeStyles(theme => ({

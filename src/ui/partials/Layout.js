@@ -1,15 +1,15 @@
+import Fullscreen from 'react-full-screen';
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
-import Fullscreen from 'react-full-screen';
 
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
 
-import DocBaseline from '@theme/Baseline';
-import DocTheme from '@theme/theme';
-import Foobar from '@theme/partials/Foobar';
-import Topbar from '@theme/partials/Topbar';
-import Vignette from '@theme/partials/Vignette';
+import Baseline from '@ui/components/Baseline/Baseline';
+import Foobar from '@ui/partials/Foobar';
+import Topbar from '@ui/partials/Topbar';
+import Vignette from '@ui/partials/Vignette';
+import theme from '@ui/theme';
 
 export default function Layout({
   pageContext: { allEssentials, allPages, allSiteData },
@@ -27,7 +27,7 @@ export default function Layout({
   const image = brand.coverEnabled && brand.cover.name ? `/${brand.cover.name}` : null;
 
   // console.group('Layout.js');
-  // console.log({ DocTheme });
+  // console.log({ theme });
   // console.log({ props });
   // console.groupEnd();
 
@@ -67,8 +67,8 @@ export default function Layout({
         };
         return (
           <Fullscreen enabled={fullScreen} onChange={val => setFullScreen(val)}>
-            <ThemeProvider theme={{ ...DocTheme, brand: brand }}>
-              <DocBaseline theme={{ ...DocTheme, brand: brand }} />
+            <ThemeProvider theme={{ ...theme, brand: brand }}>
+              <Baseline theme={{ ...theme, brand: brand }} />
               <Helmet
                 defer={false}
                 encodeSpecialCharacters={true}

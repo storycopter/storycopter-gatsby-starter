@@ -20,10 +20,10 @@ import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/styles/makeStyles';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
-import PointerIcon from '@theme/elements/icons/PointerIcon';
-import ShareIcon from '@theme/elements/icons/ShareIcon';
-import colors from '@theme/settings/colors';
-import constructImageObj from '@theme/utils/constructImageObj';
+import PointerIcon from '@ui/elements/icons/PointerIcon';
+import ShareIcon from '@ui/elements/icons/ShareIcon';
+import colors from '@ui/settings/colors';
+import constructImageObj from '@ui/utils/constructImageObj';
 
 const PAGE_DETAILS_CARD_WIDTH = 200;
 

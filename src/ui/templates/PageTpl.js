@@ -2,10 +2,10 @@ import React from 'react';
 import _ from 'lodash';
 import { graphql } from 'gatsby';
 
-import componentMap from '@theme/components/componentMap';
-import constructImageObj from '@theme/utils/constructImageObj';
+import componentMap from '@ui/components/componentMap';
+import constructImageObj from '@ui/utils/constructImageObj';
 
-export default function ContentsTpl({
+export default function PageTpl({
   data: {
     page: { elements: pageElements, meta: pageMeta },
     files: { edges: pageFiles },
@@ -13,32 +13,42 @@ export default function ContentsTpl({
   pageContext,
   ...pageProps
 }) {
-  // console.group('ContentsTpl.js');
+  // console.group('PageTpl.js');
   // console.log('pageMeta', pageMeta);
   // console.log('pageFiles', pageFiles);
   // console.log('pageContext', pageContext);
+  // console.log('pageElements', pageElements);
   // console.groupEnd();
 
   return (
     <>
       {_.sortBy(pageElements, [o => o.order]).map(({ id, type, settings }, i) => {
+        {
+          /* if (type !== 'headline') return; */
+        }
         const Component = componentMap[type];
 
-        // construct backgImage object
+        // construct backgImage object (e.g. Headline)
         const backgImage = {
           ...settings?.backgImage,
           ...constructImageObj(pageFiles, settings?.backgImage?.name),
         };
 
-        return <Component {...settings} key={id} backgImage={backgImage} fullSize />;
+        // construct images object (e.g. Gallery)
+        const images = settings?.images?.map(image => ({
+          ...image,
+          ...constructImageObj(pageFiles, image.name),
+        }));
+
+        return <Component {...settings} key={`${pageMeta.uid}-${id}`} backgImage={backgImage} images={images} />;
       })}
     </>
   );
 }
 
 export const pageQuery = graphql`
-  query ContentsTplQuery($uid: String!) {
-    page: essentialsJson(meta: { uid: { eq: $uid } }) {
+  query PageTplQuery($uid: String!) {
+    page: pagesJson(meta: { uid: { eq: $uid } }) {
       meta {
         path
         title
@@ -55,6 +65,12 @@ export const pageQuery = graphql`
           backgImage {
             name
           }
+          images {
+            backgImageEnabled
+            caption
+            name
+            order
+          }
           fullSize
           maskColor
           subtitle
@@ -69,15 +85,18 @@ export const pageQuery = graphql`
         node {
           base
           childImageSharp {
-            resize(quality: 95, width: 1400) {
+            resize(quality: 95, width: 1000) {
               originalName
               src
             }
-            fluid(maxWidth: 2000, quality: 95, cropFocus: CENTER, fit: COVER) {
+            fluid: fluid(maxHeight: 800, quality: 95, cropFocus: CENTER, fit: COVER) {
               ...GatsbyImageSharpFluid
             }
-            fixed(width: 1400, height: 900, quality: 95, cropFocus: CENTER, fit: COVER) {
+            fixed: fixed(height: 800, quality: 95, cropFocus: CENTER, fit: COVER) {
               ...GatsbyImageSharpFixed
+            }
+            fluidLandscape: fluid(maxHeight: 600, maxWidth: 800, quality: 95, fit: COVER) {
+              ...GatsbyImageSharpFluid
             }
           }
           publicURL

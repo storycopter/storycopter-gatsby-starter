@@ -1,7 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-import colors from '@theme/settings/colors';
-import setType from '@theme/mixins/setType';
+import colors from '@ui/settings/colors';
+import setType from '@ui/mixins/setType';
 
 const mui = createMuiTheme();
 

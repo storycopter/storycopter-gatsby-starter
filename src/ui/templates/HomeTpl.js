@@ -6,8 +6,8 @@ import { graphql } from 'gatsby';
 import Button from '@material-ui/core/Button';
 import makeStyles from '@material-ui/styles/makeStyles';
 
-import componentMap from '@theme/components/componentMap';
-import constructImageObj from '@theme/utils/constructImageObj';
+import componentMap from '@ui/components/componentMap';
+import constructImageObj from '@ui/utils/constructImageObj';
 import { Typography } from '@material-ui/core';
 
 const useStyles = (pageCount, isHovered) =>

@@ -1,4 +1,4 @@
-import fluidify from '@theme/utils/fluidify';
+import fluidify from '@ui/utils/fluidify';
 
 const sizes = {
   100: ['12px', '13px', '1.6em'],

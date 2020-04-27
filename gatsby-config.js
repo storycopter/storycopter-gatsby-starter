@@ -14,19 +14,10 @@ module.exports = {
     `gatsby-transformer-json`,
     `gatsby-transformer-sharp`,
     {
-      resolve: `gatsby-plugin-alias-imports`,
-      options: {
-        alias: {
-          '@theme': 'src/theme',
-        },
-        extensions: [],
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `theme`,
-        path: `${__dirname}/src/theme`,
+        path: `${__dirname}/src/ui`,
       },
     },
     {
