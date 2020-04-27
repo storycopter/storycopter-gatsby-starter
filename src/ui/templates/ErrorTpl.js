@@ -2,23 +2,23 @@ import React from 'react';
 import _ from 'lodash';
 import { graphql } from 'gatsby';
 
-import { componentMap } from '@storycopter/ui';
+import componentMap from '@ui/components/componentMap';
+import constructImageObj from '@ui/utils/constructImageObj';
 
-import constructImageObj from './utils/constructImageObj';
-
-export default function CreditsTpl({
+export default function ErrorTpl({
   data: {
-    essential: { elements: pageElements, meta: pageMeta },
+    page: { elements: pageElements, meta: pageMeta },
     files: { edges: pageFiles },
   },
   pageContext,
   ...pageProps
 }) {
-  // console.group('CreditsTpl.js');
-  // console.log('pageMeta', pageMeta);
-  // console.log('pageFiles', pageFiles);
-  // console.log('pageContext', pageContext);
-  // console.groupEnd();
+  console.group('ErrorTpl.js');
+  console.log('pageElements', pageElements);
+  console.log('pageFiles', pageFiles);
+  console.log('pageMeta', pageMeta);
+  console.log('pageProps', pageProps);
+  console.groupEnd();
 
   return (
     <>
@@ -38,8 +38,8 @@ export default function CreditsTpl({
 }
 
 export const pageQuery = graphql`
-  query CreditsTplQuery($uid: String!) {
-    essential: essentialsJson(meta: { uid: { eq: $uid } }) {
+  query ErrorTplQuery($uid: String!) {
+    page: essentialsJson(meta: { uid: { eq: $uid } }) {
       meta {
         path
         title

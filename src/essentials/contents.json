@@ -1,7 +1,12 @@
 {
   "meta": {
+    "coverEnabled": false,
+    "coverImage": {
+      "name": null
+    },
     "path": "/contents",
     "title": "All parts",
     "uid": "contents"
-  }
+  },
+  "elements": []
 }

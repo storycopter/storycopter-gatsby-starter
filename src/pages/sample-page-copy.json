@@ -2,12 +2,12 @@
   "meta": {
     "coverEnabled": false,
     "coverImage": {
-      "name": "image-h.png"
+      "name": "image-v.png"
     },
-    "order": 0,
-    "path": "/sample-page",
-    "title": "Sample page",
-    "uid": "sample-page",
+    "order": 1,
+    "path": "/sample-page-copy",
+    "title": "Sample page copy",
+    "uid": "sample-page-copy",
     "summary": ""
   },
   "elements": [

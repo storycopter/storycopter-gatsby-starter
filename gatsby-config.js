@@ -1,16 +1,23 @@
 module.exports = {
   plugins: [
-    `gatsby-plugin-material-ui`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-material-ui`,
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
+    },
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-json`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `templates`,
-        path: `${__dirname}/src/templates`,
+        name: `theme`,
+        path: `${__dirname}/src/ui`,
       },
     },
     {
@@ -32,6 +39,13 @@ module.exports = {
       options: {
         name: `pages`,
         path: `${__dirname}/src/pages/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `static`,
+        path: `${__dirname}/static/`,
       },
     },
   ],

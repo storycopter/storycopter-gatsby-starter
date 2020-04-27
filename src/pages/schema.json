@@ -4,9 +4,11 @@
     "coverImage": {
       "name": "dummy.png"
     },
-    "path": "/essentialsDummy",
+    "order": 99999,
+    "path": "/schema",
+    "summary": "Some text",
     "title": "string",
-    "uid": "essentialsDummy"
+    "uid": "schema"
   },
   "elements": [
     {
@@ -22,7 +24,6 @@
         "fullSize": true,
         "images": [
           {
-            "alt": "string",
             "caption": "string",
             "name": "string",
             "order": 0

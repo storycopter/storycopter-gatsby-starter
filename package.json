@@ -8,23 +8,28 @@
     "@material-ui/icons": "4.9.1",
     "@material-ui/lab": "4.0.0-alpha.50",
     "@material-ui/styles": "4.9.10",
-    "@storycopter/ui": "0.0.18",
-    "babel-plugin-styled-components": "^1.10.7",
+    "babel-plugin-styled-components": "1.10.7",
     "gatsby": "2.20.36",
+    "gatsby-image": "2.3.5",
     "gatsby-link": "2.3.5",
     "gatsby-plugin-material-ui": "2.1.8",
     "gatsby-plugin-react-helmet": "3.2.5",
     "gatsby-plugin-sharp": "2.5.7",
-    "gatsby-plugin-styled-components": "^3.2.4",
+    "gatsby-plugin-styled-components": "3.2.4",
     "gatsby-react-router-scroll": "2.2.3",
     "gatsby-source-filesystem": "2.2.5",
     "gatsby-transformer-json": "2.3.4",
     "gatsby-transformer-sharp": "2.4.7",
     "lodash": "4.17.15",
+    "material-ui-popup-state": "1.5.4",
+    "polished": "3.5.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-full-screen": "0.2.4",
     "react-helmet": "6.0.0",
-    "styled-components": "^5.1.0"
+    "react-player": "2.0.0",
+    "react-slick": "0.25.2",
+    "styled-components": "5.1.0"
   },
   "devDependencies": {
     "@hot-loader/react-dom": "16.13.0",
@@ -40,15 +45,20 @@
     "prettier-stylelint": "0.4.2",
     "pretty-quick": "2.0.1",
     "stylelint-config-prettier": "8.0.1",
-    "stylelint-prettier": "1.1.2"
+    "stylelint-prettier": "1.1.2",
+    "webpack-cli": "^3.3.11"
   },
   "scripts": {
-    "build": "gatsby build",
-    "clean": "gatsby clean && npx rimraf **/node_modules/",
-    "deploy": "gatsby build && netlify deploy --dir=public --prod",
-    "publish": "npm publish --access=public",
-    "start": "gatsby develop",
-    "start-lan": "gatsby develop -o -H $HOSTNAME -p 8000",
-    "start-vsc": "node --nolazy --inspect-brk gatsby develop"
+    "clean": "yarn site:clean && yarn lib:clean",
+    "lib:build": "webpack -p --config ./lib.webpack.config.js",
+    "lib:clean": "rm -rf ./lib",
+    "lib:publish": "npm publish --access=public",
+    "lib:start": "nodemon --watch src --exec yarn build",
+    "publish": "yarn lib:build && yarn lib:publish",
+    "site:build": "gatsby build",
+    "site:clean": "gatsby clean && npx rimraf **/node_modules/",
+    "site:deploy": "gatsby build && netlify deploy --dir=public --prod",
+    "site:start": "gatsby develop",
+    "start": "yarn site:start"
   }
 }

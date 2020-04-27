@@ -4,11 +4,9 @@
     "coverImage": {
       "name": "dummy.png"
     },
-    "order": 0,
-    "path": "/pagesDummy",
-    "summary": "Some text",
+    "path": "/schema",
     "title": "string",
-    "uid": "pagesDummy"
+    "uid": "schema"
   },
   "elements": [
     {
@@ -24,6 +22,7 @@
         "fullSize": true,
         "images": [
           {
+            "alt": "string",
             "caption": "string",
             "name": "string",
             "order": 0

@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Storycopter Alpha",
+    "title": "Storycopter",
     "publisher": "Storycopter News",
     "summary": "A new interactive documentary production suite for the Web.",
     "coverEnabled": true,
@@ -17,14 +17,14 @@
       "name": "favicon.ico"
     },
     "logo": {
-      "name": "logo.png"
+      "name": "logo.svg"
     },
     "textColor": "#000000",
     "typography": "modern"
   },
   "motivation": {
     "enabled": true,
-    "label": "Visit Storycopter.com!",
+    "label": "Download Storycopter!",
     "link": "https://storycopter.com"
   },
   "sound": {

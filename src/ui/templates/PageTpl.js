@@ -2,13 +2,12 @@ import React from 'react';
 import _ from 'lodash';
 import { graphql } from 'gatsby';
 
-import { componentMap } from '@storycopter/ui';
-
-import constructImageObj from './utils/constructImageObj';
+import componentMap from '@ui/components/componentMap';
+import constructImageObj from '@ui/utils/constructImageObj';
 
 export default function PageTpl({
   data: {
-    essential: { elements: pageElements, meta: pageMeta },
+    page: { elements: pageElements, meta: pageMeta },
     files: { edges: pageFiles },
   },
   pageContext,
@@ -24,6 +23,9 @@ export default function PageTpl({
   return (
     <>
       {_.sortBy(pageElements, [o => o.order]).map(({ id, type, settings }, i) => {
+        {
+          /* if (type !== 'headline') return; */
+        }
         const Component = componentMap[type];
 
         // construct backgImage object (e.g. Headline)
@@ -38,7 +40,7 @@ export default function PageTpl({
           ...constructImageObj(pageFiles, image.name),
         }));
 
-        return <Component {...settings} key={id} backgImage={backgImage} images={images} />;
+        return <Component {...settings} key={`${pageMeta.uid}-${id}`} backgImage={backgImage} images={images} />;
       })}
     </>
   );
@@ -46,7 +48,7 @@ export default function PageTpl({
 
 export const pageQuery = graphql`
   query PageTplQuery($uid: String!) {
-    essential: pagesJson(meta: { uid: { eq: $uid } }) {
+    page: pagesJson(meta: { uid: { eq: $uid } }) {
       meta {
         path
         title
@@ -87,11 +89,14 @@ export const pageQuery = graphql`
               originalName
               src
             }
-            fluid(maxHeight: 800, quality: 95, cropFocus: CENTER, fit: COVER) {
+            fluid: fluid(maxHeight: 800, quality: 95, cropFocus: CENTER, fit: COVER) {
               ...GatsbyImageSharpFluid
             }
-            fixed(height: 800, quality: 95, cropFocus: CENTER, fit: COVER) {
+            fixed: fixed(height: 800, quality: 95, cropFocus: CENTER, fit: COVER) {
               ...GatsbyImageSharpFixed
+            }
+            fluidLandscape: fluid(maxHeight: 600, maxWidth: 800, quality: 95, fit: COVER) {
+              ...GatsbyImageSharpFluid
             }
           }
           publicURL
