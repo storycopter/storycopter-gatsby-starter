@@ -1,6 +1,6 @@
 {
   "name": "@storycopter/idoc",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "main": "lib/index.js",
   "license": "BSD-3-Clause",
   "dependencies": {
@@ -53,7 +53,7 @@
     "clean": "yarn site:clean && yarn lib:clean",
     "lib:build": "webpack -p --config ./lib.webpack.config.js",
     "lib:clean": "rm -rf ./lib",
-    "lib:publish": "npm publish --access=public",
+    "lib:publish": "yarn publish --access=public",
     "lib:start": "nodemon --watch src --exec yarn lib:build",
     "site:build": "gatsby build",
     "site:clean": "gatsby clean && npx rimraf **/node_modules/",
