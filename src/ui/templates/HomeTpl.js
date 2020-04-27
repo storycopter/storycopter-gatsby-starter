@@ -12,9 +12,19 @@ import { Typography } from '@material-ui/core';
 
 const useStyles = (pageCount, isHovered) =>
   makeStyles(theme => ({
+    actionbar: {
+      alignItems: 'center',
+      display: 'flex',
+    },
     cta: {
       marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
+      '&:first-child': {
+        marginLeft: 0,
+      },
+      '&:last-child': {
+        marginRight: 0,
+      },
     },
   }));
 
@@ -26,13 +36,14 @@ export default function HomeTpl({
   pageContext: { allEssentials, allPages, allSiteData },
   ...pageProps
 }) {
+  const { brand } = allSiteData;
   const classes = useStyles()();
 
   console.group('HomeTpl.js');
   // console.log('pageMeta', pageMeta);
   // console.log('pageContext', pageContext);
   // console.log('pageFiles', pageFiles);
-  console.log('pageProps', pageProps);
+  // console.log('pageProps', pageProps);
   console.groupEnd();
 
   return (
@@ -62,21 +73,29 @@ export default function HomeTpl({
             children={
               allPages.length > 1 ? (
                 <>
-                  <Link className={classes.cta} to={'/contents'}>
-                    <Button component="span">Explore pages</Button>
+                  <Link className={classes.cta} to={_.sortBy(allPages, o => o.order)[0].path}>
+                    <Button
+                      component="span"
+                      style={{ background: pageElements[0].settings.backgColor }}
+                      variant="contained">
+                      Launch story
+                    </Button>
                   </Link>{' '}
-                  <Typography component="span" variant="body2">
+                  <Typography className={classes.cta} component="span" variant="body2" style={{ opacity: 0.5 }}>
                     or
                   </Typography>{' '}
-                  <Link className={classes.cta} to={_.sortBy(allPages, o => o.order)[0].path}>
+                  <Link className={classes.cta} to={'/contents'}>
                     <Button component="span" variant="contained">
-                      Launch story
+                      Explore pages
                     </Button>
                   </Link>
                 </>
               ) : (
                 <Link className={classes.cta} to={_.sortBy(allPages, o => o.order)[0].path}>
-                  <Button component="span" variant="contained">
+                  <Button
+                    component="span"
+                    style={{ background: pageElements[0].settings.backgColor }}
+                    variant="contained">
                     Launch story
                   </Button>
                 </Link>

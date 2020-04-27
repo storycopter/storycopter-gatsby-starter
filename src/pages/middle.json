@@ -1,8 +1,8 @@
 {
   "meta": {
-    "coverEnabled": false,
+    "coverEnabled": true,
     "coverImage": {
-      "name": ""
+      "name": "image-h.png"
     },
     "order": 2,
     "path": "/middle",

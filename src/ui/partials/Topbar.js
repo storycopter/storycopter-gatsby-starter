@@ -41,10 +41,10 @@ const useStyles = (pageCount, isHovered) =>
         backgroundColor: colors.shadow[200],
       },
       [theme.breakpoints.up('md')]: {
-        padding: theme.spacing(1),
+        padding: theme.spacing(2),
       },
       [theme.breakpoints.up('xl')]: {
-        padding: theme.spacing(1),
+        padding: theme.spacing(3),
       },
     },
     left: {},
@@ -79,7 +79,7 @@ const useStyles = (pageCount, isHovered) =>
       zIndex: 1,
     },
     breadcrumbsTrack: {
-      background: colors.shadow[200],
+      background: colors.shadow[100],
       borderTop: `1px solid ${colors.flare[400]}`,
       bottom: 0,
       height: theme.spacing(2),

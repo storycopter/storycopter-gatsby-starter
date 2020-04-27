@@ -16,11 +16,11 @@
       "order": 0,
       "settings": {
         "align": "center",
-        "backgColor": null,
+        "backgColor": "#6045ff",
         "backgImage": {
-          "name": "image-h.png"
+          "name": "headline-cover.svg"
         },
-        "backgImageEnabled": true,
+        "backgImageEnabled": false,
         "fullSize": true,
         "maskColor": "rgba(239, 180, 63, 0.1)",
         "subtitle": "A subtitle",
@@ -66,13 +66,13 @@
       "order": 2,
       "settings": {
         "align": "center",
-        "backgColor": null,
+        "backgColor": "#efb43f",
         "backgImage": {
           "name": "image-h.png"
         },
-        "backgImageEnabled": true,
+        "backgImageEnabled": false,
         "fullSize": null,
-        "maskColor": "rgba(239, 180, 63, 0.1)",
+        "maskColor": "rgba(0,0,0,0.0)",
         "subtitle": "A subtitle",
         "text": "Some text",
         "textColor": "#ffffff",

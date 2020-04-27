@@ -13,14 +13,14 @@
       "id": "001",
       "order": 0,
       "settings": {
-        "align": "center",
-        "backgColor": "#ebb85f",
+        "align": "left",
+        "backgColor": "#2e237f",
         "backgImage": {
           "name": "headline-cover.svg"
         },
         "backgImageEnabled": true,
         "fullSize": true,
-        "maskColor": "rgba(239, 180, 63, 0.1)",
+        "maskColor": "rgba(0, 0, 0, 0.75)",
         "subtitle": "A new interactive documentary production suite for the Web.",
         "text": "",
         "textColor": "#ffffff",

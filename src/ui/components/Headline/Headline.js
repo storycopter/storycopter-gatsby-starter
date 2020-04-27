@@ -6,11 +6,11 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
-const useStyles = (align, backgColor, backgImage, fullSize, maskColor, textColor) =>
+const useStyles = (align, backgColor, backgImage, backgImageEnabled, fullSize, maskColor, textColor) =>
   makeStyles(theme => ({
     headlineRoot: {
       backgroundColor: backgColor || 'transparent',
-      backgroundImage: backgImage?.name ? `url("${backgImage.publicURL}")` : 'none',
+      backgroundImage: backgImageEnabled && backgImage?.name ? `url("${backgImage.publicURL}")` : 'none',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
@@ -19,12 +19,12 @@ const useStyles = (align, backgColor, backgImage, fullSize, maskColor, textColor
       flexDirection: 'column',
       justifyContent: 'center',
       minHeight: fullSize ? '100vh' : '50vh',
-      paddingBottom: theme.spacing(5),
-      paddingTop: theme.spacing(5),
+      paddingBottom: theme.spacing(15),
+      paddingTop: theme.spacing(15),
       position: 'relative',
       [theme.breakpoints.up('md')]: {
-        paddingTop: theme.spacing(10),
-        paddingBottom: theme.spacing(10),
+        paddingTop: theme.spacing(15),
+        paddingBottom: theme.spacing(15),
       },
       [theme.breakpoints.up('xl')]: {
         paddingTop: theme.spacing(20),
@@ -49,13 +49,22 @@ const useStyles = (align, backgColor, backgImage, fullSize, maskColor, textColor
       position: 'relative',
       textAlign: align === 'center' ? 'center' : 'left',
       zIndex: 2,
+      [theme.breakpoints.up('sm')]: {
+        maxWidth: `${(100 / 5) * 4}%`,
+      },
+      [theme.breakpoints.up('md')]: {
+        maxWidth: `${(100 / 5) * 4}%`,
+      },
+      [theme.breakpoints.up('xl')]: {
+        maxWidth: '50%',
+      },
     },
     headlineContent: {
       [theme.breakpoints.up('md')]: {
-        flex: `0 0 ${(100 / 3) * 2}%`,
+        flex: `0 0 ${(100 / 5) * 3}%`,
       },
       [theme.breakpoints.up('lg')]: {
-        flex: `0 0 ${100 / 2}%`,
+        flex: `0 0 ${(100 / 5) * 3}%`,
       },
     },
     headlineTitle: {
@@ -91,7 +100,12 @@ const useStyles = (align, backgColor, backgImage, fullSize, maskColor, textColor
       ...theme.typography.h5,
     },
     headlineActionbar: {
+      display: 'flex',
+      alignItems: 'center',
       marginTop: theme.spacing(5),
+      '& *': {
+        color: textColor,
+      },
       [theme.breakpoints.up('md')]: {
         marginTop: theme.spacing(5),
       },
@@ -105,6 +119,7 @@ export default function Headline({
   align = 'left',
   backgColor = null,
   backgImage = null,
+  backgImageEnabled = false,
   children = null,
   fullSize = false,
   isEditable = false,
@@ -113,7 +128,7 @@ export default function Headline({
   textColor = null,
   ...props
 }) {
-  const classes = useStyles(align, backgColor, backgImage, fullSize, maskColor, textColor)();
+  const classes = useStyles(align, backgColor, backgImage, backgImageEnabled, fullSize, maskColor, textColor)();
 
   const onInputBlur = (e, key) => {
     props.onElementUpdate({
@@ -137,7 +152,7 @@ export default function Headline({
   return (
     <>
       <div className={classes.headlineRoot} style={style}>
-        <Container className={classes.headlineContainer} maxWidth="xl">
+        <Container className={classes.headlineContainer}>
           <div className={classes.headlineContent}>
             {isEditable || props.title ? (
               <Typography className={classes.headlineTitle} component="div" variant="h1" style={{ color: textColor }}>

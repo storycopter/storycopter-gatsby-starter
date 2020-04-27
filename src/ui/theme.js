@@ -19,6 +19,15 @@ export default createMuiTheme({
   },
 
   overrides: {
+    MuiButton: {
+      contained: {
+        backgroundColor: colors.flare[100],
+        '&:hover': {
+          backgroundColor: colors.flare[300],
+        },
+      },
+    },
+
     MuiIconButton: {
       root: {
         borderRadius: mui.spacing(1),
