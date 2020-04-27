@@ -1,7 +1,7 @@
 {
   "name": "@storycopter/idoc",
   "version": "0.0.10",
-  "main": "index.js",
+  "main": "lib/index.js",
   "license": "BSD-3-Clause",
   "dependencies": {
     "@material-ui/core": "4.9.11",
@@ -28,32 +28,33 @@
     "react-full-screen": "0.2.4",
     "react-helmet": "6.0.0",
     "react-player": "2.0.0",
-    "react-slick": "0.25.2",
-    "styled-components": "5.1.0"
+    "react-slick": "0.25.2"
   },
   "devDependencies": {
     "@hot-loader/react-dom": "16.13.0",
-    "@now/node": "1.5.1",
     "babel-eslint": "10.1.0",
     "eslint": "6.8.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-prettier": "3.1.3",
     "eslint-plugin-react": "7.19.0",
     "gatsby-cli": "2.11.22",
+    "nodemon": "2.0.3",
     "prettier": "2.0.5",
     "prettier-eslint": "9.0.1",
     "prettier-stylelint": "0.4.2",
     "pretty-quick": "2.0.1",
+    "styled-components": "5.1.0",
     "stylelint-config-prettier": "8.0.1",
     "stylelint-prettier": "1.1.2",
-    "webpack-cli": "^3.3.11"
+    "webpack": "4.43.0",
+    "webpack-cli": "3.3.11"
   },
   "scripts": {
     "clean": "yarn site:clean && yarn lib:clean",
     "lib:build": "webpack -p --config ./lib.webpack.config.js",
     "lib:clean": "rm -rf ./lib",
     "lib:publish": "npm publish --access=public",
-    "lib:start": "nodemon --watch src --exec yarn build",
+    "lib:start": "nodemon --watch src --exec yarn lib:build",
     "site:build": "gatsby build",
     "site:clean": "gatsby clean && npx rimraf **/node_modules/",
     "site:deploy": "gatsby build && netlify deploy --dir=public --prod",
