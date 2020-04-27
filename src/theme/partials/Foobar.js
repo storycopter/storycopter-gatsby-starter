@@ -1,5 +1,5 @@
 import Link from 'gatsby-link';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player';
 import _ from 'lodash';
 
@@ -54,17 +54,17 @@ function HideOnScroll(props) {
   );
 }
 
-export default function Foobar(props) {
+export default function Foobar({ allSiteData, allStaticFiles, ...props }) {
   const classes = useStyles()();
 
-  const [backgroundSound, setBackgroundSound] = useState(true);
+  const soundtrack = _.find(allStaticFiles.edges, ({ node }) => node.base === allSiteData.sound.track.name)?.node
+    ?.publicURL;
 
-  const soundtrack = _.find(props.allStaticFiles.edges, ({ node }) => node.base === props.allSiteData.sound.track.name)
-    ?.node?.publicURL;
+  const [sound, setSound] = useState(localStorage.getItem('sound') === 'false' ? false : true);
 
-  // console.group('Foobar.js');
-  // console.log(props);
-  // console.groupEnd();
+  useEffect(() => {
+    localStorage.setItem('sound', sound);
+  }, [sound]);
 
   return (
     <>
@@ -82,10 +82,10 @@ export default function Foobar(props) {
                 </Tooltip>
               </Grid>
               <Grid className={classes.right} container item xs spacing={1}>
-                {props?.allSiteData?.sound?.enabled && props?.allSiteData?.sound?.track ? (
+                {allSiteData?.sound?.enabled && allSiteData?.sound?.track ? (
                   <Grid item>
                     <Tooltip title="Background sound">
-                      <IconButton onClick={() => setBackgroundSound(prevState => !prevState)}>
+                      <IconButton onClick={() => setSound(state => !state)}>
                         <SoundIcon />
                       </IconButton>
                     </Tooltip>
@@ -106,11 +106,11 @@ export default function Foobar(props) {
       <ReactPlayer
         height="1px"
         loop
-        playing={backgroundSound}
+        playing={sound}
         playsinline
         style={{ opacity: 0, position: 'absolute', right: 0, top: 0, visibility: 'hidden' }}
         url={soundtrack}
-        volume={0.5}
+        volume={0.35}
         width="1px"
       />
     </>
