@@ -31,14 +31,14 @@ const useStyles = (pageCount, isHovered) =>
   makeStyles(theme => ({
     root: {
       ...console.log('doctheme', theme),
-      backgroundColor: isHovered ? colors.shadow[100] : 'transparent',
+      backgroundColor: isHovered ? colors.shadow[200] : 'transparent',
       boxShadow: 'none',
       color: colors.grey[100],
       padding: theme.spacing(1),
       transition: `backgroundColor ${theme.transitions.duration.standard}ms`,
       zIndex: 2,
       '&:hover': {
-        backgroundColor: colors.shadow[100],
+        backgroundColor: colors.shadow[200],
       },
       [theme.breakpoints.up('md')]: {
         padding: theme.spacing(1),
@@ -79,7 +79,7 @@ const useStyles = (pageCount, isHovered) =>
       zIndex: 1,
     },
     breadcrumbsTrack: {
-      background: colors.shadow[100],
+      background: colors.shadow[200],
       borderTop: `1px solid ${colors.flare[400]}`,
       bottom: 0,
       height: theme.spacing(2),
