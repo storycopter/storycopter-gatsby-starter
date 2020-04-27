@@ -56,14 +56,15 @@ function HideOnScroll(props) {
 
 export default function Foobar({ allSiteData, allStaticFiles, ...props }) {
   const classes = useStyles()();
+  const withWindow = typeof window !== `undefined`;
 
   const soundtrack = _.find(allStaticFiles.edges, ({ node }) => node.base === allSiteData.sound.track.name)?.node
     ?.publicURL;
 
-  const [sound, setSound] = useState(localStorage.getItem('sound') === 'false' ? false : true);
+  const [sound, setSound] = useState(withWindow && localStorage.getItem('sound') === 'false' ? false : true);
 
   useEffect(() => {
-    localStorage.setItem('sound', sound);
+    withWindow ? localStorage?.setItem('sound', sound) : null;
   }, [sound]);
 
   return (
