@@ -13,11 +13,12 @@ export default function ErrorTpl({
   pageContext,
   ...pageProps
 }) {
-  // console.group('ErrorTpl.js');
-  // console.log('pageMeta', pageMeta);
-  // console.log('pageFiles', pageFiles);
-  // console.log('pageContext', pageContext);
-  // console.groupEnd();
+  console.group('ErrorTpl.js');
+  console.log('pageElements', pageElements);
+  console.log('pageFiles', pageFiles);
+  console.log('pageMeta', pageMeta);
+  console.log('pageProps', pageProps);
+  console.groupEnd();
 
   return (
     <>

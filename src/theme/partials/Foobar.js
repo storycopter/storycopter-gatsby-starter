@@ -5,6 +5,7 @@ import _ from 'lodash';
 
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
+import NoSsr from '@material-ui/core/NoSsr';
 import IconButton from '@material-ui/core/IconButton';
 import Slide from '@material-ui/core/Slide';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -56,16 +57,24 @@ function HideOnScroll(props) {
 
 export default function Foobar({ allSiteData, allStaticFiles, ...props }) {
   const classes = useStyles()();
-  const withWindow = typeof window !== `undefined`;
+  const isBrowser = typeof window !== `undefined`;
 
   const soundtrack = _.find(allStaticFiles.edges, ({ node }) => node.base === allSiteData.sound.track.name)?.node
     ?.publicURL;
 
-  const [sound, setSound] = useState(withWindow && localStorage.getItem('sound') === 'false' ? false : true);
+  const [sound, setSound] = useState(null);
 
   useEffect(() => {
-    withWindow ? localStorage?.setItem('sound', sound) : null;
+    if (isBrowser) localStorage?.setItem('sound', sound);
   }, [sound]);
+
+  useEffect(() => {
+    if (isBrowser) setSound(localStorage.getItem('sound') === 'false' ? false : true);
+  }, []);
+
+  // console.group('Foobar.js');
+  // console.log({ sound });
+  // console.groupEnd();
 
   return (
     <>
@@ -104,16 +113,18 @@ export default function Foobar({ allSiteData, allStaticFiles, ...props }) {
           </Toolbar>
         </AppBar>
       </HideOnScroll>
-      <ReactPlayer
-        height="1px"
-        loop
-        playing={sound}
-        playsinline
-        style={{ opacity: 0, position: 'absolute', right: 0, top: 0, visibility: 'hidden' }}
-        url={soundtrack}
-        volume={0.35}
-        width="1px"
-      />
+      <NoSsr>
+        <ReactPlayer
+          height="1px"
+          loop
+          playing={sound}
+          playsinline
+          style={{ opacity: 0, position: 'absolute', right: 0, top: 0, visibility: 'hidden' }}
+          url={soundtrack}
+          volume={0.35}
+          width="1px"
+        />
+      </NoSsr>
     </>
   );
 }

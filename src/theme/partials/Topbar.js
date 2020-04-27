@@ -72,7 +72,7 @@ const useStyles = (pageCount, isHovered) =>
     },
     titleText: {
       display: 'block',
-      letterSpacing: `${theme.spacing(0.5)}px`,
+      letterSpacing: `${theme.spacing(0.3)}px`,
       position: 'relative',
       textAlign: 'center',
       width: '100%',
@@ -149,12 +149,12 @@ const useStyles = (pageCount, isHovered) =>
     },
     cardHead: {
       lineHeight: 0,
-      padding: theme.spacing(1),
+      padding: theme.spacing(0.5),
     },
     cardBody: {
       paddingBottom: theme.spacing(1),
-      paddingLeft: theme.spacing(1),
-      paddingRight: theme.spacing(1),
+      paddingLeft: theme.spacing(0.5),
+      paddingRight: theme.spacing(0.5),
     },
   }));
 
@@ -177,8 +177,8 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
   const [barHover, setBarHover] = useState(null);
   const [popperPage, setPopperPage] = useState(null);
 
-  const isEssential = ['home', 'credits', 'contents', 'error'].includes(pageData.page.meta.uid);
-  const pageIndex = _.findIndex(allPages, o => o.uid === pageData.page.meta.uid);
+  const isEssential = ['home', 'credits', 'contents', 'error'].includes(pageData?.page?.meta?.uid);
+  const pageIndex = _.findIndex(allPages, o => o.uid === pageData?.page?.meta?.uid);
 
   // construct logo object
   const logo = logo?.name
@@ -190,13 +190,13 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
 
   const classes = useStyles(allPages.length, popupState.isOpen || barHover)();
 
-  console.group('Topbar.js');
+  // console.group('Topbar.js');
   // console.log({ allPages });
   // console.log({ allSiteData });
   // console.log({ allStaticFiles });
-  console.log({ props });
+  // console.log({ props });
   // console.log({ popperPage });
-  console.groupEnd();
+  // console.groupEnd();
 
   return (
     <>
@@ -253,7 +253,7 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
               <Grid className={classes.middle} item sm={6}>
                 <Box display={{ xs: 'none', md: 'block' }}>
                   <Typography className={classes.titleText} component="h1" noWrap variant="button">
-                    {allSiteData.meta.title}
+                    <Link to={'/'}>{allSiteData.meta.title}</Link>
                   </Typography>
                 </Box>
               </Grid>
@@ -277,7 +277,7 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
               </Grid>
             </Grid>
           </Toolbar>
-          {allPages.length > 1 && (barHover || popupState.isOpen) && !isEssential ? (
+          {!isEssential && allPages.length > 1 && (barHover || popupState.isOpen) ? (
             <div className={classes.breadcrumbs}>
               <div className={classes.breadcrumbsTrack}>
                 <div

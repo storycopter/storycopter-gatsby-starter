@@ -3,13 +3,11 @@ const _ = require('lodash');
 
 // exports.onCreateWebpackConfig = ({ actions, getConfig, stage }) => {
 //   const config = getConfig();
-
 //   config.resolve.alias = {
 //     ...config.resolve.alias,
 //     react: path.resolve('./node_modules/react'),
 //     'react-dom': path.resolve('./node_modules/react-dom'),
 //   };
-
 // actions.setWebpackConfig({
 //   resolve: {
 //     modules: [path.resolve(__dirname, 'src/theme'), 'node_modules'],
@@ -30,7 +28,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const allEssentials = await graphql(`
     {
-      allEssentialsJson {
+      allEssentialsJson(filter: { meta: { uid: { ne: "schema" } } }) {
         edges {
           node {
             meta {
@@ -45,7 +43,7 @@ exports.createPages = async ({ graphql, actions }) => {
   `);
   const allPages = await graphql(`
     {
-      allPagesJson(sort: { fields: meta___order }) {
+      allPagesJson(filter: { meta: { uid: { ne: "schema" } } }, sort: { fields: meta___order }) {
         edges {
           node {
             meta {
@@ -66,7 +64,7 @@ exports.createPages = async ({ graphql, actions }) => {
   `);
   const allSiteData = await graphql(`
     {
-      allSiteJson {
+      allSiteJson(filter: { meta: { uid: { ne: "schema" } } }) {
         edges {
           node {
             meta {
@@ -127,39 +125,13 @@ exports.createPages = async ({ graphql, actions }) => {
     const { edges } = creator.src.data[creator.gql];
     edges.forEach(({ node }) => {
       const { path, uid } = node.meta;
-
-      const dummyPages = ['essentialsDummy', 'pagesDummy', 'siteDummy'];
-
-      // skip the dummy pages (used to sanitise Gatsby’s graphql queries)
-      if (dummyPages.includes(uid)) return null;
-
-      const pages = _.filter(allPages.data.allPagesJson.edges, function (o) {
-        if (!dummyPages.includes(o.node.meta.uid)) return o.node.meta;
-      }).map(o => o.node.meta);
-
-      const essentials = _.filter(allEssentials.data.allEssentialsJson.edges, function (o) {
-        if (!dummyPages.includes(o.node.meta.uid)) return o.node.meta;
-      }).map(o => o.node.meta);
-
-      const siteData = _.filter(allSiteData.data.allSiteJson.edges, o =>
-        !dummyPages.includes(o.node.meta.uid) ? o : null
-      ).map(o => o.node)[0];
-
-      // console.group('gatsby-node.js');
-      // console.log({ essentials });
-      // console.log({ pages });
-      // console.log({ siteData });
-      // console.groupEnd();
-
       createPage({
         component: creator.tpl || tpls[uid],
         context: {
-          uid: uid,
-          contextData: {
-            allEssentials: essentials,
-            allPages: pages,
-            allSiteData: siteData,
-          },
+          uid,
+          allEssentials: allEssentials.data.allEssentialsJson.edges.map(o => o.node.meta),
+          allPages: allPages.data.allPagesJson.edges.map(o => o.node.meta),
+          allSiteData: allSiteData.data.allSiteJson.edges.map(o => o.node)[0],
         },
         path: path,
       });
