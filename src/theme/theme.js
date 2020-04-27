@@ -26,9 +26,7 @@ export default createMuiTheme({
         padding: mui.spacing(0.75),
         transition: `background ${mui.transitions.duration.standard}ms, backdropFilter ${mui.transitions.duration.standard}ms`,
         '&:hover': {
-          backdropFilter: 'blur(5px)',
           backgroundColor: colors.flare[200],
-          // backgroundColor: colors.flare[300],
         },
       },
     },
