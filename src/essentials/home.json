@@ -1,6 +1,6 @@
 {
   "meta": {
-    "coverEnabled": false,
+    "coverEnabled": true,
     "coverImage": {
       "name": null
     },
@@ -20,7 +20,7 @@
         },
         "backgImageEnabled": true,
         "fullSize": true,
-        "maskColor": "rgba(0, 0, 0, 0.75)",
+        "maskColor": "rgba(0, 0, 0, 0.6)",
         "subtitle": "A new interactive documentary production suite for the Web.",
         "text": "",
         "textColor": "#ffffff",

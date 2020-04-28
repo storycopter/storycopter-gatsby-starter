@@ -9,7 +9,7 @@ import Baseline from '@ui/components/Baseline/Baseline';
 import Foobar from '@ui/partials/Foobar';
 import Topbar from '@ui/partials/Topbar';
 import Vignette from '@ui/partials/Vignette';
-import theme from '@ui/theme';
+import constructTheme from '@ui/utils/constructTheme';
 
 export default function Layout({
   pageContext: { allEssentials, allPages, allSiteData },
@@ -17,7 +17,7 @@ export default function Layout({
   children,
   ...props
 }) {
-  const { brand, meta, sound } = allSiteData;
+  const { brand, sound } = allSiteData;
   const pageData = props.data;
 
   const [fullScreen, setFullScreen] = useState(false);
@@ -26,10 +26,9 @@ export default function Layout({
   const favicon = brand.favicon.name ? `/${brand.favicon.name}` : null;
   const image = brand.coverEnabled && brand.cover.name ? `/${brand.cover.name}` : null;
 
-  // console.group('Layout.js');
-  // console.log({ theme });
-  // console.log({ props });
-  // console.groupEnd();
+  console.group('Layout.js');
+  // console.log({ pageData });
+  console.groupEnd();
 
   return (
     <StaticQuery
@@ -67,18 +66,21 @@ export default function Layout({
         };
         return (
           <Fullscreen enabled={fullScreen} onChange={val => setFullScreen(val)}>
-            <ThemeProvider theme={{ ...theme, brand: brand }}>
-              <Baseline theme={{ ...theme, brand: brand }} />
+            <ThemeProvider theme={constructTheme(brand)}>
+              <Baseline theme={constructTheme(brand)} />
               <Helmet
                 defer={false}
                 encodeSpecialCharacters={true}
-                titleTemplate={`${meta.title} • %s`}
+                titleTemplate={`${allSiteData.meta.title} • %s`}
                 defaultTitle="Chapter">
                 <link rel="icon" href={favicon} type="image/ico" sizes="16x16" />
-                <meta name="description" content={meta.summary} />
+                <link rel="stylesheet" type="text/css" href="raleway/style.css" />
+                <link rel="stylesheet" type="text/css" href="poppins/style.css" />
+                <meta name="description" content={allSiteData.meta.summary} />
                 <meta property="og:audio" content={audio} />
                 <meta property="og:image" content={image} />
                 <meta property="og:type" content="website" />
+                <title>{pageData.page.meta.title}</title>
               </Helmet>
               <Vignette />
               <Topbar {...barProps} />

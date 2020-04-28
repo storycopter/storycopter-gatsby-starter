@@ -21,7 +21,11 @@
       "name": "logo.png"
     },
     "textColor": "string",
-    "typography": "string"
+    "typography": "string",
+    "fonts": {
+      "head": "string",
+      "body": "string"
+    }
   },
   "motivation": {
     "enabled": true,

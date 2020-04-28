@@ -9,6 +9,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 const useStyles = (align, backgColor, backgImage, backgImageEnabled, fullSize, maskColor, textColor) =>
   makeStyles(theme => ({
     headlineRoot: {
+      // ...console.log('HEADLINE THEME', theme),
       backgroundColor: backgColor || 'transparent',
       backgroundImage: backgImageEnabled && backgImage?.name ? `url("${backgImage.publicURL}")` : 'none',
       backgroundPosition: 'center',
@@ -19,8 +20,8 @@ const useStyles = (align, backgColor, backgImage, backgImageEnabled, fullSize, m
       flexDirection: 'column',
       justifyContent: 'center',
       minHeight: fullSize ? '100vh' : '50vh',
-      paddingBottom: theme.spacing(15),
-      paddingTop: theme.spacing(15),
+      paddingBottom: theme.spacing(10),
+      paddingTop: theme.spacing(10),
       position: 'relative',
       [theme.breakpoints.up('md')]: {
         paddingTop: theme.spacing(15),
@@ -103,9 +104,6 @@ const useStyles = (align, backgColor, backgImage, backgImageEnabled, fullSize, m
       display: 'flex',
       alignItems: 'center',
       marginTop: theme.spacing(5),
-      '& *': {
-        color: textColor,
-      },
       [theme.breakpoints.up('md')]: {
         marginTop: theme.spacing(5),
       },

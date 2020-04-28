@@ -24,7 +24,7 @@ const useStyles = () =>
       pointerEvents: 'none',
       bottom: 0,
       boxShadow: 'none',
-      color: theme.brand.textColor,
+      color: theme.palette.text.primary,
       padding: theme.spacing(1),
       top: 'auto',
       transition: `background ${theme.transitions.duration.standard}ms`,
@@ -127,7 +127,7 @@ export default function Foobar({ allSiteData, allStaticFiles, ...props }) {
           playsinline
           style={{ opacity: 0, position: 'absolute', right: 0, top: 0, visibility: 'hidden' }}
           url={soundtrack}
-          volume={0.35}
+          volume={0.5}
           width="1px"
         />
       </NoSsr>

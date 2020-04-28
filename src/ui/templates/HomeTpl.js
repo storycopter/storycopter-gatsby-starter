@@ -4,11 +4,12 @@ import _ from 'lodash';
 import { graphql } from 'gatsby';
 
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/styles/makeStyles';
+import useTheme from '@material-ui/styles/useTheme';
 
 import componentMap from '@ui/components/componentMap';
 import constructImageObj from '@ui/utils/constructImageObj';
-import { Typography } from '@material-ui/core';
 
 const useStyles = (pageCount, isHovered) =>
   makeStyles(theme => ({
@@ -17,8 +18,8 @@ const useStyles = (pageCount, isHovered) =>
       display: 'flex',
     },
     cta: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
+      marginLeft: theme.spacing(1.5),
+      marginRight: theme.spacing(1.5),
       '&:first-child': {
         marginLeft: 0,
       },
@@ -38,12 +39,13 @@ export default function HomeTpl({
 }) {
   const { brand } = allSiteData;
   const classes = useStyles()();
+  const theme = useTheme();
 
   console.group('HomeTpl.js');
   // console.log('pageMeta', pageMeta);
   // console.log('pageContext', pageContext);
   // console.log('pageFiles', pageFiles);
-  // console.log('pageProps', pageProps);
+  console.log('brand', brand);
   console.groupEnd();
 
   return (
@@ -76,7 +78,10 @@ export default function HomeTpl({
                   <Link className={classes.cta} to={_.sortBy(allPages, o => o.order)[0].path}>
                     <Button
                       component="span"
-                      style={{ background: pageElements[0].settings.backgColor }}
+                      style={{
+                        background: pageElements[0].settings.backgColor,
+                        color: pageElements[0].settings.textColor,
+                      }}
                       variant="contained">
                       Launch story
                     </Button>
@@ -85,7 +90,13 @@ export default function HomeTpl({
                     or
                   </Typography>{' '}
                   <Link className={classes.cta} to={'/contents'}>
-                    <Button component="span" variant="contained">
+                    <Button
+                      component="span"
+                      style={{
+                        background: theme.palette.storycopter.flare[100],
+                        color: pageElements[0].settings.textColor,
+                      }}
+                      variant="contained">
                       Explore pages
                     </Button>
                   </Link>
@@ -94,7 +105,10 @@ export default function HomeTpl({
                 <Link className={classes.cta} to={_.sortBy(allPages, o => o.order)[0].path}>
                   <Button
                     component="span"
-                    style={{ background: pageElements[0].settings.backgColor }}
+                    style={{
+                      background: pageElements[0].settings.backgColor,
+                      color: pageElements[0].settings.textColor,
+                    }}
                     variant="contained">
                     Launch story
                   </Button>

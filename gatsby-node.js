@@ -84,6 +84,10 @@ exports.createPages = async ({ graphql, actions }) => {
               }
               textColor
               typography
+              fonts {
+                head
+                body
+              }
             }
             motivation {
               enabled

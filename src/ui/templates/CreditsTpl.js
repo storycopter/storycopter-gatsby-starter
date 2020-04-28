@@ -1,18 +1,45 @@
+import Link from 'gatsby-link';
 import React from 'react';
 import _ from 'lodash';
 import { graphql } from 'gatsby';
 
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import makeStyles from '@material-ui/styles/makeStyles';
+import useTheme from '@material-ui/styles/useTheme';
+
 import componentMap from '@ui/components/componentMap';
 import constructImageObj from '@ui/utils/constructImageObj';
+
+const useStyles = (pageCount, isHovered) =>
+  makeStyles(theme => ({
+    actionbar: {
+      alignItems: 'center',
+      display: 'flex',
+    },
+    cta: {
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
+      '&:first-child': {
+        marginLeft: 0,
+      },
+      '&:last-child': {
+        marginRight: 0,
+      },
+    },
+  }));
 
 export default function CreditsTpl({
   data: {
     page: { elements: pageElements, meta: pageMeta },
     files: { edges: pageFiles },
   },
-  pageContext,
+  pageContext: { allEssentials, allPages, allSiteData },
   ...pageProps
 }) {
+  const { brand } = allSiteData;
+  const classes = useStyles()();
+  const theme = useTheme();
   // console.group('CreditsTpl.js');
   // console.log('pageMeta', pageMeta);
   // console.log('pageFiles', pageFiles);
@@ -30,7 +57,43 @@ export default function CreditsTpl({
           ...constructImageObj(pageFiles, settings?.backgImage?.name),
         };
 
-        return <Component {...settings} key={id} backgImage={backgImage} fullSize />;
+        return (
+          <Component
+            {...settings}
+            key={id}
+            backgImage={backgImage}
+            fullSize
+            children={
+              <>
+                <a className={classes.cta} href="https://storycopter.com">
+                  <Button
+                    component="span"
+                    style={{
+                      background: pageElements[0].settings.backgColor,
+                      color: pageElements[0].settings.textColor,
+                    }}
+                    variant="contained">
+                    Visit Storycopter.com
+                  </Button>
+                </a>{' '}
+                <Typography className={classes.cta} component="span" variant="body2" style={{ opacity: 0.5 }}>
+                  or
+                </Typography>{' '}
+                <Link className={classes.cta} to={'/'}>
+                  <Button
+                    component="span"
+                    style={{
+                      background: theme.palette.storycopter.flare[100],
+                      color: pageElements[0].settings.textColor,
+                    }}
+                    variant="contained">
+                    Return home
+                  </Button>
+                </Link>
+              </>
+            }
+          />
+        );
       })}
     </>
   );

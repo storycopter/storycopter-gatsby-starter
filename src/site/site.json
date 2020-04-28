@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "Storycopter",
+    "title": "Storycopter Alpha",
     "publisher": "Storycopter News",
     "summary": "A new interactive documentary production suite for the Web.",
     "coverEnabled": true,
@@ -20,7 +20,11 @@
       "name": "logo.svg"
     },
     "textColor": "#000000",
-    "typography": "modern"
+    "typography": "modern",
+    "fonts": {
+      "head": "Poppins, sans-serif",
+      "body": "Raleway, sans-serif"
+    }
   },
   "motivation": {
     "enabled": true,
