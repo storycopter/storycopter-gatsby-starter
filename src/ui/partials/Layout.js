@@ -48,7 +48,7 @@ export default function Layout({
   const { brand, sound } = allSiteData;
   const pageData = props.data;
 
-  const [fullScreen, setFullScreen] = useState(false);
+  // const [fullScreen, setFullScreen] = useState(false);
 
   const audio = sound.enabled && sound.track.name ? `/${sound.track.name}` : null;
   const favicon = brand.favicon.name ? `/${brand.favicon.name}` : null;
@@ -67,30 +67,33 @@ export default function Layout({
     props,
   };
 
+  // <Fullscreen enabled={fullScreen} onChange={val => setFullScreen(val)}></Fullscreen>;
+
   return (
-    <Fullscreen enabled={fullScreen} onChange={val => setFullScreen(val)}>
-      <ThemeProvider theme={constructTheme(brand)}>
-        <Baseline theme={constructTheme(brand)} />
-        <Helmet
-          defer={false}
-          encodeSpecialCharacters={true}
-          titleTemplate={`${allSiteData.meta.title} • %s`}
-          defaultTitle="Chapter">
-          <link rel="icon" href={favicon} type="image/ico" sizes="16x16" />
-          <link rel="stylesheet" type="text/css" href="raleway/style.css" />
-          <link rel="stylesheet" type="text/css" href="poppins/style.css" />
-          <meta name="description" content={allSiteData.meta.summary} />
-          <meta property="og:audio" content={audio} />
-          <meta property="og:image" content={image} />
-          <meta property="og:type" content="website" />
-          <title>{pageData.page.meta.title}</title>
-        </Helmet>
-        <Vignette />
-        <Topbar {...barProps} />
-        {children}
-        <Foobar {...barProps} onFullScreenToggle={() => setFullScreen(prevState => !prevState)} />
-      </ThemeProvider>
-    </Fullscreen>
+    <ThemeProvider theme={constructTheme(brand)}>
+      <Baseline theme={constructTheme(brand)} />
+      <Helmet
+        defer={false}
+        encodeSpecialCharacters={true}
+        titleTemplate={`${allSiteData.meta.title} • %s`}
+        defaultTitle="Chapter">
+        <link rel="icon" href={favicon} type="image/ico" sizes="16x16" />
+        <link rel="stylesheet" type="text/css" href="raleway/style.css" />
+        <link rel="stylesheet" type="text/css" href="poppins/style.css" />
+        <meta name="description" content={allSiteData.meta.summary} />
+        <meta property="og:audio" content={audio} />
+        <meta property="og:image" content={image} />
+        <meta property="og:type" content="website" />
+        <title>{pageData.page.meta.title}</title>
+      </Helmet>
+      <Vignette />
+      <Topbar {...barProps} />
+      {children}
+      <Foobar
+        {...barProps}
+        // onFullScreenToggle={() => setFullScreen(prevState => !prevState)}
+      />
+    </ThemeProvider>
   );
 }
 

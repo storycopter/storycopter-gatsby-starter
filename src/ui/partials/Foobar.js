@@ -31,10 +31,10 @@ const useStyles = () =>
       transition: `background ${theme.transitions.duration.standard}ms`,
       zIndex: 2,
       [theme.breakpoints.up('md')]: {
-        padding: theme.spacing(1),
+        padding: theme.spacing(2),
       },
       [theme.breakpoints.up('xl')]: {
-        padding: theme.spacing(1),
+        padding: theme.spacing(3),
       },
     },
     left: {
@@ -84,9 +84,9 @@ export default function Foobar({ allSiteData, allStaticFiles, ...props }) {
     if (isBrowser) setSound(localStorage.getItem('sound') === 'false' ? false : true);
   }, []);
 
-  console.group('Foobar.js');
-  console.log({ theme });
-  console.groupEnd();
+  // console.group('Foobar.js');
+  // console.log({ theme });
+  // console.groupEnd();
 
   return (
     <>
@@ -107,19 +107,19 @@ export default function Foobar({ allSiteData, allStaticFiles, ...props }) {
                 {allSiteData?.sound?.enabled && allSiteData?.sound?.track ? (
                   <Grid item>
                     <Tooltip title="Background sound">
-                      <IconButton onClick={onSoundToggle}>
+                      <IconButton edge="end" onClick={onSoundToggle}>
                         <SoundIcon />
                       </IconButton>
                     </Tooltip>
                   </Grid>
                 ) : null}
-                <Grid item>
+                {/* <Grid item>
                   <Tooltip title="Full screen">
                     <IconButton edge="end" onClick={props.onFullScreenToggle}>
                       <FullScreenIcon />
                     </IconButton>
                   </Tooltip>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Grid>
           </Toolbar>

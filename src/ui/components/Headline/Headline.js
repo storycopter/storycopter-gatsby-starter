@@ -9,7 +9,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 const useStyles = (align, backgColor, backgImage, backgImageEnabled, fullSize, maskColor, textColor) =>
   makeStyles(theme => ({
     root: {
-      ...console.log('HEADLINE THEME', theme),
+      // ...console.log('HEADLINE THEME', theme),
       backgroundColor: backgColor || 'transparent',
       backgroundImage: backgImageEnabled && backgImage?.name ? `url("${backgImage.publicURL}")` : 'none',
       backgroundPosition: 'center',
