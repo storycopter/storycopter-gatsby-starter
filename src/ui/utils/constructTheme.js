@@ -15,19 +15,19 @@ export default function constructTheme({ backgColor, brandColor, fonts, textColo
     },
     palette: {
       text: {
-        disabled: lighten(0.3, textColor),
-        hint: lighten(0.3, textColor),
+        disabled: lighten(0.4, textColor),
+        hint: lighten(0.4, textColor),
         primary: textColor,
-        secondary: lighten(0.2, textColor),
+        secondary: lighten(0.4, textColor),
       },
       background: {
-        default: darken(0.2, backgColor),
+        default: darken(0.4, backgColor),
         paper: backgColor,
       },
       primary: {
         contrastText: backgColor,
-        dark: darken(0.2, brandColor),
-        light: lighten(0.2, brandColor),
+        dark: darken(0.3, brandColor),
+        light: lighten(0.3, brandColor),
         main: brandColor,
       },
       storycopter: { ...colors },
@@ -81,11 +81,13 @@ export default function constructTheme({ backgColor, brandColor, fonts, textColo
         ...setType(400),
         fontFamily: fonts?.body || 'Arial, sans-serif',
         fontWeight: 'normal',
+        letterSpacing: '0.02em',
       },
       body2: {
         ...setType(300),
         fontFamily: fonts?.body || 'Arial, sans-serif',
         fontWeight: 'normal',
+        letterSpacing: '0.02em',
       },
       button: {
         ...setType(100),

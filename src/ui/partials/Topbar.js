@@ -331,7 +331,7 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
             </Grid>
           ) : null}
           <Grid className={classes.cardBody} item>
-            <Typography className={classes.typography} component="h2" variant="overline">
+            <Typography className={classes.typography} component="h2" variant="overline" color="textSecondary">
               {popperPage?.title}
             </Typography>
           </Grid>

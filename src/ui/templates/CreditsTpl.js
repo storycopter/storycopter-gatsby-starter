@@ -83,7 +83,7 @@ export default function CreditsTpl({
                   <Button
                     component="span"
                     style={{
-                      background: theme.palette.storycopter.flare[100],
+                      background: theme.palette.storycopter.flare[200],
                       color: pageElements[0].settings.textColor,
                     }}
                     variant="contained">

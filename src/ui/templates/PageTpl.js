@@ -95,7 +95,7 @@ export const pageQuery = graphql`
             fixed: fixed(height: 800, quality: 95, cropFocus: CENTER, fit: COVER) {
               ...GatsbyImageSharpFixed
             }
-            fluidLandscape: fluid(maxHeight: 600, maxWidth: 800, quality: 95, fit: COVER) {
+            fluidLandscape: fluid(maxHeight: 500, maxWidth: 800, cropFocus: CENTER, quality: 95, fit: COVER) {
               ...GatsbyImageSharpFluid
             }
           }
