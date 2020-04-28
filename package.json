@@ -32,6 +32,7 @@
     "react-full-screen": "0.2.4",
     "react-helmet": "6.0.0",
     "react-player": "2.0.0",
+    "react-scroll-horizontal": "^1.6.4",
     "react-slick": "0.25.2"
   },
   "devDependencies": {

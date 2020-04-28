@@ -215,9 +215,11 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
                   <>
                     <Grid item>
                       <Tooltip title="Table of Contents">
-                        <IconButton className={classes.menuToggle} edge="start">
-                          <MenuIcon />
-                        </IconButton>
+                        <AniLink color={theme.palette.primary.main} paintDrip to="/contents">
+                          <IconButton className={classes.menuToggle} edge="start">
+                            <MenuIcon />
+                          </IconButton>
+                        </AniLink>
                       </Tooltip>
                     </Grid>
                     {allPages.length > 1 && !isEssential ? (
