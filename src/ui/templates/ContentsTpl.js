@@ -1,8 +1,10 @@
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import BackgroundImage from 'gatsby-background-image';
+import HorizontalScroll from 'react-scroll-horizontal';
+import Img from 'gatsby-image';
 import React from 'react';
 import _ from 'lodash';
-import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import { graphql } from 'gatsby';
-import HorizontalScroll from 'react-scroll-horizontal';
 
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -14,9 +16,6 @@ import GridList from '@material-ui/core/GridList';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/styles/makeStyles';
 import useTheme from '@material-ui/core/styles/useTheme';
-
-import componentMap from '@ui/components/componentMap';
-import constructImageObj from '@ui/utils/constructImageObj';
 
 const useStyles = (pageCount, isHovered) =>
   makeStyles(theme => ({
@@ -71,10 +70,16 @@ const useStyles = (pageCount, isHovered) =>
         },
       },
     },
+    link: {
+      borderRadius: theme.shape.borderRadius,
+      overflow: 'hidden',
+    },
     card: {
+      background: 'transparent',
       maxHeight: '500px',
       maxWidth: '400px',
-      minHeight: '50vh',
+      minHeight: '400px',
+      height: '50vh',
       width: `${100 / 4}vw`,
     },
     title: {
@@ -89,6 +94,7 @@ export default function ContentsTpl({
   data: {
     page: { elements: pageElements, meta: pageMeta },
     files: { edges: pageFiles },
+    allPagesFiles: { edges: allPagesFiles },
   },
   pageContext: { allPages },
   ...pageProps
@@ -97,8 +103,8 @@ export default function ContentsTpl({
   const classes = useStyles()();
 
   console.group('ContentsTpl.js');
-  // console.log('pageMeta', pageMeta);
-  // console.log('pageFiles', pageFiles);
+  console.log('allPagesFiles', allPagesFiles);
+  console.log('theme', theme);
   console.log('allPages', allPages);
   console.groupEnd();
 
@@ -114,29 +120,44 @@ export default function ContentsTpl({
         >
           {allPages.map(page => {
             console.log(page);
+
+            // construct cover image obj
+            const coverImage = {
+              ...page.coverImage,
+              ..._.find(
+                allPagesFiles.map(e => e.node),
+                o => o.relativeDirectory === page.uid && o.base === page.coverImage.name && page.coverEnabled
+              ),
+            };
+            console.log({ coverImage });
+
             return (
-              <div className={classes.tile}>
-                <AniLink color={theme.palette.primary.main} paintDrip to={page.path}>
-                  <Card className={classes.card} key={page.uid}>
-                    <CardActionArea>
-                      <CardMedia height="140">image</CardMedia>
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          {page.title}
-                        </Typography>
-                        {page.summary ? (
-                          <Typography variant="body1" color="textSecondary" component="p">
-                            {page.summary}
+              <div className={classes.tile} key={page.uid}>
+                <AniLink className={classes.link} color={theme.palette.primary.main} paintDrip to={page.path}>
+                  <BackgroundImage fluid={coverImage.childImageSharp.fluid}>
+                    <Card className={classes.card}>
+                      <CardActionArea>
+                        {/* <CardMedia height="140">
+                        <Img fluid={coverImage.childImageSharp.fluid} />
+                      </CardMedia> */}
+                        <CardContent>
+                          <Typography gutterBottom variant="h5" component="h2">
+                            {page.title}
                           </Typography>
-                        ) : null}
-                      </CardContent>
-                    </CardActionArea>
-                    <CardActions>
-                      <Button size="small" color="primary">
-                        Share
-                      </Button>
-                    </CardActions>
-                  </Card>
+                          {page.summary ? (
+                            <Typography variant="body1" color="textSecondary" component="p">
+                              {page.summary}
+                            </Typography>
+                          ) : null}
+                        </CardContent>
+                      </CardActionArea>
+                      <CardActions>
+                        <Button size="small" color="primary">
+                          Share
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </BackgroundImage>
                 </AniLink>
               </div>
             );
@@ -189,6 +210,27 @@ export const pageQuery = graphql`
             }
             fixed(width: 1400, height: 900, quality: 95, cropFocus: CENTER, fit: COVER) {
               ...GatsbyImageSharpFixed
+            }
+          }
+          publicURL
+        }
+      }
+    }
+    allPagesFiles: allFile(
+      filter: { extension: { ne: "json" }, relativeDirectory: { ne: "schema" }, sourceInstanceName: { eq: "pages" } }
+    ) {
+      edges {
+        node {
+          base
+          relativePath
+          relativeDirectory
+          childImageSharp {
+            resize(quality: 95, width: 1000) {
+              originalName
+              src
+            }
+            fluid: fluid(maxHeight: 500, maxWidth: 400, cropFocus: CENTER, quality: 95, fit: COVER) {
+              ...GatsbyImageSharpFluid
             }
           }
           publicURL
