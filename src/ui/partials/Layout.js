@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import ThemeProvider from '@material-ui/styles/ThemeProvider';
-import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import Baseline from '@ui/components/Baseline/Baseline';
 import Foobar from '@ui/partials/Foobar';
@@ -12,15 +11,12 @@ import Topbar from '@ui/partials/Topbar';
 import Vignette from '@ui/partials/Vignette';
 import constructTheme from '@ui/utils/constructTheme';
 
-const useStyles = () => makeStyles(theme => ({}));
-
 export default function Layout({
   pageContext: { allEssentials, allPages, allSiteData },
   location,
   children,
   ...props
 }) {
-  const classes = useStyles()();
   const { allStaticFiles } = useStaticQuery(graphql`
     query LayoutQuery {
       allStaticFiles: allFile(filter: { sourceInstanceName: { eq: "static" } }) {
@@ -48,16 +44,18 @@ export default function Layout({
   const { brand, sound } = allSiteData;
   const pageData = props.data;
 
+  const isEssential = ['contents', 'credits', 'error', 'home'].includes(props.data.page.meta.uid);
+
   // const [fullScreen, setFullScreen] = useState(false);
 
   const audio = sound.enabled && sound.track.name ? `/${sound.track.name}` : null;
   const favicon = brand.favicon.name ? `/${brand.favicon.name}` : null;
   const image = brand.coverEnabled && brand.cover.name ? `/${brand.cover.name}` : null;
 
-  // console.group('Layout.js');
-  // console.log({ allStaticFiles });
-  // console.log({ props });
-  // console.groupEnd();
+  console.group('Layout.js');
+  console.log({ allSiteData });
+  console.log({ props });
+  console.groupEnd();
 
   const barProps = {
     allPages,
@@ -84,7 +82,7 @@ export default function Layout({
         <meta property="og:audio" content={audio} />
         <meta property="og:image" content={image} />
         <meta property="og:type" content="website" />
-        <title>{pageData.page.meta.title}</title>
+        <title>{isEssential ? allSiteData.meta.summary : pageData.page.meta.title}</title>
       </Helmet>
       <Vignette />
       <Topbar {...barProps} />

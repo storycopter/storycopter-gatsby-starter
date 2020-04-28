@@ -10,6 +10,7 @@ const useStyles = (align, backgColor, backgImage, backgImageEnabled, fullSize, m
   makeStyles(theme => ({
     root: {
       // ...console.log('HEADLINE THEME', theme),
+      backfaceVisibility: 'hidden',
       backgroundColor: backgColor || 'transparent',
       backgroundImage: backgImageEnabled && backgImage?.name ? `url("${backgImage.publicURL}")` : 'none',
       backgroundPosition: 'center',

@@ -76,10 +76,11 @@ const useStyles = (pageCount, isHovered) =>
     },
     card: {
       background: 'transparent',
+      height: '50vh',
       maxHeight: '500px',
       maxWidth: '400px',
       minHeight: '400px',
-      height: '50vh',
+      padding: `${100 / 3}% ${theme.spacing(1.5)}px ${theme.spacing(1.5)}px`,
       width: `${100 / 4}vw`,
     },
     title: {
@@ -136,25 +137,18 @@ export default function ContentsTpl({
                 <AniLink className={classes.link} color={theme.palette.primary.main} paintDrip to={page.path}>
                   <BackgroundImage fluid={coverImage.childImageSharp.fluid}>
                     <Card className={classes.card}>
-                      <CardActionArea>
-                        {/* <CardMedia height="140">
-                        <Img fluid={coverImage.childImageSharp.fluid} />
-                      </CardMedia> */}
-                        <CardContent>
-                          <Typography gutterBottom variant="h5" component="h2">
-                            {page.title}
+                      <CardContent>
+                        <Typography gutterBottom variant="h4" component="h2">
+                          {page.title}
+                        </Typography>
+                        {page.summary ? (
+                          <Typography variant="body1" color="textSecondary" component="p">
+                            {page.summary}
                           </Typography>
-                          {page.summary ? (
-                            <Typography variant="body1" color="textSecondary" component="p">
-                              {page.summary}
-                            </Typography>
-                          ) : null}
-                        </CardContent>
-                      </CardActionArea>
+                        ) : null}
+                      </CardContent>
                       <CardActions>
-                        <Button size="small" color="primary">
-                          Share
-                        </Button>
+                        <Button size="small">Continue</Button>
                       </CardActions>
                     </Card>
                   </BackgroundImage>
