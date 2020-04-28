@@ -2,6 +2,7 @@ import React from 'react';
 import _ from 'lodash';
 import { graphql } from 'gatsby';
 
+import Shortcuts from '@ui/partials/Shortcuts';
 import componentMap from '@ui/components/componentMap';
 import constructImageObj from '@ui/utils/constructImageObj';
 
@@ -10,15 +11,19 @@ export default function PageTpl({
     page: { elements: pageElements, meta: pageMeta },
     files: { edges: pageFiles },
   },
-  pageContext,
-  ...pageProps
+  pageContext: { allPages, allEssentials, allSiteData },
+  ...props
 }) {
-  // console.group('PageTpl.js');
-  // console.log('pageMeta', pageMeta);
+  const pageIndex = _.findIndex(allPages, o => o.uid === pageMeta.uid);
+
+  console.group('PageTpl.js');
+  // console.log('allPages', allPages);
+  // console.log('nextPage', nextPage);
+  // console.log('whaterver', whaterver);
+  console.log('allSiteData', allSiteData);
   // console.log('pageFiles', pageFiles);
-  // console.log('pageContext', pageContext);
   // console.log('pageElements', pageElements);
-  // console.groupEnd();
+  console.groupEnd();
 
   return (
     <>
@@ -42,6 +47,7 @@ export default function PageTpl({
 
         return <Component {...settings} key={`${pageMeta.uid}-${id}`} backgImage={backgImage} images={images} />;
       })}
+      <Shortcuts allPages={allPages} allEssentials={allEssentials} pageIndex={pageIndex} />
     </>
   );
 }

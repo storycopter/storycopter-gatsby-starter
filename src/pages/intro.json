@@ -2,7 +2,7 @@
   "meta": {
     "coverEnabled": true,
     "coverImage": {
-      "name": "image-h.png"
+      "name": "cover.png"
     },
     "order": 0,
     "path": "/intro",
@@ -16,13 +16,13 @@
       "order": 0,
       "settings": {
         "align": "center",
-        "backgColor": "#6045ff",
+        "backgColor": "#EFB43F",
         "backgImage": {
           "name": "headline-cover.svg"
         },
         "backgImageEnabled": false,
         "fullSize": true,
-        "maskColor": "rgba(239, 180, 63, 0.1)",
+        "maskColor": null,
         "subtitle": "A subtitle",
         "text": "Some text",
         "textColor": "#ffffff",

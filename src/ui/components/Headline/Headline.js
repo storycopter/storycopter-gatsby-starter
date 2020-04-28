@@ -8,8 +8,8 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 const useStyles = (align, backgColor, backgImage, backgImageEnabled, fullSize, maskColor, textColor) =>
   makeStyles(theme => ({
-    headlineRoot: {
-      // ...console.log('HEADLINE THEME', theme),
+    root: {
+      ...console.log('HEADLINE THEME', theme),
       backgroundColor: backgColor || 'transparent',
       backgroundImage: backgImageEnabled && backgImage?.name ? `url("${backgImage.publicURL}")` : 'none',
       backgroundPosition: 'center',
@@ -22,8 +22,12 @@ const useStyles = (align, backgColor, backgImage, backgImageEnabled, fullSize, m
       minHeight: fullSize ? '100vh' : '50vh',
       paddingBottom: theme.spacing(10),
       paddingTop: theme.spacing(10),
+      paddingLeft: theme.spacing(5),
+      paddingRight: theme.spacing(5),
       position: 'relative',
       [theme.breakpoints.up('md')]: {
+        paddingLeft: 0,
+        paddingRight: 0,
         paddingTop: theme.spacing(15),
         paddingBottom: theme.spacing(15),
       },
@@ -43,7 +47,7 @@ const useStyles = (align, backgColor, backgImage, backgImageEnabled, fullSize, m
         zIndex: 1,
       },
     },
-    headlineContainer: {
+    child: {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: align === 'center' ? 'center' : align === 'right' ? 'flex-end' : 'flex-start',
@@ -100,15 +104,18 @@ const useStyles = (align, backgColor, backgImage, backgImageEnabled, fullSize, m
     headlineTextInput: {
       ...theme.typography.h5,
     },
-    headlineActionbar: {
+    actionbar: {
       display: 'flex',
-      alignItems: 'center',
-      marginTop: theme.spacing(5),
+      flexDirection: 'row',
+      justifyContent: align === 'center' ? 'center' : 'flex-start',
+      marginTop: theme.spacing(2),
+      position: 'absolute',
+      top: '100%',
       [theme.breakpoints.up('md')]: {
-        marginTop: theme.spacing(5),
-      },
-      [theme.breakpoints.up('xl')]: {
-        marginTop: theme.spacing(5),
+        alignItems: 'center',
+        flexDirection: 'row',
+        position: 'relative',
+        top: 'auto',
       },
     },
   }));
@@ -149,8 +156,8 @@ export default function Headline({
 
   return (
     <>
-      <div className={classes.headlineRoot} style={style}>
-        <Container className={classes.headlineContainer}>
+      <div className={classes.root} style={style}>
+        <Container className={classes.child}>
           <div className={classes.headlineContent}>
             {isEditable || props.title ? (
               <Typography className={classes.headlineTitle} component="div" variant="h1" style={{ color: textColor }}>
@@ -219,7 +226,7 @@ export default function Headline({
                 )}
               </Typography>
             ) : null}
-            {children ? <div className={classes.headlineActionbar}>{children}</div> : null}
+            {children ? <div className={classes.actionbar}>{children}</div> : null}
           </div>
         </Container>
       </div>

@@ -1,266 +1,159 @@
-// import Img from 'gatsby-image';
-// import React, { Component } from 'react';
-// import _ from 'lodash';
-// import styled from 'styled-components';
-// import { Link } from 'gatsby';
+import Img from 'gatsby-image';
+import Link from 'gatsby-link';
+import React from 'react';
+import _ from 'lodash';
+import { useStaticQuery, graphql } from 'gatsby';
 
-// import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-// import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-// import Button from '@material-ui/core/Button';
-// import Typography from '@material-ui/core/Typography';
-// import { withTheme } from '@material-ui/styles';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import makeStyles from '@material-ui/core/styles/makeStyles';
 
-// import { breakpoint, color, radius, time } from '@storycopter/ui/lib//settings';
-// import { setSpace, setType } from '@storycopter/ui/lib//mixins';
+const useStyles = hasCover =>
+  makeStyles(theme => ({
+    root: {
+      padding: theme.spacing(5),
+      [theme.breakpoints.up('md')]: {
+        padding: theme.spacing(10),
+      },
+      [theme.breakpoints.up('xl')]: {
+        padding: theme.spacing(15),
+      },
+    },
+    shortcut: {
+      alignItems: 'center',
+      display: 'flex',
+      justifyContent: hasCover ? 'space-between' : 'center',
+      textAlign: hasCover ? 'left' : 'center',
+      minHeight: '50vh',
+      width: '100%',
+    },
+    text: {
+      flex: '0 0 50%',
+    },
+    title: {
+      marginTop: theme.spacing(1),
+      marginBottom: theme.spacing(1.5),
+    },
+    summary: {
+      marginBottom: theme.spacing(1.5),
+    },
+    cover: {
+      flex: '0 0 50%',
+    },
+  }));
 
-// const TileOverline = styled(Typography)`
-//   ${setType('x')}
-//   color: ${color.grey[300]};
-// `;
-// const TileTitle = styled(({ theme, ...props }) => <Typography {...props} />)`
-//   ${setSpace('mts')};
-//   ${setType('h')};
-//   color: ${({ theme }) => theme.palette.primary.main};
-//   position: relative;
-//   width: 100%;
-// `;
-// const TileText = styled.div`
-//   ${setSpace('mtm')};
-//   ${setType('m')}
-//   ${breakpoint.phone} {
-//     display: none;
-//   }
-// `;
-// const TileIcon = styled(({ theme, ...props }) => <div {...props} />)`
-//   ${setSpace('mtm')};
-//   ${setType('l')}
-//   color: ${color.grey[300]};
-// `;
+export default function Shortcuts({ allPages, allEssentials, pageIndex }) {
+  const allSiteFiles = useStaticQuery(graphql`
+    query ShortcutsQuery {
+      pages: allFile(
+        filter: { extension: { ne: "json" }, relativeDirectory: { ne: "schema" }, sourceInstanceName: { eq: "pages" } }
+      ) {
+        edges {
+          node {
+            base
+            relativePath
+            relativeDirectory
+            childImageSharp {
+              resize(quality: 95, width: 1000) {
+                originalName
+                src
+              }
+              fluidLandscape: fluid(maxHeight: 500, maxWidth: 800, cropFocus: CENTER, quality: 95, fit: COVER) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+            publicURL
+          }
+        }
+      }
+      essentials: allFile(
+        filter: {
+          extension: { ne: "json" }
+          relativeDirectory: { ne: "schema" }
+          sourceInstanceName: { eq: "essentials" }
+        }
+      ) {
+        edges {
+          node {
+            base
+            relativePath
+            relativeDirectory
+            childImageSharp {
+              resize(quality: 95, width: 1000) {
+                originalName
+                src
+              }
+              fluidLandscape: fluid(maxHeight: 500, maxWidth: 800, cropFocus: CENTER, quality: 95, fit: COVER) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+            publicURL
+          }
+        }
+      }
+    }
+  `);
 
-// const TileCopy = styled.div`
-//   color: ${color.grey[500]};
-//   display: flex;
-//   flex-direction: column;
-//   flex: 0 0 50%;
-//   justify-content: center;
-//   text-align: ${({ prev }) => (prev ? `right` : `left`)};
-//   transition: transform ${time.m};
-//   width: 50vw;
-//   & > div {
-//     ${setSpace('pal')};
-//     position: relative;
-//   }
-// `;
-// const TileImagery = styled.div`
-//   border-radius: ${radius.x};
-//   display: flex;
-//   flex-direction: column;
-//   flex: 0 0 50%;
-//   justify-content: center;
-//   overflow: hidden;
-//   position: relative;
-//   transition: transform ${time.m};
-//   width: 100%;
-//   .gatsby-image-wrapper {
-//   }
-// `;
-// const TileContent = styled.div`
-//   display: flex;
-//   flex: 0 0 50%;
-// `;
+  const nextPage = allPages[pageIndex + 1] || _.find(allEssentials, o => o.uid === 'credits');
+  // const prevPage = allPages[pageIndex - 1] || _.find(allEssentials, o => o.uid === 'home');
 
-// const Tile = styled(({ prev, next, theme, ...props }) => <Link {...props} />)`
-//   border-radius: ${radius.x};
-//   display: block;
-//   position: relative;
-// `;
-// const TileRoot = styled.div`
-//   flex: 0 0 50%;
-//   &:first-child {
-//     ${TileContent} {
-//       flex-direction: row;
-//     }
-//   }
-//   &:last-child {
-//     ${TileContent} {
-//       flex-direction: row-reverse;
-//     }
-//   }
-//   &:hover {
-//   }
-// `;
-// const Element = styled(({ theme, ...props }) => <nav {...props} />)`
-//   display: flex;
-//   flex-direction: column;
-//   margin-left: auto;
-//   margin-right: auto;
-//   max-width: 1600px;
-//   min-height: 100vh;
+  const nextCover = {
+    ...nextPage.coverImage,
+    ..._.find(
+      allSiteFiles.pages.edges.map(e => e.node),
+      o => o.relativeDirectory === nextPage?.uid && o.base === nextPage?.coverImage?.name && nextPage?.coverEnabled
+    ),
+  };
 
-//   ${breakpoint.phone} {
-//     justify-content: space-around;
-//   }
-//   ${breakpoint.tabletPlus} {
-//     justify-content: center;
-//   }
-//   ${breakpoint.desktopPlus} {
-//     ${setSpace('pak')};
-//     ${TileRoot} {
-//       &:first-child {
-//         ${TileContent} {
-//           flex-direction: row-reverse;
-//         }
-//         ${TileImagery} {
-//           flex: 0 0 ${(100 / 3) * 2}%;
-//         }
-//         ${TileCopy} {
-//           flex: 0 0 ${100 / 3}%;
-//         }
-//         &:hover {
-//           ${TileCopy} {
-//             transform: translateX(2%);
-//           }
-//           ${TileImagery} {
-//             transform: translateY(-1%);
-//           }
-//         }
-//       }
-//       &:last-child {
-//         transform: translateY(-7%);
-//         ${TileContent} {
-//           ${setSpace('phh')};
-//           flex-direction: row;
-//         }
-//         ${TileCopy} {
-//           text-align: left;
-//           flex: 0 0 ${(100 / 5) * 3}%;
-//         }
-//         ${TileTitle} {
-//           ${setType('l')};
-//         }
-//         ${TileImagery} {
-//           flex: 0 0 ${(100 / 5) * 2}%;
-//         }
-//         ${TileText} {
-//           ${setType('s')}
-//         }
-//         &:hover {
-//           ${TileCopy} {
-//             transform: translateY(4%);
-//           }
-//           ${TileImagery} {
-//             transform: translateY(-1%);
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
+  const classes = useStyles(nextCover.childImageSharp ? true : false)();
 
-// class Shortcuts extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {};
-//     this.onLinkWTransitionClick = this.onLinkWTransitionClick.bind(this);
-//   }
+  console.group('Shortcuts');
+  // console.log({ allEssentials });
+  // console.log({ allPages });
+  // console.log({ allSiteFiles });
+  // console.log({ nextPage });
+  // console.log({ nextCover });
+  console.groupEnd();
 
-//   componentDidUpdate(prevProps, prevState, snapshot) {
-//     if (prevState.tooltip && prevProps.path !== this.props.path) {
-//       this.setState({ isTransitioning: null });
-//     }
-//   }
-
-//   onLinkWTransitionClick() {
-//     this.setState({ isTransitioning: true });
-//   }
-
-//   render() {
-//     const { theme } = this.props;
-//     const { prevPage, nextPage } = this.props.toc;
-//     const { isTransitioning, tooltip } = this.state;
-
-//     // console.group('Shortcuts.js');
-//     // console.log({ theme });
-//     // console.groupEnd();
-
-//     return (
-//       <aside>
-//         <Element theme={theme}>
-//           {nextPage ? (
-//             <TileRoot>
-//               <Tile
-//                 next
-//                 onClick={this.onLinkWTransitionClick}
-//                 theme={theme}
-//                 to={nextPage && nextPage.path ? nextPage.path : ''}>
-//                 <TileContent>
-//                   {nextPage && nextPage.cover ? (
-//                     <TileImagery>
-//                       <Img fluid={nextPage.cover.childImageSharp.verticalFluidThumb} className="show-mobile" />
-//                       <Img fluid={nextPage.cover.childImageSharp.horizontalFluidThumb} className="hide-mobile" />
-//                     </TileImagery>
-//                   ) : null}
-//                   <TileCopy next>
-//                     <div>
-//                       <TileOverline component="span" display="block" variant="overline" noWrap gutterBottom>
-//                         Next
-//                       </TileOverline>
-//                       <TileTitle component="h2" display="block" gutterBottom theme={theme} variant="h4">
-//                         {nextPage.title}
-//                       </TileTitle>
-//                       <TileText component="p" display="block" gutterBottom theme={theme} variant="body1">
-//                         {nextPage.text}
-//                       </TileText>
-//                       <TileIcon theme={theme}>
-//                         <ArrowForwardIcon fontSize="inherit" />
-//                       </TileIcon>
-//                     </div>
-//                   </TileCopy>
-//                 </TileContent>
-//               </Tile>
-//             </TileRoot>
-//           ) : null}
-//           {prevPage ? (
-//             <TileRoot>
-//               <Tile
-//                 onClick={this.onLinkWTransitionClick}
-//                 prev
-//                 theme={theme}
-//                 to={prevPage && prevPage.path ? prevPage.path : ''}>
-//                 <TileContent>
-//                   {prevPage && prevPage.cover ? (
-//                     <TileImagery>
-//                       <Img fluid={prevPage.cover.childImageSharp.verticalFluidThumb} className="show-mobile" />
-//                       <Img fluid={prevPage.cover.childImageSharp.horizontalFluidThumb} className="hide-mobile" />
-//                     </TileImagery>
-//                   ) : null}
-//                   <TileCopy prev>
-//                     <div>
-//                       <TileOverline component="span" display="block" variant="overline" noWrap gutterBottom>
-//                         Previously
-//                       </TileOverline>
-//                       <TileTitle component="h2" display="block" gutterBottom theme={theme} variant="h4">
-//                         {prevPage.title}
-//                       </TileTitle>
-//                       <TileText component="p" display="block" gutterBottom theme={theme} variant="body1">
-//                         {prevPage.text}
-//                       </TileText>
-//                       <TileIcon theme={theme}>
-//                         <ArrowBackIcon fontSize="inherit" />
-//                       </TileIcon>
-//                     </div>
-//                   </TileCopy>
-//                 </TileContent>
-//               </Tile>
-//             </TileRoot>
-//           ) : null}
-//         </Element>
-//       </aside>
-//     );
-//   }
-// }
-
-// export default withTheme(Shortcuts);
-
-// Shortcuts.propTypes = {};
-// Shortcuts.defaultProps = {};
+  return (
+    <div className={classes.root}>
+      <div className={classes.shortcut}>
+        <div className={classes.text}>
+          <Typography component="span" variant="overline" color="textSecondary">
+            Coming next:
+          </Typography>
+          <Typography className={classes.title} component="h3" variant="h3">
+            <Link to={nextPage?.path}>{nextPage?.title}</Link>
+          </Typography>
+          {nextPage?.summary ? (
+            <Typography className={classes.summary} color="textSecondary" component="p" variant="h5">
+              {nextPage.summary}
+            </Typography>
+          ) : null}
+          <Link to={nextPage?.path}>
+            <IconButton color="primary">
+              <ArrowForwardIcon />
+            </IconButton>
+          </Link>
+        </div>
+        {nextCover?.childImageSharp ? (
+          <div
+            className={classes.cover}
+            style={{
+              maxHeight: '100%',
+              // height: '100px'
+            }}>
+            <Link to={nextPage?.path}>
+              <Img
+                fluid={nextCover.childImageSharp.fluidLandscape}
+                imgStyle={{ objectFit: 'contain' }}
+                style={{ maxHeight: '100%' }}
+              />
+            </Link>
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+}

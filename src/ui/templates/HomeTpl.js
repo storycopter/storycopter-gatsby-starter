@@ -1,6 +1,7 @@
 import Link from 'gatsby-link';
 import React from 'react';
 import _ from 'lodash';
+import { darken, lighten } from 'polished';
 import { graphql } from 'gatsby';
 
 import Button from '@material-ui/core/Button';
@@ -14,17 +15,31 @@ import constructImageObj from '@ui/utils/constructImageObj';
 const useStyles = (pageCount, isHovered) =>
   makeStyles(theme => ({
     actionbar: {
-      alignItems: 'center',
       display: 'flex',
+      flexDirection: 'row',
+      marginTop: theme.spacing(2),
+      position: 'absolute',
+      top: '100%',
+      [theme.breakpoints.up('md')]: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        position: 'relative',
+        top: 'auto',
+      },
     },
     cta: {
-      marginLeft: theme.spacing(1.5),
-      marginRight: theme.spacing(1.5),
+      marginTop: theme.spacing(1.5),
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
       '&:first-child': {
         marginLeft: 0,
       },
       '&:last-child': {
         marginRight: 0,
+      },
+      [theme.breakpoints.up('md')]: {
+        marginLeft: theme.spacing(1.5),
+        marginRight: theme.spacing(1.5),
       },
     },
   }));
@@ -86,14 +101,11 @@ export default function HomeTpl({
                       Launch story
                     </Button>
                   </Link>{' '}
-                  <Typography className={classes.cta} component="span" variant="body2" style={{ opacity: 0.5 }}>
-                    or
-                  </Typography>{' '}
                   <Link className={classes.cta} to={'/contents'}>
                     <Button
                       component="span"
                       style={{
-                        background: theme.palette.storycopter.flare[200],
+                        background: lighten(0.4, pageElements[0].settings.backgColor),
                         color: pageElements[0].settings.textColor,
                       }}
                       variant="contained">

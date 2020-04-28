@@ -14,10 +14,20 @@ import constructImageObj from '@ui/utils/constructImageObj';
 const useStyles = (pageCount, isHovered) =>
   makeStyles(theme => ({
     actionbar: {
-      alignItems: 'center',
       display: 'flex',
+      flexDirection: 'row',
+      marginTop: theme.spacing(2),
+      position: 'absolute',
+      top: '100%',
+      [theme.breakpoints.up('md')]: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        position: 'relative',
+        top: 'auto',
+      },
     },
     cta: {
+      marginTop: theme.spacing(1.5),
       marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
       '&:first-child': {
@@ -25,6 +35,10 @@ const useStyles = (pageCount, isHovered) =>
       },
       '&:last-child': {
         marginRight: 0,
+      },
+      [theme.breakpoints.up('md')]: {
+        marginLeft: theme.spacing(1.5),
+        marginRight: theme.spacing(1.5),
       },
     },
   }));
@@ -64,7 +78,7 @@ export default function CreditsTpl({
             backgImage={backgImage}
             fullSize
             children={
-              <>
+              <div className={classes.actionbar}>
                 <a className={classes.cta} href="https://storycopter.com">
                   <Button
                     component="span"
@@ -73,12 +87,9 @@ export default function CreditsTpl({
                       color: pageElements[0].settings.textColor,
                     }}
                     variant="contained">
-                    Visit Storycopter.com
+                    Visit Storycopter
                   </Button>
-                </a>{' '}
-                <Typography className={classes.cta} component="span" variant="body2" style={{ opacity: 0.5 }}>
-                  or
-                </Typography>{' '}
+                </a>
                 <Link className={classes.cta} to={'/'}>
                   <Button
                     component="span"
@@ -90,7 +101,7 @@ export default function CreditsTpl({
                     Return home
                   </Button>
                 </Link>
-              </>
+              </div>
             }
           />
         );

@@ -2,7 +2,7 @@
   "meta": {
     "coverEnabled": true,
     "coverImage": {
-      "name": "image-h.png"
+      "name": "cover.png"
     },
     "order": 2,
     "path": "/middle",
@@ -14,7 +14,7 @@
     {
       "settings": {
         "align": "center",
-        "backgColor": null,
+        "backgColor": "#efb43f",
         "backgImage": {
           "name": null
         },
@@ -23,7 +23,7 @@
         "maskColor": null,
         "subtitle": "A subtitle",
         "text": "Some text",
-        "textColor": null,
+        "textColor": "#ffffff",
         "title": "Middle"
       },
       "type": "headline",

@@ -2,7 +2,7 @@
   "meta": {
     "coverEnabled": true,
     "coverImage": {
-      "name": null
+      "name": "cover.png"
     },
     "path": "/",
     "title": "Opening Titles",
@@ -13,14 +13,14 @@
       "id": "001",
       "order": 0,
       "settings": {
-        "align": "left",
-        "backgColor": "#2e237f",
+        "align": "center",
+        "backgColor": "#000000",
         "backgImage": {
-          "name": "headline-cover.svg"
+          "name": "headline-cover-yellow.svg"
         },
         "backgImageEnabled": true,
         "fullSize": true,
-        "maskColor": "rgba(0, 0, 0, 0.6)",
+        "maskColor": "rgba(0,0,0,0.0)",
         "subtitle": "A new interactive documentary production suite for the Web.",
         "text": "",
         "textColor": "#ffffff",

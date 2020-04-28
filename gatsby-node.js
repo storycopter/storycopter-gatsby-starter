@@ -56,6 +56,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `);
+
   const allSiteData = await graphql(`
     {
       allSiteJson(filter: { meta: { uid: { ne: "schema" } } }) {
@@ -126,10 +127,10 @@ exports.createPages = async ({ graphql, actions }) => {
       createPage({
         component: creator.tpl || tpls[uid],
         context: {
-          uid,
           allEssentials: allEssentials.data.allEssentialsJson.edges.map(o => o.node.meta),
           allPages: allPages.data.allPagesJson.edges.map(o => o.node.meta),
           allSiteData: allSiteData.data.allSiteJson.edges.map(o => o.node)[0],
+          uid,
         },
         path: path,
       });
