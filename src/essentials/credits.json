@@ -14,7 +14,7 @@
       "order": 0,
       "settings": {
         "align": "center",
-        "backgColor": "#2d2516",
+        "backgColor": "#000000",
         "backgImage": {
           "name": "headline-cover-yellow.svg"
         },

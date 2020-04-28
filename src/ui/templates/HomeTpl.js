@@ -1,8 +1,8 @@
-import Link from 'gatsby-link';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import React from 'react';
 import _ from 'lodash';
-import { darken, lighten } from 'polished';
 import { graphql } from 'gatsby';
+import { lighten } from 'polished';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -56,12 +56,12 @@ export default function HomeTpl({
   const classes = useStyles()();
   const theme = useTheme();
 
-  console.group('HomeTpl.js');
+  // console.group('HomeTpl.js');
   // console.log('pageMeta', pageMeta);
   // console.log('pageContext', pageContext);
   // console.log('pageFiles', pageFiles);
-  console.log('brand', brand);
-  console.groupEnd();
+  // console.log('brand', brand);
+  // console.groupEnd();
 
   return (
     <>
@@ -90,18 +90,7 @@ export default function HomeTpl({
             children={
               allPages.length > 1 ? (
                 <>
-                  <Link className={classes.cta} to={_.sortBy(allPages, o => o.order)[0].path}>
-                    <Button
-                      component="span"
-                      style={{
-                        background: pageElements[0].settings.backgColor,
-                        color: pageElements[0].settings.textColor,
-                      }}
-                      variant="contained">
-                      Launch story
-                    </Button>
-                  </Link>{' '}
-                  <Link className={classes.cta} to={'/contents'}>
+                  <AniLink color={theme.palette.primary.main} paintDrip className={classes.cta} to={'/contents'}>
                     <Button
                       component="span"
                       style={{
@@ -109,12 +98,31 @@ export default function HomeTpl({
                         color: pageElements[0].settings.textColor,
                       }}
                       variant="contained">
-                      Explore pages
+                      Explore
                     </Button>
-                  </Link>
+                  </AniLink>
+                  <AniLink
+                    color={theme.palette.primary.main}
+                    paintDrip
+                    className={classes.cta}
+                    to={_.sortBy(allPages, o => o.order)[0].path}>
+                    <Button
+                      component="span"
+                      style={{
+                        background: pageElements[0].settings.backgColor,
+                        color: pageElements[0].settings.textColor,
+                      }}
+                      variant="contained">
+                      Continue
+                    </Button>
+                  </AniLink>
                 </>
               ) : (
-                <Link className={classes.cta} to={_.sortBy(allPages, o => o.order)[0].path}>
+                <AniLink
+                  color={theme.palette.primary.main}
+                  paintDrip
+                  className={classes.cta}
+                  to={_.sortBy(allPages, o => o.order)[0].path}>
                   <Button
                     component="span"
                     style={{
@@ -124,7 +132,7 @@ export default function HomeTpl({
                     variant="contained">
                     Launch story
                   </Button>
-                </Link>
+                </AniLink>
               )
             }
           />

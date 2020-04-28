@@ -1,7 +1,8 @@
-import Link from 'gatsby-link';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import React from 'react';
 import _ from 'lodash';
 import { graphql } from 'gatsby';
+import { lighten } from 'polished';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -90,17 +91,17 @@ export default function CreditsTpl({
                     Visit Storycopter
                   </Button>
                 </a>
-                <Link className={classes.cta} to={'/'}>
+                <AniLink color={theme.palette.primary.main} paintDrip className={classes.cta} to={'/'}>
                   <Button
                     component="span"
                     style={{
-                      background: theme.palette.storycopter.flare[200],
+                      background: lighten(0.4, pageElements[0].settings.backgColor),
                       color: pageElements[0].settings.textColor,
                     }}
                     variant="contained">
                     Return home
                   </Button>
-                </Link>
+                </AniLink>
               </div>
             }
           />

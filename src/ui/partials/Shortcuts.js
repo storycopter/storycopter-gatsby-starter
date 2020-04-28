@@ -1,5 +1,6 @@
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
+import BackgroundImage from 'gatsby-background-image';
 import Img from 'gatsby-image';
-import Link from 'gatsby-link';
 import React from 'react';
 import _ from 'lodash';
 import { useStaticQuery, graphql } from 'gatsby';
@@ -8,11 +9,12 @@ import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
+import useTheme from '@material-ui/core/styles/useTheme';
 
 const useStyles = hasCover =>
   makeStyles(theme => ({
     root: {
-      padding: theme.spacing(5),
+      padding: theme.spacing(3),
       [theme.breakpoints.up('md')]: {
         padding: theme.spacing(10),
       },
@@ -21,29 +23,55 @@ const useStyles = hasCover =>
       },
     },
     shortcut: {
+      // alignContent: 'stretch',
       alignItems: 'center',
       display: 'flex',
-      justifyContent: hasCover ? 'space-between' : 'center',
-      textAlign: hasCover ? 'left' : 'center',
+      flexDirection: 'column',
+      justifyContent: 'center',
       minHeight: '50vh',
+      position: 'relative',
+      textAlign: hasCover ? 'left' : 'center',
       width: '100%',
+      [theme.breakpoints.up('md')]: {
+        justifyContent: hasCover ? 'space-between' : 'center',
+        flexDirection: 'row',
+      },
     },
     text: {
+      // display: 'flex',
+      // flexDirection: 'column',
+      // justifyContent: 'center',
+      // alignItems: 'flex-start',
       flex: '0 0 50%',
     },
     title: {
       marginTop: theme.spacing(1),
-      marginBottom: theme.spacing(1.5),
+      marginBottom: theme.spacing(1),
     },
     summary: {
+      display: 'none',
       marginBottom: theme.spacing(1.5),
+      [theme.breakpoints.up('md')]: {
+        display: 'block',
+      },
+    },
+    cta: {
+      marginRight: theme.spacing(1.5),
     },
     cover: {
       flex: '0 0 50%',
+      maxHeight: '100%',
+      height: '100%',
+      position: 'relative',
+      width: '100%',
+      [theme.breakpoints.only('xs')]: {
+        marginTop: theme.spacing(1.5),
+      },
     },
   }));
 
 export default function Shortcuts({ allPages, allEssentials, pageIndex }) {
+  const theme = useTheme();
   const allSiteFiles = useStaticQuery(graphql`
     query ShortcutsQuery {
       pages: allFile(
@@ -124,33 +152,33 @@ export default function Shortcuts({ allPages, allEssentials, pageIndex }) {
             Coming next:
           </Typography>
           <Typography className={classes.title} component="h3" variant="h3">
-            <Link to={nextPage?.path}>{nextPage?.title}</Link>
+            <AniLink color={theme.palette.primary.main} paintDrip to={nextPage?.path}>
+              {nextPage?.title}
+            </AniLink>
           </Typography>
           {nextPage?.summary ? (
             <Typography className={classes.summary} color="textSecondary" component="p" variant="h5">
               {nextPage.summary}
             </Typography>
           ) : null}
-          <Link to={nextPage?.path}>
-            <IconButton color="primary">
+          <AniLink color={theme.palette.primary.main} paintDrip to={nextPage?.path}>
+            <Typography className={classes.cta} color="textSecondary" component="span" variant="body1" display="inline">
+              Continue
+            </Typography>
+            <IconButton color="primary" edge="start">
               <ArrowForwardIcon />
             </IconButton>
-          </Link>
+          </AniLink>
         </div>
         {nextCover?.childImageSharp ? (
-          <div
-            className={classes.cover}
-            style={{
-              maxHeight: '100%',
-              // height: '100px'
-            }}>
-            <Link to={nextPage?.path}>
+          <div className={classes.cover}>
+            <AniLink color={theme.palette.primary.main} paintDrip to={nextPage?.path}>
               <Img
                 fluid={nextCover.childImageSharp.fluidLandscape}
                 imgStyle={{ objectFit: 'contain' }}
                 style={{ maxHeight: '100%' }}
               />
-            </Link>
+            </AniLink>
           </div>
         ) : null}
       </div>

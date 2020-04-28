@@ -1,5 +1,5 @@
 import Img from 'gatsby-image';
-import Link from 'gatsby-link';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import React, { useState } from 'react';
 import _ from 'lodash';
 import { usePopupState, bindHover, bindPopover } from 'material-ui-popup-state/hooks';
@@ -12,6 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import useTheme from '@material-ui/core/styles/useTheme';
 
 import Slide from '@material-ui/core/Slide';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -156,6 +157,7 @@ function HideOnScroll(props) {
 }
 
 export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData, ...props }) {
+  const theme = useTheme();
   const popupState = usePopupState({
     variant: 'popover',
     popupId: 'demoPopover',
@@ -195,7 +197,7 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
               <Grid className={classes.left} container item xs spacing={1}>
                 {isEssential ? (
                   <Grid item>
-                    <Link to="/">
+                    <AniLink color={theme.palette.primary.main} paintDrip to="/">
                       {logo.childImageSharp ? (
                         <Img
                           alt={allSiteData?.meta?.publisher}
@@ -207,7 +209,7 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
                       ) : (
                         <Typography variant="h6">{allSiteData?.meta?.publisher}</Typography>
                       )}
-                    </Link>
+                    </AniLink>
                   </Grid>
                 ) : (
                   <>
@@ -221,18 +223,24 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
                     {allPages.length > 1 && !isEssential ? (
                       <Grid item>
                         <Tooltip title="Previous page">
-                          <Link to={pageIndex - 1 >= 0 ? allPages[pageIndex - 1].path : '/'}>
+                          <AniLink
+                            color={theme.palette.primary.main}
+                            paintDrip
+                            to={pageIndex - 1 >= 0 ? allPages[pageIndex - 1].path : '/'}>
                             <IconButton className={classes.prevBtn}>
                               <NavigateBeforeIcon />
                             </IconButton>
-                          </Link>
+                          </AniLink>
                         </Tooltip>
                         <Tooltip title="Next page">
-                          <Link to={pageIndex + 1 >= allPages.length ? '/credits' : allPages[pageIndex + 1].path}>
+                          <AniLink
+                            color={theme.palette.primary.main}
+                            paintDrip
+                            to={pageIndex + 1 >= allPages.length ? '/credits' : allPages[pageIndex + 1].path}>
                             <IconButton className={classes.nextBtn}>
                               <NavigateNextIcon />
                             </IconButton>
-                          </Link>
+                          </AniLink>
                         </Tooltip>
                       </Grid>
                     ) : null}
@@ -242,7 +250,9 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
               <Grid className={classes.middle} item sm={6}>
                 <Box display={{ xs: 'none', md: 'block' }}>
                   <Typography className={classes.titleText} component="h1" noWrap variant="button">
-                    <Link to={'/'}>{allSiteData.meta.title}</Link>
+                    <AniLink color={theme.palette.primary.main} paintDrip to={'/'}>
+                      {allSiteData.meta.title}
+                    </AniLink>
                   </Typography>
                 </Box>
               </Grid>
@@ -288,11 +298,15 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
                       className={classes.breadcrumb}
                       key={page.uid}
                       onMouseEnter={() => setPopperPage({ ...page, coverImage })}>
-                      <Link className={classes.breadcrumbLink} to={page.path}>
+                      <AniLink
+                        color={theme.palette.primary.main}
+                        paintDrip
+                        className={classes.breadcrumbLink}
+                        to={page.path}>
                         <div className={classes.breadcrumbMarker} {...bindHover(popupState)}>
                           <span className={classes.breadcrumbTick}>{i + 1}</span>
                         </div>
-                      </Link>
+                      </AniLink>
                     </div>
                   );
                 })}

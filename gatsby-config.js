@@ -11,6 +11,7 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-transition-link`,
     `gatsby-transformer-json`,
     `gatsby-transformer-sharp`,
     {

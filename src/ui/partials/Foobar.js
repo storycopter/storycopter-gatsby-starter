@@ -1,4 +1,4 @@
-import Link from 'gatsby-link';
+import AniLink from 'gatsby-plugin-transition-link/AniLink';
 import React, { useState, useEffect } from 'react';
 import ReactPlayer from 'react-player';
 import _ from 'lodash';
@@ -11,6 +11,7 @@ import Slide from '@material-ui/core/Slide';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import makeStyles from '@material-ui/core/styles/makeStyles';
+import useTheme from '@material-ui/core/styles/useTheme';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 import CreditsIcon from '@ui/elements/icons/CreditsIcon';
@@ -65,6 +66,7 @@ function HideOnScroll(props) {
 
 export default function Foobar({ allSiteData, allStaticFiles, ...props }) {
   const classes = useStyles()();
+  const theme = useTheme();
   const isBrowser = typeof window !== `undefined`;
 
   const soundtrack = _.find(allStaticFiles.edges, ({ node }) => node.base === allSiteData.sound.track.name)?.node
@@ -82,6 +84,10 @@ export default function Foobar({ allSiteData, allStaticFiles, ...props }) {
     if (isBrowser) setSound(localStorage.getItem('sound') === 'false' ? false : true);
   }, []);
 
+  console.group('Foobar.js');
+  console.log({ theme });
+  console.groupEnd();
+
   return (
     <>
       <HideOnScroll {...props}>
@@ -89,13 +95,13 @@ export default function Foobar({ allSiteData, allStaticFiles, ...props }) {
           <Toolbar>
             <Grid alignItems="center" container justify="space-between">
               <Grid className={classes.left} item xs>
-                <Tooltip title="Credits">
-                  <Link to="/credits">
+                <AniLink color={theme.palette.primary.main} paintDrip to="/credits">
+                  <Tooltip title="Credits">
                     <IconButton edge="start">
                       <CreditsIcon />
                     </IconButton>
-                  </Link>
-                </Tooltip>
+                  </Tooltip>
+                </AniLink>
               </Grid>
               <Grid className={classes.right} container item xs spacing={1}>
                 {allSiteData?.sound?.enabled && allSiteData?.sound?.track ? (
