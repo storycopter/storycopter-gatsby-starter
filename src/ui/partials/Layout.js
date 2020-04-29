@@ -1,5 +1,5 @@
-import Fullscreen from 'react-full-screen';
-import React, { useState } from 'react';
+// import Fullscreen from 'react-full-screen';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
@@ -87,10 +87,7 @@ export default function Layout({
       <Vignette />
       <Topbar {...barProps} />
       {children}
-      <Foobar
-        {...barProps}
-        // onFullScreenToggle={() => setFullScreen(prevState => !prevState)}
-      />
+      <Foobar {...barProps} />
     </ThemeProvider>
   );
 }

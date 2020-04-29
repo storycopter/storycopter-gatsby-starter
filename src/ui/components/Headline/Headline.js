@@ -6,13 +6,12 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
-const useStyles = (align, backgColor, backgImage, backgImageEnabled, fullSize, maskColor, textColor) =>
+const useStyles = (align, backgColor, fullSize, maskColor, textColor) =>
   makeStyles(theme => ({
     root: {
       // ...console.log('HEADLINE THEME', theme),
       backfaceVisibility: 'hidden',
       backgroundColor: backgColor || 'transparent',
-      backgroundImage: backgImageEnabled && backgImage?.name ? `url("${backgImage.publicURL}")` : 'none',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
@@ -140,7 +139,7 @@ export default function Headline({
   textColor = null,
   ...props
 }) {
-  const classes = useStyles(align, backgColor, backgImage, backgImageEnabled, fullSize, maskColor, textColor)();
+  const classes = useStyles(align, backgColor, fullSize, maskColor, textColor)();
 
   const onInputBlur = (e, key) => {
     props.onElementUpdate({
@@ -163,7 +162,12 @@ export default function Headline({
 
   return (
     <>
-      <div className={classes.root} style={style}>
+      <div
+        className={classes.root}
+        style={{
+          ...style,
+          backgroundImage: backgImageEnabled && backgImage?.name ? `url("${backgImage.publicURL}")` : 'none',
+        }}>
         <Container className={classes.child} maxWidth={'lg'}>
           <div className={classes.headlineContent}>
             {isEditable || props.title ? (

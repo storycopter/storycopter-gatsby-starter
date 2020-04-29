@@ -47,7 +47,6 @@ const useStyles = () =>
     right: {
       alignItems: 'center',
       justifyContent: 'flex-end',
-      filter: 'none',
       '& > *': {
         pointerEvents: 'auto',
       },

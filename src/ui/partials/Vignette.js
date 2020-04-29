@@ -19,21 +19,34 @@ function HideOnScroll(props) {
 const useStyles = () =>
   makeStyles(theme => ({
     root: {
-      backfaceVisibility: 'hidden',
-      bottom: '-1%',
-      boxShadow: `0 0 100px ${colors.shadow[700]} inset`,
-      filter: 'blur(1px) grayscale(100%)',
-      left: '-6%',
+      bottom: 0,
+      left: 0,
       pointerEvents: 'none',
       position: 'fixed',
-      right: '-6%',
-      top: '-1%',
+      rigth: 0,
+      top: 0,
+      transform: 'transition(0,0,0)',
       zIndex: 100,
+      '&:after': {
+        backfaceVisibility: 'hidden',
+        bottom: '-1%',
+        boxShadow: `0 0 100px ${colors.shadow[700]} inset`,
+        content: `' '`,
+        display: 'block',
+        left: '-6%',
+        position: 'fixed',
+        right: '-6%',
+        top: '-1%',
+      },
       [theme.breakpoints.up('md')]: {
-        boxShadow: `0 0 150px ${colors.shadow[800]} inset`,
+        '&:after': {
+          boxShadow: `0 0 150px ${colors.shadow[800]} inset`,
+        },
       },
       [theme.breakpoints.up('xl')]: {
-        boxShadow: `0 0 200px ${colors.shadow[900]} inset`,
+        '&:after': {
+          boxShadow: `0 0 200px ${colors.shadow[900]} inset`,
+        },
       },
     },
   }));

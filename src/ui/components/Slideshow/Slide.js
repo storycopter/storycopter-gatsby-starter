@@ -1,6 +1,7 @@
 import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import _ from 'lodash';
 
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
@@ -30,29 +31,6 @@ const useStyles = (image, textColor) =>
       right: 0,
       top: 0,
       width: '100%',
-      '&:before, &:after': {
-        backgroundImage: image?.backgImageEnabled ? `url("${image.publicURL}")` : 'none',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        bottom: 0,
-        content: image?.backgImageEnabled ? `" "` : 'none',
-        display: image?.backgImageEnabled ? 'block' : 'none',
-        left: 0,
-        position: 'absolute',
-        right: 0,
-        top: 0,
-      },
-      '&:before': {
-        filter: 'blur(5px)',
-        webkitFilter: 'blur(5px)',
-        zIndex: 1,
-      },
-      '&:after': {
-        filter: 'blur(5px)',
-        webkitFilter: 'blur(5px)',
-        zIndex: 2,
-      },
     },
     mask: {
       color: textColor || 'inherit',
@@ -150,7 +128,6 @@ export default function Slide({
         style={{
           ...props?.style,
           backgroundColor: backgColor || 'transparent',
-          backgroundImage: image.backgImageEnabled ? `url("${image.publicURL}")` : 'none',
           minHeight: fullSize ? canvasHeight || '100vh' : '50vh',
         }}>
         <div className={slideClasses.child}>

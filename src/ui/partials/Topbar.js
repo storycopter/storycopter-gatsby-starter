@@ -66,6 +66,7 @@ const useStyles = (pageCount, isHovered) =>
       display: 'inline-block',
     },
     titleText: {
+      color: theme.palette.background.paper,
       display: 'block',
       letterSpacing: `${theme.spacing(0.3)}px`,
       position: 'relative',
