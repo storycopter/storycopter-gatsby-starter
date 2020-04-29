@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 import Slider from 'react-slick';
 import sortBy from 'lodash/sortBy';
 
-import Slide from './Slide';
-import SlideshowStyles from './SlideshowStyles';
+import Slide from './ofSlideshow/Slide';
+import SlideshowStyles from './ofSlideshow/SlideshowStyles';
 
 export default function Slideshow({ backgColor, fullSize, images, maskColor, style, textColor, ...props }) {
   const sliderRef = useRef();

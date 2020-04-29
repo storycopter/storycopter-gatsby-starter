@@ -21,10 +21,10 @@
         "backgImageEnabled": true,
         "fullSize": true,
         "maskColor": null,
-        "subtitle": "Storycopter is an open-source project brought to you by Piotr Fedorczyk, Joanna Bogusz, Laurian Gridinoc and Mark Boas.",
-        "text": "Storycopter is an open-source project brought to you by Piotr Fedorczyk, Joanna Bogusz, Laurian Gridinoc and Mark Boas.",
+        "subtitle": "Storycopter is a new interactive documentary production suite for the Web.",
+        "text": "Storycopter is an open-source project developed by Piotr Fedorczyk, Joanna Bogusz, Laurian Gridinoc and Mark Boas.",
         "textColor": "#ffffff",
-        "title": "Credits"
+        "title": "About"
       },
       "type": "headline"
     }
