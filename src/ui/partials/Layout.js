@@ -3,7 +3,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
+import { ThemeProvider } from '@material-ui/core/styles';
 
 import Baseline from '@ui/components/Baseline/Baseline';
 import Foobar from '@ui/partials/Foobar';

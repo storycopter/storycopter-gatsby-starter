@@ -6,8 +6,8 @@ import { lighten } from 'polished';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import makeStyles from '@material-ui/styles/makeStyles';
-import useTheme from '@material-ui/styles/useTheme';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import useTheme from '@material-ui/core/styles/useTheme';
 
 import componentMap from '@ui/components/componentMap';
 import constructImageObj from '@ui/utils/constructImageObj';

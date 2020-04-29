@@ -4,6 +4,8 @@
   "main": "lib/index.js",
   "license": "BSD-3-Clause",
   "dependencies": {
+    "@material-ui/core": "4.9.12",
+    "@material-ui/icons": "4.9.1",
     "babel-plugin-styled-components": "1.10.7",
     "gatsby": "2.21.4",
     "gatsby-background-image": "1.1.1",
@@ -32,16 +34,9 @@
     "react-slick": "0.25.2"
   },
   "peerDependencies": {
-    "@material-ui/core": "4.9.12",
-    "@material-ui/icons": "4.9.1",
-    "@material-ui/lab": "4.0.0-alpha.51",
-    "@material-ui/styles": "4.9.10"
+    "styled-components": "5.1.0"
   },
   "devDependencies": {
-    "@material-ui/core": "4.9.12",
-    "@material-ui/icons": "4.9.1",
-    "@material-ui/lab": "4.0.0-alpha.51",
-    "@material-ui/styles": "4.9.10",
     "@hot-loader/react-dom": "16.13.0",
     "babel-eslint": "10.1.0",
     "eslint": "6.8.0",

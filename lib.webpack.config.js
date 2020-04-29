@@ -1,5 +1,4 @@
 const path = require('path');
-// const pkg = require('./package.json');
 
 module.exports = {
   entry: './src/index.js',
@@ -14,6 +13,8 @@ module.exports = {
   // },
   resolve: {
     alias: {
+      '@material-ui/core': '@material-ui/core',
+      '@material-ui/icons': '@material-ui/icons',
       '@ui': path.resolve(__dirname, 'src/ui/'),
     },
   },
@@ -38,17 +39,24 @@ module.exports = {
   externals: [
     {
       react: {
-        root: 'React',
+        amd: 'react',
         commonjs2: 'react',
         commonjs: 'react',
-        amd: 'react',
+        root: 'React',
       },
       'react-dom': {
-        root: 'ReactDOM',
+        amd: 'react-dom',
         commonjs2: 'react-dom',
         commonjs: 'react-dom',
-        amd: 'react-dom',
+        root: 'ReactDOM',
+      },
+      'styled-components': {
+        amd: 'styled-components',
+        commonjs2: 'styled-components',
+        commonjs: 'styled-components',
       },
     },
+    /@material-ui\/core\/.*/,
+    /@material-ui\/icons\/.*/,
   ],
 };

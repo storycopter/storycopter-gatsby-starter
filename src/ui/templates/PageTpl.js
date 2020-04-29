@@ -16,14 +16,14 @@ export default function PageTpl({
 }) {
   const pageIndex = _.findIndex(allPages, o => o.uid === pageMeta.uid);
 
-  console.group('PageTpl.js');
+  // console.group('PageTpl.js');
   // console.log('allPages', allPages);
   // console.log('nextPage', nextPage);
   // console.log('whaterver', whaterver);
-  console.log('allSiteData', allSiteData);
+  // console.log('allSiteData', allSiteData);
   // console.log('pageFiles', pageFiles);
   // console.log('pageElements', pageElements);
-  console.groupEnd();
+  // console.groupEnd();
 
   return (
     <>

@@ -130,13 +130,13 @@ export default function Shortcuts({ allPages, allEssentials, pageIndex }) {
 
   const classes = useStyles(nextCover.childImageSharp ? true : false)();
 
-  console.group('Shortcuts');
+  // console.group('Shortcuts');
   // console.log({ allEssentials });
   // console.log({ allPages });
   // console.log({ allSiteFiles });
   // console.log({ nextPage });
   // console.log({ nextCover });
-  console.groupEnd();
+  // console.groupEnd();
 
   return (
     <div className={classes.root}>
