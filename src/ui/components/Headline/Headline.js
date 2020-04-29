@@ -21,8 +21,8 @@ const useStyles = (align, backgColor, backgImage, backgImageEnabled, fullSize, m
       flexDirection: 'column',
       justifyContent: 'center',
       minHeight: fullSize ? '100vh' : '50vh',
-      paddingBottom: theme.spacing(10),
-      paddingTop: theme.spacing(10),
+      paddingBottom: theme.spacing(15),
+      paddingTop: theme.spacing(15),
       paddingLeft: theme.spacing(3),
       paddingRight: theme.spacing(3),
       position: 'relative',
@@ -54,13 +54,13 @@ const useStyles = (align, backgColor, backgImage, backgImageEnabled, fullSize, m
       textAlign: align === 'center' ? 'center' : 'left',
       zIndex: 2,
       [theme.breakpoints.up('sm')]: {
-        maxWidth: `${(100 / 5) * 4}%`,
+        // maxWidth: `${(100 / 5) * 4}%`,
       },
       [theme.breakpoints.up('md')]: {
-        maxWidth: `${(100 / 5) * 4}%`,
+        // maxWidth: `${(100 / 5) * 4}%`,
       },
       [theme.breakpoints.up('xl')]: {
-        maxWidth: '50%',
+        // maxWidth: '50%',
       },
     },
     headlineContent: {
@@ -76,22 +76,28 @@ const useStyles = (align, backgColor, backgImage, backgImageEnabled, fullSize, m
     },
     headlineSubtitle: {
       ...theme.typography.h3,
-      marginTop: theme.spacing(1),
+      marginTop: theme.spacing(3),
       [theme.breakpoints.up('md')]: {
+        marginTop: theme.spacing(4),
+      },
+      [theme.breakpoints.up('lg')]: {
         marginTop: theme.spacing(3),
       },
       [theme.breakpoints.up('xl')]: {
-        marginTop: theme.spacing(5),
+        marginTop: theme.spacing(4),
       },
     },
     headlineText: {
-      ...theme.typography.h5,
-      marginTop: theme.spacing(1),
+      ...theme.typography.h6,
+      marginTop: theme.spacing(3),
       [theme.breakpoints.up('md')]: {
+        marginTop: theme.spacing(4),
+      },
+      [theme.breakpoints.up('lg')]: {
         marginTop: theme.spacing(3),
       },
       [theme.breakpoints.up('xl')]: {
-        marginTop: theme.spacing(5),
+        marginTop: theme.spacing(4),
       },
     },
     headlineTitleInput: {
@@ -107,18 +113,19 @@ const useStyles = (align, backgColor, backgImage, backgImageEnabled, fullSize, m
       display: 'flex',
       flexDirection: 'row',
       justifyContent: align === 'center' ? 'center' : 'flex-start',
-      // left: 0,
       marginTop: theme.spacing(2),
-      // position: 'absolute',
-      // right: 0,
-      // top: '100%',
+      left: 0,
+      position: 'absolute',
+      right: 0,
+      top: '100%',
       [theme.breakpoints.up('md')]: {
+        marginTop: theme.spacing(3),
         flexDirection: 'row',
         justifyContent: align === 'center' ? 'center' : 'flex-start',
-        // left: 'auto',
-        position: 'relative',
-        // right: 'auto',
-        // top: 'auto',
+        // position: 'relative',
+      },
+      [theme.breakpoints.up('xl')]: {
+        // marginTop: theme.spacing(3),
       },
     },
   }));
@@ -160,7 +167,7 @@ export default function Headline({
   return (
     <>
       <div className={classes.root} style={style}>
-        <Container className={classes.child}>
+        <Container className={classes.child} maxWidth={false}>
           <div className={classes.headlineContent}>
             {isEditable || props.title ? (
               <Typography className={classes.headlineTitle} component="div" variant="h1" style={{ color: textColor }}>

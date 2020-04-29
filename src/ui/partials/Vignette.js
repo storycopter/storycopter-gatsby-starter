@@ -27,7 +27,7 @@ const useStyles = () =>
       position: 'fixed',
       right: '-6%',
       top: '-1%',
-      zIndex: 1,
+      zIndex: 100,
       [theme.breakpoints.up('md')]: {
         boxShadow: `0 0 150px ${colors.shadow[800]} inset`,
       },

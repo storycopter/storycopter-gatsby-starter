@@ -79,6 +79,7 @@ const useStyles = (pageCount, isHovered) =>
       height: '50vh',
       maxHeight: '500px',
       maxWidth: '400px',
+      minWidth: '280px',
       minHeight: '400px',
       padding: `${100 / 3}% ${theme.spacing(1.5)}px ${theme.spacing(1.5)}px`,
       width: `${100 / 4}vw`,
@@ -113,14 +114,14 @@ export default function ContentsTpl({
     <>
       <GridList className={classes.gridList} cols={2.5}>
         <HorizontalScroll
-          pageLock
+          // pageLock
           reverseScroll
           // config={{ stiffness: int, damping: int }}
           className={classes.scroll}
           // animValues={int}
         >
           {allPages.map(page => {
-            console.log(page);
+            console.log({ page });
 
             // construct cover image obj
             const coverImage = {
@@ -135,7 +136,9 @@ export default function ContentsTpl({
             return (
               <div className={classes.tile} key={page.uid}>
                 <AniLink className={classes.link} color={theme.palette.primary.main} paintDrip to={page.path}>
-                  <BackgroundImage fluid={coverImage.childImageSharp.fluid}>
+                  <BackgroundImage
+                    fluid={coverImage.childImageSharp.fluid}
+                    style={{ backgroundPosition: 'bottom right' }}>
                     <Card className={classes.card}>
                       <CardContent>
                         <Typography gutterBottom variant="h4" component="h2">

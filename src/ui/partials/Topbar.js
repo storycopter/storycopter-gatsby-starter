@@ -32,12 +32,13 @@ const useStyles = (pageCount, isHovered) =>
   makeStyles(theme => ({
     root: {
       ...console.log('doctheme', theme),
+      // backgroundColor: isHovered ? colors.shadow[200] : 'transparent',
       backgroundColor: isHovered ? colors.shadow[200] : 'transparent',
       boxShadow: 'none',
-      color: colors.grey[100],
+      color: theme.palette.text.primary,
       padding: theme.spacing(1),
       transition: `backgroundColor ${theme.transitions.duration.standard}ms`,
-      zIndex: 2,
+      zIndex: 200,
       '&:hover': {
         backgroundColor: colors.shadow[200],
       },

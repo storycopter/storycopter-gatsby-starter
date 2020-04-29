@@ -41,21 +41,23 @@ export default function constructTheme({ backgColor, brandColor, fonts, textColo
         ...setType(900),
         fontFamily: fonts?.head || 'Gill Sans, sans-serif',
         fontWeight: '700',
+        letterSpacing: '0.05em',
       },
       h2: {
-        ...setType(800),
+        ...setType(700),
         fontFamily: fonts?.head || 'Gill Sans, sans-serif',
-        fontWeight: '500',
+        fontWeight: '700',
       },
       h3: {
         ...setType(700),
         fontFamily: fonts?.head || 'Gill Sans, sans-serif',
-        fontWeight: '500',
+        fontWeight: '400',
       },
       h4: {
         ...setType(600),
         fontFamily: fonts?.head || 'Gill Sans, sans-serif',
-        fontWeight: '400',
+        fontWeight: '700',
+        letterSpacing: '0.05em',
       },
       h5: {
         ...setType(500),

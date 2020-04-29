@@ -52,10 +52,10 @@ export default function Layout({
   const favicon = brand.favicon.name ? `/${brand.favicon.name}` : null;
   const image = brand.coverEnabled && brand.cover.name ? `/${brand.cover.name}` : null;
 
-  console.group('Layout.js');
-  console.log({ allSiteData });
-  console.log({ props });
-  console.groupEnd();
+  // console.group('Layout.js');
+  // console.log({ allSiteData });
+  // console.log({ props });
+  // console.groupEnd();
 
   const barProps = {
     allPages,
@@ -73,7 +73,7 @@ export default function Layout({
       <Helmet
         defer={false}
         encodeSpecialCharacters={true}
-        titleTemplate={`${allSiteData.meta.title} • %s`}
+        titleTemplate={`${allSiteData.meta.title} ⋅ %s`}
         defaultTitle="Chapter">
         <link rel="icon" href={favicon} type="image/ico" sizes="16x16" />
         <link rel="stylesheet" type="text/css" href="raleway/style.css" />

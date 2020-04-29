@@ -56,12 +56,12 @@ export default function HomeTpl({
   const classes = useStyles()();
   const theme = useTheme();
 
-  // console.group('HomeTpl.js');
+  console.group('HomeTpl.js');
   // console.log('pageMeta', pageMeta);
   // console.log('pageContext', pageContext);
   // console.log('pageFiles', pageFiles);
   // console.log('brand', brand);
-  // console.groupEnd();
+  console.groupEnd();
 
   return (
     <>

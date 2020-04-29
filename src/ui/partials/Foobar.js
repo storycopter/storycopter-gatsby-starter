@@ -29,7 +29,7 @@ const useStyles = () =>
       padding: theme.spacing(1),
       top: 'auto',
       transition: `background ${theme.transitions.duration.standard}ms`,
-      zIndex: 2,
+      zIndex: 200,
       [theme.breakpoints.up('md')]: {
         padding: theme.spacing(2),
       },

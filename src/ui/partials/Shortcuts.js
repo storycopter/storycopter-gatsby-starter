@@ -14,12 +14,8 @@ import useTheme from '@material-ui/core/styles/useTheme';
 const useStyles = hasCover =>
   makeStyles(theme => ({
     root: {
-      padding: theme.spacing(3),
-      [theme.breakpoints.up('md')]: {
-        padding: theme.spacing(10),
-      },
-      [theme.breakpoints.up('xl')]: {
-        padding: theme.spacing(15),
+      [theme.breakpoints.only('xs')]: {
+        padding: theme.spacing(3),
       },
     },
     shortcut: {
@@ -28,25 +24,32 @@ const useStyles = hasCover =>
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      minHeight: '50vh',
       position: 'relative',
       textAlign: hasCover ? 'left' : 'center',
       width: '100%',
       [theme.breakpoints.up('md')]: {
+        minHeight: '50vh',
         justifyContent: hasCover ? 'space-between' : 'center',
         flexDirection: 'row',
       },
     },
     text: {
+      flex: '0 0 50%',
+      padding: theme.spacing(3),
+      [theme.breakpoints.up('md')]: {
+        padding: theme.spacing(10),
+      },
+      [theme.breakpoints.up('xl')]: {
+        padding: theme.spacing(15),
+      },
       // display: 'flex',
       // flexDirection: 'column',
       // justifyContent: 'center',
       // alignItems: 'flex-start',
-      flex: '0 0 50%',
     },
     title: {
-      marginTop: theme.spacing(1),
-      marginBottom: theme.spacing(1),
+      marginTop: theme.spacing(1.5),
+      marginBottom: theme.spacing(1.5),
     },
     summary: {
       display: 'none',
@@ -151,13 +154,13 @@ export default function Shortcuts({ allPages, allEssentials, pageIndex }) {
           <Typography component="span" variant="overline" color="textSecondary">
             Coming next:
           </Typography>
-          <Typography className={classes.title} component="h3" variant="h3">
+          <Typography className={classes.title} component="h3" variant="h2">
             <AniLink color={theme.palette.primary.main} paintDrip to={nextPage?.path}>
               {nextPage?.title}
             </AniLink>
           </Typography>
           {nextPage?.summary ? (
-            <Typography className={classes.summary} color="textSecondary" component="p" variant="h5">
+            <Typography className={classes.summary} color="textSecondary" component="p" variant="h6">
               {nextPage.summary}
             </Typography>
           ) : null}
