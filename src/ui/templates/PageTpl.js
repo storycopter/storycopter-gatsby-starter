@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { graphql } from 'gatsby';
 
 import Shortcuts from '@ui/partials/Shortcuts';
-import componentMap from '@ui/components/componentMap';
+import { componentMap } from '@ui';
 import constructImageObj from '@ui/utils/constructImageObj';
 
 export default function PageTpl({

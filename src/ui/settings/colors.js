@@ -2,15 +2,15 @@ import { darken, lighten } from 'polished';
 
 export default {
   grey: {
-    100: lighten(0.48, '#767269'),
-    200: lighten(0.36, '#767269'),
-    300: lighten(0.24, '#767269'),
-    400: lighten(0.12, '#767269'),
-    500: '#767269',
-    600: darken(0.12, '#767269'),
-    700: darken(0.24, '#767269'),
-    800: darken(0.36, '#767269'),
-    900: darken(0.48, '#767269'),
+    100: lighten(0.48, '#7e7e7e'),
+    200: lighten(0.36, '#7e7e7e'),
+    300: lighten(0.24, '#7e7e7e'),
+    400: lighten(0.12, '#7e7e7e'),
+    500: '#7e7e7e',
+    600: darken(0.12, '#7e7e7e'),
+    700: darken(0.24, '#7e7e7e'),
+    800: darken(0.36, '#7e7e7e'),
+    900: darken(0.48, '#7e7e7e'),
   },
 
   shadow: {
@@ -37,5 +37,18 @@ export default {
     700: 'rgba(255,255,255,.6925)',
     800: 'rgba(255,255,255,.79625)',
     900: 'rgba(255,255,255,.9)',
+  },
+
+  primary: {
+    main: '#ffa900',
+    light: '#f4b64c',
+  },
+  complimentary: {
+    main: '#6045ff',
+  },
+  common: {
+    black: '#000000',
+    mid: '#cbc9cc',
+    white: '#ffffff',
   },
 };

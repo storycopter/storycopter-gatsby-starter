@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 import { ThemeProvider } from '@material-ui/core/styles';
 
-import Baseline from '@ui/components/Baseline/Baseline';
+import { Baseline } from '@ui';
 import Foobar from '@ui/partials/Foobar';
 import Topbar from '@ui/partials/Topbar';
 import Vignette from '@ui/partials/Vignette';
