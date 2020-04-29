@@ -1,6 +1,6 @@
 {
   "name": "@storycopter/idoc",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "main": "lib/index.js",
   "license": "BSD-3-Clause",
   "dependencies": {
@@ -30,7 +30,7 @@
     "react-full-screen": "0.2.4",
     "react-helmet": "6.0.0",
     "react-player": "2.0.1",
-    "react-scroll-horizontal": "^1.6.4",
+    "react-scroll-horizontal": "1.6.4",
     "react-slick": "0.25.2"
   },
   "peerDependencies": {
@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@hot-loader/react-dom": "16.13.0",
+    "acorn": "6.0.0",
     "babel-eslint": "10.1.0",
     "eslint": "6.8.0",
     "eslint-config-prettier": "6.11.0",
@@ -50,6 +51,7 @@
     "prettier-stylelint": "0.4.2",
     "pretty-quick": "2.0.1",
     "styled-components": "5.1.0",
+    "stylelint": "13.3.3",
     "stylelint-config-prettier": "8.0.1",
     "stylelint-prettier": "1.1.2",
     "webpack": "4.43.0",

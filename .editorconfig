@@ -11,3 +11,6 @@ insert_final_newline = true
 
 [*.{md,mdx}]
 trim_trailing_whitespace = false
+
+[*.bat]
+end_of_line = crlf
