@@ -51,29 +51,30 @@ export default function CreditsTpl({
             children={
               <>
                 {motivation?.enabled && motivation?.label?.length > 0 && motivation.link?.length > 0 ? (
-                  <a className={classes.cta} href={motivation.link}>
-                    <Button
-                      component="span"
-                      style={{
-                        background: pageElements[0].settings.backgColor,
-                        color: pageElements[0].settings.textColor,
-                      }}
-                      variant="contained">
-                      {motivation.label}
-                    </Button>
-                  </a>
-                ) : null}
-                <AniLink color={theme.palette.primary.main} paintDrip className={classes.cta} to={'/'}>
                   <Button
-                    component="span"
+                    component="a"
+                    href={motivation.link}
                     style={{
-                      background: lighten(0.4, pageElements[0].settings.backgColor),
+                      background: pageElements[0].settings.backgColor,
                       color: pageElements[0].settings.textColor,
                     }}
                     variant="contained">
-                    Return home
+                    {motivation.label}
                   </Button>
-                </AniLink>
+                ) : null}
+                <Button
+                  component={React.forwardRef((props, ref) => (
+                    <span ref={ref}>
+                      <AniLink color={theme.palette.primary.main} paintDrip to={'/'} {...props} />
+                    </span>
+                  ))}
+                  style={{
+                    background: lighten(0.4, pageElements[0].settings.backgColor),
+                    color: pageElements[0].settings.textColor,
+                  }}
+                  variant="contained">
+                  Return home
+                </Button>
               </>
             }
           />

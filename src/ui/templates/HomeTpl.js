@@ -58,48 +58,41 @@ export default function HomeTpl({
             images={images}
             fullSize
             children={
-              allPages.length > 1 ? (
-                <>
-                  <AniLink color={theme.palette.primary.main} paintDrip to={_.sortBy(allPages, o => o.order)[0].path}>
-                    <Button
-                      component="span"
-                      style={{
-                        background: pageElements[0].settings.backgColor,
-                        color: pageElements[0].settings.textColor,
-                      }}
-                      variant="contained">
-                      Continue
-                    </Button>
-                  </AniLink>
-                  <AniLink color={theme.palette.primary.main} paintDrip to={'/contents'}>
-                    <Button
-                      component="span"
-                      style={{
-                        background: lighten(0.4, pageElements[0].settings.backgColor),
-                        color: pageElements[0].settings.textColor,
-                      }}
-                      variant="contained">
-                      Explore
-                    </Button>
-                  </AniLink>
-                </>
-              ) : (
-                <AniLink
-                  color={theme.palette.primary.main}
-                  paintDrip
-                  className={classes.cta}
-                  to={_.sortBy(allPages, o => o.order)[0].path}>
+              <>
+                <Button
+                  component={React.forwardRef((props, ref) => (
+                    <span ref={ref}>
+                      <AniLink
+                        color={theme.palette.primary.main}
+                        paintDrip
+                        to={_.sortBy(allPages, o => o.order)[0].path}
+                        {...props}
+                      />
+                    </span>
+                  ))}
+                  style={{
+                    background: pageElements[0].settings.backgColor,
+                    color: pageElements[0].settings.textColor,
+                  }}
+                  variant="contained">
+                  Continue
+                </Button>
+                {allPages.length > 1 ? (
                   <Button
-                    component="span"
+                    component={React.forwardRef((props, ref) => (
+                      <span ref={ref}>
+                        <AniLink color={theme.palette.primary.main} paintDrip to={'/contents'} {...props} />
+                      </span>
+                    ))}
                     style={{
-                      background: pageElements[0].settings.backgColor,
+                      background: lighten(0.4, pageElements[0].settings.backgColor),
                       color: pageElements[0].settings.textColor,
                     }}
                     variant="contained">
-                    Launch story
+                    Explore
                   </Button>
-                </AniLink>
-              )
+                ) : null}
+              </>
             }
           />
         );
