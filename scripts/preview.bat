@@ -1,2 +1,1 @@
-npm install
-node_modules\.bin\gatsby develop
+npm install && node_modules\.bin\gatsby develop
