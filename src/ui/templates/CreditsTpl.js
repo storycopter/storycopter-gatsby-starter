@@ -52,7 +52,7 @@ export default function CreditsTpl({
   pageContext: { allEssentials, allPages, allSiteData },
   ...pageProps
 }) {
-  const { brand } = allSiteData;
+  const { motivation } = allSiteData;
   const classes = useStyles()();
   const theme = useTheme();
   // console.group('CreditsTpl.js');
@@ -80,17 +80,19 @@ export default function CreditsTpl({
             fullSize
             children={
               <div className={classes.actionbar}>
-                <a className={classes.cta} href="https://storycopter.com">
-                  <Button
-                    component="span"
-                    style={{
-                      background: pageElements[0].settings.backgColor,
-                      color: pageElements[0].settings.textColor,
-                    }}
-                    variant="contained">
-                    Visit Storycopter
-                  </Button>
-                </a>
+                {motivation?.enabled && motivation?.label?.length > 0 && motivation.link?.length > 0 ? (
+                  <a className={classes.cta} href={motivation.link}>
+                    <Button
+                      component="span"
+                      style={{
+                        background: pageElements[0].settings.backgColor,
+                        color: pageElements[0].settings.textColor,
+                      }}
+                      variant="contained">
+                      {motivation.label}
+                    </Button>
+                  </a>
+                ) : null}
                 <AniLink color={theme.palette.primary.main} paintDrip className={classes.cta} to={'/'}>
                   <Button
                     component="span"
@@ -149,10 +151,10 @@ export const pageQuery = graphql`
               src
             }
             fluid(maxWidth: 2000, quality: 95, cropFocus: CENTER, fit: COVER) {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
             fixed(width: 1400, height: 900, quality: 95, cropFocus: CENTER, fit: COVER) {
-              ...GatsbyImageSharpFixed
+              ...GatsbyImageSharpFixed_withWebp_tracedSVG
             }
           }
           publicURL

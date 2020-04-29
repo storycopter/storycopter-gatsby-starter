@@ -28,19 +28,22 @@ const useStyles = (pageCount, isHovered) =>
       },
     },
     cta: {
-      marginTop: theme.spacing(1.5),
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
+      marginLeft: theme.spacing(2),
+      marginRight: theme.spacing(2),
       '&:first-child': {
         marginLeft: 0,
       },
       '&:last-child': {
         marginRight: 0,
       },
-      [theme.breakpoints.up('md')]: {
-        marginLeft: theme.spacing(1.5),
-        marginRight: theme.spacing(1.5),
-      },
+      // [theme.breakpoints.up('md')]: {
+      //   '&:first-child': {
+      //     marginLeft: 0,
+      //   },
+      //   '&:last-child': {
+      //     marginRight: 0,
+      //   },
+      // },
     },
   }));
 
@@ -90,17 +93,6 @@ export default function HomeTpl({
             children={
               allPages.length > 1 ? (
                 <>
-                  <AniLink color={theme.palette.primary.main} paintDrip className={classes.cta} to={'/contents'}>
-                    <Button
-                      component="span"
-                      style={{
-                        background: lighten(0.4, pageElements[0].settings.backgColor),
-                        color: pageElements[0].settings.textColor,
-                      }}
-                      variant="contained">
-                      Explore
-                    </Button>
-                  </AniLink>
                   <AniLink
                     color={theme.palette.primary.main}
                     paintDrip
@@ -114,6 +106,17 @@ export default function HomeTpl({
                       }}
                       variant="contained">
                       Continue
+                    </Button>
+                  </AniLink>
+                  <AniLink color={theme.palette.primary.main} paintDrip className={classes.cta} to={'/contents'}>
+                    <Button
+                      component="span"
+                      style={{
+                        background: lighten(0.4, pageElements[0].settings.backgColor),
+                        color: pageElements[0].settings.textColor,
+                      }}
+                      variant="contained">
+                      Explore
                     </Button>
                   </AniLink>
                 </>
@@ -180,10 +183,10 @@ export const pageQuery = graphql`
               src
             }
             fluid(maxWidth: 2000, quality: 95, cropFocus: CENTER, fit: COVER) {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
             fixed(width: 1400, height: 900, quality: 95, cropFocus: CENTER, fit: COVER) {
-              ...GatsbyImageSharpFixed
+              ...GatsbyImageSharpFixed_withWebp_tracedSVG
             }
           }
           publicURL

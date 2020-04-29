@@ -19,18 +19,16 @@ const useStyles = hasCover =>
       },
     },
     shortcut: {
-      // alignContent: 'stretch',
-      alignItems: 'center',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
       position: 'relative',
-      textAlign: hasCover ? 'left' : 'center',
       width: '100%',
       [theme.breakpoints.up('md')]: {
-        minHeight: '50vh',
+        alignItems: 'center',
+        flexDirection: 'row-reverse',
         justifyContent: hasCover ? 'space-between' : 'center',
-        flexDirection: 'row',
+        minHeight: '50vh',
       },
     },
     text: {
@@ -42,10 +40,6 @@ const useStyles = hasCover =>
       [theme.breakpoints.up('xl')]: {
         padding: theme.spacing(15),
       },
-      // display: 'flex',
-      // flexDirection: 'column',
-      // justifyContent: 'center',
-      // alignItems: 'flex-start',
     },
     title: {
       marginTop: theme.spacing(1.5),
@@ -59,7 +53,7 @@ const useStyles = hasCover =>
       },
     },
     cta: {
-      marginRight: theme.spacing(1.5),
+      // marginRight: theme.spacing(1.5),
     },
     cover: {
       flex: '0 0 50%',
@@ -91,7 +85,7 @@ export default function Shortcuts({ allPages, allEssentials, pageIndex }) {
                 src
               }
               fluidLandscape: fluid(maxHeight: 500, maxWidth: 800, cropFocus: CENTER, quality: 95, fit: COVER) {
-                ...GatsbyImageSharpFluid
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
             }
             publicURL
@@ -116,7 +110,7 @@ export default function Shortcuts({ allPages, allEssentials, pageIndex }) {
                 src
               }
               fluidLandscape: fluid(maxHeight: 500, maxWidth: 800, cropFocus: CENTER, quality: 95, fit: COVER) {
-                ...GatsbyImageSharpFluid
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
             }
             publicURL
@@ -168,7 +162,7 @@ export default function Shortcuts({ allPages, allEssentials, pageIndex }) {
             <Typography className={classes.cta} color="textSecondary" component="span" variant="body1" display="inline">
               Continue
             </Typography>
-            <IconButton color="primary" edge="start">
+            <IconButton color="primary">
               <ArrowForwardIcon />
             </IconButton>
           </AniLink>

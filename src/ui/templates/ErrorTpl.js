@@ -75,10 +75,10 @@ export const pageQuery = graphql`
               src
             }
             fluid(maxWidth: 2000, quality: 95, cropFocus: CENTER, fit: COVER) {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
             fixed(width: 1400, height: 900, quality: 95, cropFocus: CENTER, fit: COVER) {
-              ...GatsbyImageSharpFixed
+              ...GatsbyImageSharpFixed_withWebp_tracedSVG
             }
           }
           publicURL

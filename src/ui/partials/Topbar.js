@@ -33,6 +33,7 @@ const useStyles = (pageCount, isHovered) =>
     root: {
       ...console.log('doctheme', theme),
       // backgroundColor: isHovered ? colors.shadow[200] : 'transparent',
+      backfaceVisibility: 'hidden',
       backgroundColor: isHovered ? colors.shadow[200] : 'transparent',
       boxShadow: 'none',
       color: theme.palette.text.primary,
@@ -260,13 +261,13 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
                 </Box>
               </Grid>
               <Grid className={classes.right} container item xs spacing={1}>
-                <Grid item>
+                {/* <Grid item>
                   <Tooltip title="Share…">
                     <IconButton>
                       <ShareIcon />
                     </IconButton>
                   </Tooltip>
-                </Grid>
+                </Grid> */}
                 <Grid item>
                   <Tooltip title={allSiteData.motivation.label || 'Take action'}>
                     <a href={allSiteData.motivation.link} target="_blank">

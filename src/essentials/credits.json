@@ -13,10 +13,10 @@
       "id": "001",
       "order": 0,
       "settings": {
-        "align": "center",
+        "align": "left",
         "backgColor": "#000000",
         "backgImage": {
-          "name": "headline-cover-yellow.svg"
+          "name": "headline-cover-black.svg"
         },
         "backgImageEnabled": true,
         "fullSize": true,

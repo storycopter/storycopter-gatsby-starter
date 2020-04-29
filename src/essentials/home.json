@@ -13,16 +13,16 @@
       "id": "001",
       "order": 0,
       "settings": {
-        "align": "center",
-        "backgColor": "#000000",
+        "align": "left",
+        "backgColor": "#ffaa00",
         "backgImage": {
-          "name": "headline-cover-yellow.svg"
+          "name": "headline-cover-black.svg"
         },
         "backgImageEnabled": true,
         "fullSize": true,
-        "maskColor": "rgba(0,0,0,0.0)",
-        "subtitle": "A new interactive documentary production suite for the Web.",
-        "text": "",
+        "maskColor": "rgba(0, 0, 0, 0.5)",
+        "subtitle": "A new interactive documentary production suite for the Web is preparing for take off. ",
+        "text": "Follow ",
         "textColor": "#ffffff",
         "title": "Storycopter"
       },

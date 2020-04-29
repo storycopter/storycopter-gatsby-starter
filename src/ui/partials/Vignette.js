@@ -19,9 +19,10 @@ function HideOnScroll(props) {
 const useStyles = () =>
   makeStyles(theme => ({
     root: {
+      backfaceVisibility: 'hidden',
+      bottom: '-1%',
       boxShadow: `0 0 100px ${colors.shadow[700]} inset`,
       filter: 'blur(1px) grayscale(100%)',
-      bottom: '-1%',
       left: '-6%',
       pointerEvents: 'none',
       position: 'fixed',

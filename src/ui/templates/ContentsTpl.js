@@ -1,94 +1,67 @@
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
-import BackgroundImage from 'gatsby-background-image';
-import HorizontalScroll from 'react-scroll-horizontal';
 import Img from 'gatsby-image';
 import React from 'react';
 import _ from 'lodash';
 import { graphql } from 'gatsby';
 
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import GridList from '@material-ui/core/GridList';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import Container from '@material-ui/core/Container';
+import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/styles/makeStyles';
 import useTheme from '@material-ui/core/styles/useTheme';
 
-const useStyles = (pageCount, isHovered) =>
+const useStyles = () =>
   makeStyles(theme => ({
     root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'space-around',
-      overflow: 'hidden',
-      backgroundColor: theme.palette.background.paper,
-    },
-    gridList: {
-      height: '100vh',
-      width: '100vw',
-      flexWrap: 'nowrap',
-      // padding: theme.spacing(5),
-      position: 'relative',
-      // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-      transform: 'translateZ(0)',
-      // [theme.breakpoints.up('md')]: {
-      // padding: theme.spacing(10),
-      // },
-      // [theme.breakpoints.up('xl')]: {
-      // padding: theme.spacing(15),
-      // },
-    },
-    scroll: {
-      height: '100%',
-      width: '100%',
-      alignItems: 'center',
+      paddingBottom: theme.spacing(15),
+      paddingTop: theme.spacing(15),
+      [theme.breakpoints.only('xs')]: {
+        padding: theme.spacing(3),
+      },
     },
     tile: {
+      marginTop: theme.spacing(15),
+      marginBottom: theme.spacing(15),
       display: 'flex',
-      flexDirection: 'column',
-
-      height: '100vh',
+      flexDirection: 'column-reverse',
       justifyContent: 'center',
-      marginLeft: theme.spacing(10),
-      '&:first-child': {},
-      '&:last-child': {
-        marginRight: theme.spacing(10),
-      },
+      position: 'relative',
+      width: '100%',
       [theme.breakpoints.up('md')]: {
-        marginLeft: theme.spacing(15),
-        '&:last-child': {
-          marginRight: theme.spacing(15),
-        },
+        alignItems: 'center',
+        flexDirection: 'row-reverse',
+        // minHeight: `${100 / 2}vh`,
+      },
+    },
+    text: {
+      flex: '0 0 50%',
+      padding: theme.spacing(3),
+      [theme.breakpoints.up('md')]: {
+        padding: theme.spacing(10),
       },
       [theme.breakpoints.up('xl')]: {
-        marginLeft: theme.spacing(20),
-        '&:last-child': {
-          marginRight: theme.spacing(20),
-        },
+        padding: theme.spacing(15),
       },
     },
-    link: {
-      borderRadius: theme.shape.borderRadius,
-      overflow: 'hidden',
-    },
-    card: {
-      background: 'transparent',
-      height: '50vh',
-      maxHeight: '500px',
-      maxWidth: '400px',
-      minWidth: '280px',
-      minHeight: '400px',
-      padding: `${100 / 3}% ${theme.spacing(1.5)}px ${theme.spacing(1.5)}px`,
-      width: `${100 / 4}vw`,
-    },
     title: {
-      color: theme.palette.primary.light,
+      marginTop: theme.spacing(1),
     },
-    titleBar: {
-      background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+    summary: {
+      marginTop: theme.spacing(1),
+    },
+    cta: {
+      marginTop: theme.spacing(1),
+    },
+    cover: {
+      flex: '0 0 50%',
+      maxHeight: '100%',
+      height: '100%',
+      position: 'relative',
+      width: '100%',
+      [theme.breakpoints.only('xs')]: {
+        marginTop: theme.spacing(1.5),
+      },
     },
   }));
 
@@ -111,57 +84,59 @@ export default function ContentsTpl({
   console.groupEnd();
 
   return (
-    <>
-      <GridList className={classes.gridList} cols={2.5}>
-        <HorizontalScroll
-          // pageLock
-          reverseScroll
-          // config={{ stiffness: int, damping: int }}
-          className={classes.scroll}
-          // animValues={int}
-        >
-          {allPages.map(page => {
-            console.log({ page });
+    <Container className={classes.root} maxWidth={'lg'}>
+      {allPages.map(page => {
+        console.log({ page });
 
-            // construct cover image obj
-            const coverImage = {
-              ...page.coverImage,
-              ..._.find(
-                allPagesFiles.map(e => e.node),
-                o => o.relativeDirectory === page.uid && o.base === page.coverImage.name && page.coverEnabled
-              ),
-            };
-            console.log({ coverImage });
+        // construct cover image obj
+        const coverImage = {
+          ...page.coverImage,
+          ..._.find(
+            allPagesFiles.map(e => e.node),
+            o => o.relativeDirectory === page.uid && o.base === page.coverImage.name && page.coverEnabled
+          ),
+        };
 
-            return (
-              <div className={classes.tile} key={page.uid}>
-                <AniLink className={classes.link} color={theme.palette.primary.main} paintDrip to={page.path}>
-                  <BackgroundImage
+        return (
+          <div
+            className={classes.tile}
+            style={{ justifyContent: coverImage?.childImageSharp ? 'space-between' : 'center' }}
+            key={page.uid}>
+            <div className={classes.text}>
+              <AniLink color={theme.palette.primary.main} paintDrip to={page.path}>
+                <Typography gutterBottom variant="h4" component="h2">
+                  {page.title}
+                </Typography>
+              </AniLink>
+              {page.summary ? (
+                <Typography className={classes.summary} color="textSecondary" component="p" variant="h6">
+                  {page.summary}
+                </Typography>
+              ) : null}
+              <Typography className={classes.cta} color="textSecondary" variant="body1">
+                <AniLink color={theme.palette.primary.main} paintDrip to={page.path}>
+                  Continue
+                </AniLink>
+                <IconButton color="primary">
+                  <ArrowForwardIcon />
+                </IconButton>
+              </Typography>
+            </div>
+            {coverImage.childImageSharp ? (
+              <div className={classes.cover}>
+                <AniLink color={theme.palette.primary.main} paintDrip to={page.path}>
+                  <Img
                     fluid={coverImage.childImageSharp.fluid}
-                    style={{ backgroundPosition: 'bottom right' }}>
-                    <Card className={classes.card}>
-                      <CardContent>
-                        <Typography gutterBottom variant="h4" component="h2">
-                          {page.title}
-                        </Typography>
-                        {page.summary ? (
-                          <Typography variant="body1" color="textSecondary" component="p">
-                            {page.summary}
-                          </Typography>
-                        ) : null}
-                      </CardContent>
-                      <CardActions>
-                        <Button size="small">Continue</Button>
-                      </CardActions>
-                    </Card>
-                  </BackgroundImage>
+                    imgStyle={{ objectFit: 'contain' }}
+                    style={{ maxHeight: '100%' }}
+                  />
                 </AniLink>
               </div>
-            );
-          })}
-        </HorizontalScroll>
-      </GridList>
-    </>
+            ) : null}
+          </div>
+        );
+      })}
+    </Container>
   );
 }
 
@@ -203,10 +178,10 @@ export const pageQuery = graphql`
               src
             }
             fluid(maxWidth: 2000, quality: 95, cropFocus: CENTER, fit: COVER) {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
             fixed(width: 1400, height: 900, quality: 95, cropFocus: CENTER, fit: COVER) {
-              ...GatsbyImageSharpFixed
+              ...GatsbyImageSharpFixed_withWebp_tracedSVG
             }
           }
           publicURL
@@ -226,8 +201,8 @@ export const pageQuery = graphql`
               originalName
               src
             }
-            fluid: fluid(maxHeight: 500, maxWidth: 400, cropFocus: CENTER, quality: 95, fit: COVER) {
-              ...GatsbyImageSharpFluid
+            fluid: fluid(maxHeight: 500, maxWidth: 800, cropFocus: CENTER, quality: 95, fit: COVER) {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
           publicURL

@@ -29,10 +29,10 @@ export default function Layout({
                 src
               }
               fluid(maxHeight: 800, quality: 95, cropFocus: CENTER, fit: COVER) {
-                ...GatsbyImageSharpFluid
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
               fixed(height: 800, quality: 95, cropFocus: CENTER, fit: COVER) {
-                ...GatsbyImageSharpFixed
+                ...GatsbyImageSharpFixed_withWebp_tracedSVG
               }
             }
             publicURL

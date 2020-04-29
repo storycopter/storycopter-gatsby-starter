@@ -96,13 +96,13 @@ export const pageQuery = graphql`
               src
             }
             fluid: fluid(maxHeight: 800, quality: 95, cropFocus: CENTER, fit: COVER) {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
             fixed: fixed(height: 800, quality: 95, cropFocus: CENTER, fit: COVER) {
-              ...GatsbyImageSharpFixed
+              ...GatsbyImageSharpFixed_withWebp_tracedSVG
             }
             fluidLandscape: fluid(maxHeight: 500, maxWidth: 800, cropFocus: CENTER, quality: 95, fit: COVER) {
-              ...GatsbyImageSharpFluid
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
           publicURL

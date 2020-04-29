@@ -21,12 +21,13 @@ import SoundIcon from '@ui/elements/icons/SoundIcon';
 const useStyles = () =>
   makeStyles(theme => ({
     root: {
+      backfaceVisibility: 'hidden',
       background: 'transparent',
-      pointerEvents: 'none',
       bottom: 0,
       boxShadow: 'none',
       color: theme.palette.text.primary,
       padding: theme.spacing(1),
+      pointerEvents: 'none',
       top: 'auto',
       transition: `background ${theme.transitions.duration.standard}ms`,
       zIndex: 200,

@@ -111,22 +111,15 @@ const useStyles = (align, backgColor, backgImage, backgImageEnabled, fullSize, m
     },
     actionbar: {
       display: 'flex',
-      flexDirection: 'row',
+      flexDirection: align === 'center' ? 'row-reverse' : 'row',
       justifyContent: align === 'center' ? 'center' : 'flex-start',
-      marginTop: theme.spacing(2),
-      left: 0,
-      position: 'absolute',
-      right: 0,
-      top: '100%',
-      [theme.breakpoints.up('md')]: {
-        marginTop: theme.spacing(3),
-        flexDirection: 'row',
-        justifyContent: align === 'center' ? 'center' : 'flex-start',
-        // position: 'relative',
-      },
-      [theme.breakpoints.up('xl')]: {
-        // marginTop: theme.spacing(3),
-      },
+      marginTop: theme.spacing(5),
+      // [theme.breakpoints.up('sm')]: {
+      //   left: 0,
+      //   position: 'absolute',
+      //   right: 0,
+      //   top: '100%',
+      // },
     },
   }));
 
@@ -167,7 +160,7 @@ export default function Headline({
   return (
     <>
       <div className={classes.root} style={style}>
-        <Container className={classes.child} maxWidth={false}>
+        <Container className={classes.child} maxWidth={'lg'}>
           <div className={classes.headlineContent}>
             {isEditable || props.title ? (
               <Typography className={classes.headlineTitle} component="div" variant="h1" style={{ color: textColor }}>
