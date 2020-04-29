@@ -28,7 +28,7 @@ const useStyles = hasCover =>
         alignItems: 'center',
         flexDirection: 'row-reverse',
         justifyContent: hasCover ? 'space-between' : 'center',
-        minHeight: '50vh',
+        // minHeight: '50vh',
       },
     },
     text: {
@@ -61,9 +61,6 @@ const useStyles = hasCover =>
       height: '100%',
       position: 'relative',
       width: '100%',
-      [theme.breakpoints.only('xs')]: {
-        marginTop: theme.spacing(1.5),
-      },
     },
   }));
 

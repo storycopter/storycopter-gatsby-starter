@@ -2,7 +2,7 @@
   "meta": {
     "coverEnabled": true,
     "coverImage": {
-      "name": "cover.png"
+      "name": "storycopter-cover-black.png"
     },
     "order": 1,
     "path": "/beginning",
@@ -14,16 +14,16 @@
     {
       "settings": {
         "align": "center",
-        "backgColor": "#efb43f",
+        "backgColor": "#ffffff",
         "backgImage": {
-          "name": null
+          "name": "storycopter-cover-white.png"
         },
-        "backgImageEnabled": false,
+        "backgImageEnabled": true,
         "fullSize": true,
         "maskColor": null,
         "subtitle": "A subtitle",
         "text": "Some text",
-        "textColor": "#ffffff",
+        "textColor": "#000000",
         "title": "Beginning"
       },
       "type": "headline",

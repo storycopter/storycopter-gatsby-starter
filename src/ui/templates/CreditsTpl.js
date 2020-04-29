@@ -12,37 +12,7 @@ import useTheme from '@material-ui/styles/useTheme';
 import componentMap from '@ui/components/componentMap';
 import constructImageObj from '@ui/utils/constructImageObj';
 
-const useStyles = (pageCount, isHovered) =>
-  makeStyles(theme => ({
-    actionbar: {
-      display: 'flex',
-      flexDirection: 'row',
-      marginTop: theme.spacing(2),
-      position: 'absolute',
-      top: '100%',
-      [theme.breakpoints.up('md')]: {
-        alignItems: 'center',
-        flexDirection: 'row',
-        position: 'relative',
-        top: 'auto',
-      },
-    },
-    cta: {
-      marginTop: theme.spacing(1.5),
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
-      '&:first-child': {
-        marginLeft: 0,
-      },
-      '&:last-child': {
-        marginRight: 0,
-      },
-      [theme.breakpoints.up('md')]: {
-        marginLeft: theme.spacing(1.5),
-        marginRight: theme.spacing(1.5),
-      },
-    },
-  }));
+const useStyles = (pageCount, isHovered) => makeStyles(theme => ({}));
 
 export default function CreditsTpl({
   data: {
@@ -79,7 +49,7 @@ export default function CreditsTpl({
             backgImage={backgImage}
             fullSize
             children={
-              <div className={classes.actionbar}>
+              <>
                 {motivation?.enabled && motivation?.label?.length > 0 && motivation.link?.length > 0 ? (
                   <a className={classes.cta} href={motivation.link}>
                     <Button
@@ -104,7 +74,7 @@ export default function CreditsTpl({
                     Return home
                   </Button>
                 </AniLink>
-              </div>
+              </>
             }
           />
         );

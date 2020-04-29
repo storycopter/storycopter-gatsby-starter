@@ -114,12 +114,16 @@ const useStyles = (align, backgColor, backgImage, backgImageEnabled, fullSize, m
       flexDirection: align === 'center' ? 'row-reverse' : 'row',
       justifyContent: align === 'center' ? 'center' : 'flex-start',
       marginTop: theme.spacing(5),
-      // [theme.breakpoints.up('sm')]: {
-      //   left: 0,
-      //   position: 'absolute',
-      //   right: 0,
-      //   top: '100%',
-      // },
+      '& > * ': {
+        marginLeft: theme.spacing(2),
+        marginRight: theme.spacing(2),
+      },
+      '& > *:first-child': {
+        marginLeft: align !== 'center' ? 0 : theme.spacing(2),
+      },
+      '& > *:last-child': {
+        marginRight: align !== 'center' ? 0 : theme.spacing(2),
+      },
     },
   }));
 

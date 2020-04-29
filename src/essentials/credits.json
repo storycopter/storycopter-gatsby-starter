@@ -2,7 +2,7 @@
   "meta": {
     "coverEnabled": true,
     "coverImage": {
-      "name": "cover.png"
+      "name": "storycopter-cover-yellow.png"
     },
     "path": "/credits",
     "title": "Credits",
@@ -16,12 +16,12 @@
         "align": "left",
         "backgColor": "#000000",
         "backgImage": {
-          "name": "headline-cover-black.svg"
+          "name": "storycopter-cover-yellow.png"
         },
         "backgImageEnabled": true,
         "fullSize": true,
         "maskColor": null,
-        "subtitle": "",
+        "subtitle": "Storycopter is an open-source project brought to you by Piotr Fedorczyk, Joanna Bogusz, Laurian Gridinoc and Mark Boas.",
         "text": "Storycopter is an open-source project brought to you by Piotr Fedorczyk, Joanna Bogusz, Laurian Gridinoc and Mark Boas.",
         "textColor": "#ffffff",
         "title": "Credits"

@@ -12,40 +12,7 @@ import useTheme from '@material-ui/styles/useTheme';
 import componentMap from '@ui/components/componentMap';
 import constructImageObj from '@ui/utils/constructImageObj';
 
-const useStyles = (pageCount, isHovered) =>
-  makeStyles(theme => ({
-    actionbar: {
-      display: 'flex',
-      flexDirection: 'row',
-      marginTop: theme.spacing(2),
-      position: 'absolute',
-      top: '100%',
-      [theme.breakpoints.up('md')]: {
-        alignItems: 'center',
-        flexDirection: 'row',
-        position: 'relative',
-        top: 'auto',
-      },
-    },
-    cta: {
-      marginLeft: theme.spacing(2),
-      marginRight: theme.spacing(2),
-      '&:first-child': {
-        marginLeft: 0,
-      },
-      '&:last-child': {
-        marginRight: 0,
-      },
-      // [theme.breakpoints.up('md')]: {
-      //   '&:first-child': {
-      //     marginLeft: 0,
-      //   },
-      //   '&:last-child': {
-      //     marginRight: 0,
-      //   },
-      // },
-    },
-  }));
+const useStyles = (pageCount, isHovered) => makeStyles(theme => ({}));
 
 export default function HomeTpl({
   data: {
@@ -93,11 +60,7 @@ export default function HomeTpl({
             children={
               allPages.length > 1 ? (
                 <>
-                  <AniLink
-                    color={theme.palette.primary.main}
-                    paintDrip
-                    className={classes.cta}
-                    to={_.sortBy(allPages, o => o.order)[0].path}>
+                  <AniLink color={theme.palette.primary.main} paintDrip to={_.sortBy(allPages, o => o.order)[0].path}>
                     <Button
                       component="span"
                       style={{
@@ -108,7 +71,7 @@ export default function HomeTpl({
                       Continue
                     </Button>
                   </AniLink>
-                  <AniLink color={theme.palette.primary.main} paintDrip className={classes.cta} to={'/contents'}>
+                  <AniLink color={theme.palette.primary.main} paintDrip to={'/contents'}>
                     <Button
                       component="span"
                       style={{
