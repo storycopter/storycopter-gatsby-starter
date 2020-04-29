@@ -13,8 +13,6 @@ module.exports = {
   // },
   resolve: {
     alias: {
-      '@material-ui/core': '@material-ui/core',
-      '@material-ui/icons': '@material-ui/icons',
       '@ui': path.resolve(__dirname, 'src/ui/'),
     },
   },
@@ -55,8 +53,12 @@ module.exports = {
         commonjs2: 'styled-components',
         commonjs: 'styled-components',
       },
+      polished: {
+        amd: 'polished',
+        commonjs2: 'polished',
+        commonjs: 'polished',
+      },
     },
-    /@material-ui\/core\/.*/,
-    /@material-ui\/icons\/.*/,
+    /^@material-ui\/(core|icons)[\/a-zA-Z]*/,
   ],
 };

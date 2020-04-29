@@ -15,7 +15,7 @@ import useTheme from '@material-ui/core/styles/useTheme';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 import CreditsIcon from '@ui/elements/icons/CreditsIcon';
-import FullScreenIcon from '@ui/elements/icons/FullScreenIcon';
+// import FullScreenIcon from '@ui/elements/icons/FullScreenIcon';
 import SoundIcon from '@ui/elements/icons/SoundIcon';
 
 const useStyles = () =>

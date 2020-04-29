@@ -1,5 +1,4 @@
 import AniLink from 'gatsby-plugin-transition-link/AniLink';
-import BackgroundImage from 'gatsby-background-image';
 import Img from 'gatsby-image';
 import React from 'react';
 import _ from 'lodash';

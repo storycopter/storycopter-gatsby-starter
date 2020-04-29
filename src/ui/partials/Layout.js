@@ -1,4 +1,3 @@
-// import Fullscreen from 'react-full-screen';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
@@ -46,8 +45,6 @@ export default function Layout({
 
   const isEssential = ['contents', 'credits', 'error', 'home'].includes(props.data.page.meta.uid);
 
-  // const [fullScreen, setFullScreen] = useState(false);
-
   const audio = sound.enabled && sound.track.name ? `/${sound.track.name}` : null;
   const favicon = brand.favicon.name ? `/${brand.favicon.name}` : null;
   const image = brand.coverEnabled && brand.cover.name ? `/${brand.cover.name}` : null;
@@ -64,8 +61,6 @@ export default function Layout({
     pageData,
     props,
   };
-
-  // <Fullscreen enabled={fullScreen} onChange={val => setFullScreen(val)}></Fullscreen>;
 
   return (
     <ThemeProvider theme={constructTheme(brand)}>
