@@ -23,8 +23,8 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 import PointerIcon from '@ui/elements/icons/PointerIcon';
 import ShareIcon from '@ui/elements/icons/ShareIcon';
-import colors from '@ui/settings/colors';
 import constructImageObj from '@ui/utils/constructImageObj';
+import { colors } from '@ui';
 
 const PAGE_DETAILS_CARD_WIDTH = 200;
 
@@ -92,7 +92,7 @@ const useStyles = (pageCount, isHovered) =>
       right: 0,
     },
     breadcrumbsProgress: {
-      background: colors.grey[100],
+      background: colors.mono[100],
       height: '2px',
       transform: 'translateY(-1px)',
     },

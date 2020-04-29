@@ -1,8 +1,8 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { darken, lighten } from 'polished';
 
-import colors from '@ui/settings/colors';
 import setType from '@ui/mixins/setType';
+import { colors } from '@ui';
 
 const mui = createMuiTheme();
 

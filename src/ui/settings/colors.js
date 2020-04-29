@@ -1,7 +1,7 @@
 import { darken, lighten } from 'polished';
 
 export default {
-  grey: {
+  mono: {
     100: lighten(0.48, '#7e7e7e'),
     200: lighten(0.36, '#7e7e7e'),
     300: lighten(0.24, '#7e7e7e'),
@@ -40,11 +40,26 @@ export default {
   },
 
   primary: {
-    main: '#ffa900',
-    light: '#f4b64c',
+    100: lighten(0.48, '#ffa900'),
+    200: lighten(0.36, '#ffa900'),
+    300: lighten(0.24, '#ffa900'),
+    400: lighten(0.12, '#ffa900'),
+    500: '#ffa900',
+    600: darken(0.12, '#ffa900'),
+    700: darken(0.24, '#ffa900'),
+    800: darken(0.36, '#ffa900'),
+    900: darken(0.48, '#ffa900'),
   },
-  complimentary: {
-    main: '#6045ff',
+  secondary: {
+    100: lighten(0.48, '#6045ff'),
+    200: lighten(0.36, '#6045ff'),
+    300: lighten(0.24, '#6045ff'),
+    400: lighten(0.12, '#6045ff'),
+    500: '#6045ff',
+    600: darken(0.12, '#6045ff'),
+    700: darken(0.24, '#6045ff'),
+    800: darken(0.36, '#6045ff'),
+    900: darken(0.48, '#6045ff'),
   },
   common: {
     black: '#000000',

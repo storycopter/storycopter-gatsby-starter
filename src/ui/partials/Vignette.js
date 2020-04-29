@@ -4,7 +4,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Fade from '@material-ui/core/Fade';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
-import colors from '@ui/settings/colors';
+import { colors } from '@ui';
 
 function HideOnScroll(props) {
   const { children, window } = props;
