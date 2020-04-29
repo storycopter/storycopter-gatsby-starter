@@ -77,16 +77,16 @@ export default function ContentsTpl({
   const theme = useTheme();
   const classes = useStyles()();
 
-  console.group('ContentsTpl.js');
-  console.log('allPagesFiles', allPagesFiles);
-  console.log('theme', theme);
-  console.log('allPages', allPages);
-  console.groupEnd();
+  // console.group('ContentsTpl.js');
+  // console.log('allPagesFiles', allPagesFiles);
+  // console.log('theme', theme);
+  // console.log('allPages', allPages);
+  // console.groupEnd();
 
   return (
     <Container className={classes.root} maxWidth={'lg'}>
       {allPages.map(page => {
-        console.log({ page });
+        // console.log({ page });
 
         // construct cover image obj
         const coverImage = {
