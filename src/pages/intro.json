@@ -17,7 +17,6 @@
       "settings": {
         "backgColor": "#ccc",
         "fullSize": true,
-        "maskColor": null,
         "image": {
           "name": "image-h.png"
         },
@@ -32,7 +31,6 @@
       "settings": {
         "backgColor": "#ffffff",
         "fullSize": true,
-        "maskColor": null,
         "image": {
           "name": "image-v.png"
         },
@@ -47,7 +45,6 @@
       "settings": {
         "backgColor": "#ccc",
         "fullSize": false,
-        "maskColor": null,
         "image": {
           "name": "image-h.png"
         },
@@ -62,7 +59,6 @@
       "settings": {
         "backgColor": "cyan",
         "fullSize": false,
-        "maskColor": null,
         "image": {
           "name": "image-v.png"
         },

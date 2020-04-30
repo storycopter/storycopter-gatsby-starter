@@ -99,41 +99,39 @@ export default function Figure({
   // console.groupEnd();
 
   return (
-    <div>
-      <div
-        className={classes.root}
-        style={{
-          ...props?.style,
-          backgroundColor: backgColor || 'transparent',
-          minHeight: fullSize ? '100vh' : 'auto',
-        }}>
-        <div className={classes.child}>
-          <figure
-            className={classes.mask}
-            style={{
-              height: fullSize ? `${winDimensions?.wh}px` : `auto`,
-            }}>
-            <div className={classes.object}>
-              {image?.childImageSharp ? (
-                <Img
-                  alt={title}
-                  fluid={image?.childImageSharp?.fluid}
-                  style={{
-                    height: objDimensions?.oh,
-                    width: objDimensions?.ow,
-                  }}
-                />
-              ) : (
-                <img alt={title} src={image.publicURL} style={{ maxHeight: '300px', height: '33vh' }} />
-              )}
-            </div>
-            <figcaption className={classes.caption}>
-              <Typography align="center" component="p" style={textColor ? { color: textColor } : null} variant="h6">
-                {title}
-              </Typography>
-            </figcaption>
-          </figure>
-        </div>
+    <div
+      className={classes.root}
+      style={{
+        backgroundColor: backgColor || 'transparent',
+        minHeight: fullSize ? '100vh' : 'auto',
+        ...props?.style,
+      }}>
+      <div className={classes.child}>
+        <figure
+          className={classes.mask}
+          style={{
+            height: fullSize ? `${winDimensions?.wh}px` : `auto`,
+          }}>
+          <div className={classes.object}>
+            {image?.childImageSharp ? (
+              <Img
+                alt={title}
+                fluid={image?.childImageSharp?.fluid}
+                style={{
+                  height: objDimensions?.oh,
+                  width: objDimensions?.ow,
+                }}
+              />
+            ) : (
+              <img alt={title} src={image.publicURL} style={{ maxHeight: '300px', height: '33vh' }} />
+            )}
+          </div>
+          <figcaption className={classes.caption}>
+            <Typography align="center" component="p" style={textColor ? { color: textColor } : null} variant="h6">
+              {title}
+            </Typography>
+          </figcaption>
+        </figure>
       </div>
     </div>
   );

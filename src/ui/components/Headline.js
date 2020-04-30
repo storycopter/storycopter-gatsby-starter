@@ -161,87 +161,81 @@ export default function Headline({
   // console.groupEnd();
 
   return (
-    <>
-      <div
-        className={classes.root}
-        style={{
-          ...style,
-          backgroundImage: backgImageEnabled && backgImage?.name ? `url("${backgImage.publicURL}")` : 'none',
-        }}>
-        <Container className={classes.child} maxWidth={'lg'}>
-          <div className={classes.headlineContent}>
-            {isEditable || props.title ? (
-              <Typography className={classes.headlineTitle} component="div" variant="h1" style={{ color: textColor }}>
-                {isEditable ? (
-                  <TextField
-                    {...textFieldProps}
-                    defaultValue={props.title}
-                    id="title"
-                    inputProps={{
-                      className: classes.headlineTitleInput,
-                      maxLength: 150,
-                      onBlur: e => onInputBlur(e, 'title'),
-                      style: { textAlign: align === 'center' ? 'center' : 'left', color: textColor },
-                    }}
-                    name="title"
-                    placeholder="Add title…"
-                  />
-                ) : (
-                  <h1>{props.title}</h1>
-                )}
-              </Typography>
-            ) : null}
-            {isEditable || props.subtitle ? (
-              <Typography
-                className={classes.headlineSubtitle}
-                component="div"
-                variant="h3"
-                style={{ color: textColor }}>
-                {isEditable ? (
-                  <TextField
-                    {...textFieldProps}
-                    defaultValue={props.subtitle}
-                    id="subtitle"
-                    inputProps={{
-                      className: classes.headlineSubtitleInput,
-                      maxLength: 150,
-                      onBlur: e => onInputBlur(e, 'subtitle'),
-                      style: { textAlign: align === 'center' ? 'center' : 'left', color: textColor },
-                    }}
-                    name="subtitle"
-                    placeholder="Add subtitle…"
-                  />
-                ) : (
-                  <h2>{props.subtitle}</h2>
-                )}
-              </Typography>
-            ) : null}
-            {isEditable || props.text ? (
-              <Typography className={classes.headlineText} component="div" variant="h5" style={{ color: textColor }}>
-                {isEditable ? (
-                  <TextField
-                    {...textFieldProps}
-                    defaultValue={props.text}
-                    id="text"
-                    inputProps={{
-                      className: classes.headlineTextInput,
-                      maxLength: 250,
-                      onBlur: e => onInputBlur(e, 'text'),
-                      style: { textAlign: align === 'center' ? 'center' : 'left', color: textColor },
-                    }}
-                    name="text"
-                    placeholder="Add text…"
-                  />
-                ) : (
-                  <p>{props.text}</p>
-                )}
-              </Typography>
-            ) : null}
-            {children ? <div className={classes.actionbar}>{children}</div> : null}
-          </div>
-        </Container>
-      </div>
-    </>
+    <div
+      className={classes.root}
+      style={{
+        backgroundImage: backgImageEnabled && backgImage?.name ? `url("${backgImage.publicURL}")` : 'none',
+        ...style,
+      }}>
+      <Container className={classes.child} maxWidth={'lg'}>
+        <div className={classes.headlineContent}>
+          {isEditable || props.title ? (
+            <Typography className={classes.headlineTitle} component="div" variant="h1" style={{ color: textColor }}>
+              {isEditable ? (
+                <TextField
+                  {...textFieldProps}
+                  defaultValue={props.title}
+                  id="title"
+                  inputProps={{
+                    className: classes.headlineTitleInput,
+                    maxLength: 150,
+                    onBlur: e => onInputBlur(e, 'title'),
+                    style: { textAlign: align === 'center' ? 'center' : 'left', color: textColor },
+                  }}
+                  name="title"
+                  placeholder="Add title…"
+                />
+              ) : (
+                <h1>{props.title}</h1>
+              )}
+            </Typography>
+          ) : null}
+          {isEditable || props.subtitle ? (
+            <Typography className={classes.headlineSubtitle} component="div" variant="h3" style={{ color: textColor }}>
+              {isEditable ? (
+                <TextField
+                  {...textFieldProps}
+                  defaultValue={props.subtitle}
+                  id="subtitle"
+                  inputProps={{
+                    className: classes.headlineSubtitleInput,
+                    maxLength: 150,
+                    onBlur: e => onInputBlur(e, 'subtitle'),
+                    style: { textAlign: align === 'center' ? 'center' : 'left', color: textColor },
+                  }}
+                  name="subtitle"
+                  placeholder="Add subtitle…"
+                />
+              ) : (
+                <h2>{props.subtitle}</h2>
+              )}
+            </Typography>
+          ) : null}
+          {isEditable || props.text ? (
+            <Typography className={classes.headlineText} component="div" variant="h5" style={{ color: textColor }}>
+              {isEditable ? (
+                <TextField
+                  {...textFieldProps}
+                  defaultValue={props.text}
+                  id="text"
+                  inputProps={{
+                    className: classes.headlineTextInput,
+                    maxLength: 250,
+                    onBlur: e => onInputBlur(e, 'text'),
+                    style: { textAlign: align === 'center' ? 'center' : 'left', color: textColor },
+                  }}
+                  name="text"
+                  placeholder="Add text…"
+                />
+              ) : (
+                <p>{props.text}</p>
+              )}
+            </Typography>
+          ) : null}
+          {children ? <div className={classes.actionbar}>{children}</div> : null}
+        </div>
+      </Container>
+    </div>
   );
 }
 
