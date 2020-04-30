@@ -1,6 +1,6 @@
 # Storycopter Doc starter
 
-[Playground](https://storycopter-doc.netlify.app/)
+[Playground](https://storycopter-idoc.netlify.app/)
 
 ## Local dev env: 
 
