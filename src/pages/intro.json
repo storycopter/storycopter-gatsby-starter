@@ -12,8 +12,68 @@
   },
   "elements": [
     {
+      "id": "000",
+      "order": 0.1,
+      "settings": {
+        "backgColor": "#ccc",
+        "fullSize": true,
+        "maskColor": null,
+        "image": {
+          "name": "image-h.png"
+        },
+        "textColor": "#fff",
+        "title": "This is a rather lengthy figure caption so we could test how such lengthy figure captions appear under respective image."
+      },
+      "type": "figure"
+    },
+    {
+      "id": "00334",
+      "order": 0.2,
+      "settings": {
+        "backgColor": "#ffffff",
+        "fullSize": true,
+        "maskColor": null,
+        "image": {
+          "name": "image-v.png"
+        },
+        "textColor": null,
+        "title": "Intro"
+      },
+      "type": "figure"
+    },
+    {
+      "id": "000334",
+      "order": 0.3,
+      "settings": {
+        "backgColor": "#ccc",
+        "fullSize": false,
+        "maskColor": null,
+        "image": {
+          "name": "image-h.png"
+        },
+        "textColor": "#fff",
+        "title": "This is a rather lengthy figure caption so we could test how such lengthy figure captions appear under respective image."
+      },
+      "type": "figure"
+    },
+    {
+      "id": "00r334",
+      "order": 0.5,
+      "settings": {
+        "backgColor": "cyan",
+        "fullSize": false,
+        "maskColor": null,
+        "image": {
+          "name": "image-v.png"
+        },
+        "textColor": null,
+        "title": "Intro"
+      },
+      "type": "figure"
+    },
+    {
       "id": "001",
-      "order": 0,
+      "order": 7,
       "settings": {
         "align": "center",
         "backgColor": "#ffffff",

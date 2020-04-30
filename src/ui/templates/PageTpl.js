@@ -43,7 +43,18 @@ export default function PageTpl({
           ...constructImageObj(pageFiles, image.name),
         }));
 
-        return <Component {...settings} key={`${pageMeta.uid}-${id}`} backgImage={backgImage} images={images} />;
+        // construct image object
+        const image = { ...settings?.image, ...constructImageObj(pageFiles, settings?.image?.name) };
+
+        return (
+          <Component
+            {...settings}
+            backgImage={backgImage}
+            image={image}
+            images={images}
+            key={`${pageMeta.uid}-${id}`}
+          />
+        );
       })}
       <Shortcuts allPages={allPages} allEssentials={allEssentials} pageIndex={pageIndex} />
     </>
@@ -69,8 +80,10 @@ export const pageQuery = graphql`
           backgImage {
             name
           }
+          image {
+            name
+          }
           images {
-            backgImageEnabled
             caption
             name
             order
