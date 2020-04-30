@@ -4,14 +4,42 @@
     "coverImage": {
       "name": "storycopter-cover-black.png"
     },
-    "order": 1,
+    "order": 0,
     "path": "/beginning",
-    "summary": "A page summary",
     "title": "Beginning",
-    "uid": "beginning"
+    "uid": "beginning",
+    "summary": "Short page summary"
   },
   "elements": [
     {
+      "id": "004",
+      "order": 0,
+      "settings": {
+        "backgColor": null,
+        "fullSize": true,
+        "maskColor": "rgba(255, 255, 255, 0.6)",
+        "images": [
+          {
+            "backgImageEnabled": true,
+            "caption": "Horizontal Image",
+            "name": "image-h.png",
+            "order": 0
+          },
+          {
+            "backgImageEnabled": true,
+            "caption": "Vertical Image",
+            "name": "image-v.png",
+            "order": 1
+          }
+        ],
+        "textColor": "#000000",
+        "align": "right"
+      },
+      "type": "slideshow"
+    },
+    {
+      "id": "001",
+      "order": 1,
       "settings": {
         "align": "center",
         "backgColor": "#ffffff",
@@ -24,11 +52,54 @@
         "subtitle": "A subtitle",
         "text": "Some text",
         "textColor": "#000000",
-        "title": "Beginning"
+        "title": "Intro"
       },
-      "type": "headline",
-      "id": "beginning-1588013069796",
-      "order": 0
+      "type": "headline"
+    },
+    {
+      "id": "000",
+      "order": 2,
+      "settings": {
+        "backgColor": "#ccc",
+        "fullSize": true,
+        "image": {
+          "name": "image-h.png"
+        },
+        "textColor": "#fff",
+        "title": "Image caption"
+      },
+      "type": "figure"
+    },
+    {
+      "id": "002",
+      "order": 3,
+      "settings": {
+        "backgColor": null,
+        "fullSize": null,
+        "maskColor": "rgba(255, 255, 255, 0.6)",
+        "images": [
+          {
+            "backgImageEnabled": true,
+            "order": 0,
+            "caption": "Horizontal Image",
+            "name": "image-h.png"
+          },
+          {
+            "backgImageEnabled": false,
+            "order": 1,
+            "caption": "Horizontal Image",
+            "name": "image-h.png"
+          },
+          {
+            "backgImageEnabled": true,
+            "order": 2,
+            "caption": "Vertical Image",
+            "name": "image-v.png"
+          }
+        ],
+        "textColor": "#000000"
+      },
+      "type": "slideshow"
     }
   ]
 }

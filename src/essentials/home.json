@@ -21,10 +21,10 @@
         "backgImageEnabled": true,
         "fullSize": true,
         "maskColor": "rgba(0,0,0,0.0)",
-        "subtitle": "A new interactive documentary production suite for the Web is preparing for take off. ",
-        "text": "Follow ",
+        "subtitle": "This is a web document created with Storycopter.",
+        "text": "Continue to discover features of a typical Storycopter project.",
         "textColor": "#ffffff",
-        "title": "Storycopter"
+        "title": "Hello world"
       },
       "type": "headline"
     }
