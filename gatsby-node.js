@@ -5,7 +5,7 @@ exports.onCreateWebpackConfig = ({ actions, getConfig, stage }) => {
   const config = getConfig();
   config.resolve.alias = {
     ...config.resolve.alias,
-    '@ui': path.resolve(__dirname, 'src/ui/'),
+    '@ui': path.resolve(__dirname, 'src/ui'),
   };
 };
 

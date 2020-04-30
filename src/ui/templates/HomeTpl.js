@@ -5,54 +5,49 @@ import { graphql } from 'gatsby';
 import { lighten } from 'polished';
 
 import Button from '@material-ui/core/Button';
-import makeStyles from '@material-ui/core/styles/makeStyles';
 import useTheme from '@material-ui/core/styles/useTheme';
 
 import { componentMap } from '@ui';
 import constructImageObj from '@ui/utils/constructImageObj';
 
-const useStyles = (pageCount, isHovered) => makeStyles(theme => ({}));
-
 export default function HomeTpl({
   data: {
-    page: { elements: pageElements, meta: pageMeta },
-    files: { edges: pageFiles },
+    page: { elements, meta },
+    files,
   },
-  pageContext: { allEssentials, allPages, allSiteData },
-  ...pageProps
+  pageContext: { allPages },
+  ...props
 }) {
-  const { brand } = allSiteData;
-  const classes = useStyles()();
   const theme = useTheme();
 
   // console.group('HomeTpl.js');
-  // console.log('pageMeta', pageMeta);
+  // console.log('meta', meta);
   // console.log('pageContext', pageContext);
-  // console.log('pageFiles', pageFiles);
-  // console.log('brand', brand);
+  // console.log('files.edges', files.edges);
+  // console.log(elements[0].settings.title);
   // console.groupEnd();
 
   return (
     <>
-      {_.sortBy(pageElements, [o => o.order]).map(({ id, type, settings }, i) => {
+      {_.sortBy(elements, [o => o.order]).map(({ id, type, settings }, i) => {
         const Component = componentMap[type];
 
         // construct backgImage object
         const backgImage = {
           ...settings?.backgImage,
-          ...constructImageObj(pageFiles, settings?.backgImage?.name),
+          ...constructImageObj(files.edges, settings?.backgImage?.name),
         };
 
         // construct images object (e.g. Gallery)
         const images = settings?.images?.map(image => ({
           ...image,
-          ...constructImageObj(pageFiles, image.name),
+          ...constructImageObj(files.edges, image.name),
         }));
 
         return (
           <Component
             {...settings}
-            key={`${pageMeta.uid}-${id}`}
+            key={`${meta.uid}-${id}`}
             backgImage={backgImage}
             images={images}
             fullSize
@@ -70,8 +65,8 @@ export default function HomeTpl({
                     </span>
                   ))}
                   style={{
-                    background: pageElements[0].settings.backgColor,
-                    color: pageElements[0].settings.textColor,
+                    background: elements[0].settings.backgColor,
+                    color: elements[0].settings.textColor,
                   }}
                   variant="contained">
                   Continue
@@ -84,8 +79,8 @@ export default function HomeTpl({
                       </span>
                     ))}
                     style={{
-                      background: lighten(0.4, pageElements[0].settings.backgColor),
-                      color: pageElements[0].settings.textColor,
+                      background: lighten(0.4, elements[0].settings.backgColor),
+                      color: elements[0].settings.textColor,
                     }}
                     variant="contained">
                     Explore

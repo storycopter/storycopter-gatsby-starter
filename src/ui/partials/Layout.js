@@ -4,11 +4,10 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 import { ThemeProvider } from '@material-ui/core/styles';
 
-import { Baseline } from '@ui';
 import Foobar from '@ui/partials/Foobar';
 import Topbar from '@ui/partials/Topbar';
 import Vignette from '@ui/partials/Vignette';
-import constructTheme from '@ui/utils/constructTheme';
+import { Baseline, constructTheme } from '@ui';
 
 export default function Layout({
   pageContext: { allEssentials, allPages, allSiteData },
@@ -49,10 +48,10 @@ export default function Layout({
   const favicon = brand.favicon.name ? `/${brand.favicon.name}` : null;
   const image = brand.coverEnabled && brand.cover.name ? `/${brand.cover.name}` : null;
 
-  // console.group('Layout.js');
-  // console.log({ allSiteData });
+  console.group('Layout.js');
+  console.log(props.data.page.elements[0].settings.title);
   // console.log({ props });
-  // console.groupEnd();
+  console.groupEnd();
 
   const barProps = {
     allPages,
