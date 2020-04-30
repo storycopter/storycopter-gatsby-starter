@@ -17,7 +17,7 @@ export default function PageTpl({
   const pageIndex = _.findIndex(allPages, o => o.uid === pageMeta.uid);
 
   // console.group('PageTpl.js');
-  // console.log('allPages', allPages);
+  // console.log('pageFiles', pageFiles);
   // console.log('nextPage', nextPage);
   // console.log('whaterver', whaterver);
   // console.log('allSiteData', allSiteData);

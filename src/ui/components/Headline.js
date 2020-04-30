@@ -179,7 +179,7 @@ export default function Headline({
                   id="title"
                   inputProps={{
                     className: classes.headlineTitleInput,
-                    maxLength: 150,
+                    maxLength: 500,
                     onBlur: e => onInputBlur(e, 'title'),
                     style: { textAlign: align === 'center' ? 'center' : 'left', color: textColor },
                   }}
@@ -200,7 +200,7 @@ export default function Headline({
                   id="subtitle"
                   inputProps={{
                     className: classes.headlineSubtitleInput,
-                    maxLength: 150,
+                    maxLength: 500,
                     onBlur: e => onInputBlur(e, 'subtitle'),
                     style: { textAlign: align === 'center' ? 'center' : 'left', color: textColor },
                   }}
@@ -221,7 +221,7 @@ export default function Headline({
                   id="text"
                   inputProps={{
                     className: classes.headlineTextInput,
-                    maxLength: 250,
+                    maxLength: 500,
                     onBlur: e => onInputBlur(e, 'text'),
                     style: { textAlign: align === 'center' ? 'center' : 'left', color: textColor },
                   }}

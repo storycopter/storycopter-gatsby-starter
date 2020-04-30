@@ -48,11 +48,6 @@ export default function Layout({
   const favicon = brand.favicon.name ? `/${brand.favicon.name}` : null;
   const image = brand.coverEnabled && brand.cover.name ? `/${brand.cover.name}` : null;
 
-  // console.group('Layout.js');
-  // console.log(props.data.page.elements[0].settings.title);
-  // console.log({ props });
-  // console.groupEnd();
-
   const barProps = {
     allPages,
     allSiteData,
@@ -60,6 +55,11 @@ export default function Layout({
     pageData,
     props,
   };
+
+  // console.group('Layout.js');
+  // console.log(props.data.page.elements[0].settings.title);
+  // console.log({ props });
+  // console.groupEnd();
 
   return (
     <ThemeProvider theme={constructTheme(brand)}>

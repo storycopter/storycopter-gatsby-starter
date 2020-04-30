@@ -31,7 +31,7 @@ const PAGE_DETAILS_CARD_WIDTH = 200;
 const useStyles = (pageCount, isHovered) =>
   makeStyles(theme => ({
     root: {
-      ...console.log('doctheme', theme),
+      // ...console.logs('doctheme', theme),
       // backgroundColor: isHovered ? colors.shadow[200] : 'transparent',
       backfaceVisibility: 'hidden',
       backgroundColor: isHovered ? colors.shadow[200] : 'transparent',
@@ -218,34 +218,52 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
                   <>
                     <Grid item>
                       <Tooltip title="Table of Contents">
-                        <AniLink color={theme.palette.primary.main} paintDrip to="/contents">
-                          <IconButton className={classes.menuToggle} edge="start">
-                            <MenuIcon />
-                          </IconButton>
-                        </AniLink>
+                        <IconButton
+                          component={React.forwardRef((props, ref) => (
+                            <span ref={ref}>
+                              <AniLink color={theme.palette.primary.main} paintDrip to={'/contents'} {...props} />
+                            </span>
+                          ))}
+                          className={classes.menuToggle}
+                          edge="start">
+                          <MenuIcon />
+                        </IconButton>
                       </Tooltip>
                     </Grid>
                     {allPages.length > 1 && !isEssential ? (
                       <Grid item>
                         <Tooltip title="Previous page">
-                          <AniLink
-                            color={theme.palette.primary.main}
-                            paintDrip
-                            to={pageIndex - 1 >= 0 ? allPages[pageIndex - 1].path : '/'}>
-                            <IconButton className={classes.prevBtn}>
-                              <NavigateBeforeIcon />
-                            </IconButton>
-                          </AniLink>
+                          <IconButton
+                            component={React.forwardRef((props, ref) => (
+                              <span ref={ref}>
+                                <AniLink
+                                  color={theme.palette.primary.main}
+                                  paintDrip
+                                  to={pageIndex - 1 >= 0 ? allPages[pageIndex - 1].path : '/'}
+                                  {...props}
+                                />
+                              </span>
+                            ))}
+                            className={classes.prevBtn}
+                            edge="start">
+                            <NavigateBeforeIcon />
+                          </IconButton>
                         </Tooltip>
                         <Tooltip title="Next page">
-                          <AniLink
-                            color={theme.palette.primary.main}
-                            paintDrip
-                            to={pageIndex + 1 >= allPages.length ? '/credits' : allPages[pageIndex + 1].path}>
-                            <IconButton className={classes.nextBtn}>
-                              <NavigateNextIcon />
-                            </IconButton>
-                          </AniLink>
+                          <IconButton
+                            component={React.forwardRef((props, ref) => (
+                              <span ref={ref}>
+                                <AniLink
+                                  color={theme.palette.primary.main}
+                                  paintDrip
+                                  to={pageIndex + 1 >= allPages.length ? '/credits' : allPages[pageIndex + 1].path}
+                                  {...props}
+                                />
+                              </span>
+                            ))}
+                            className={classes.nextBtn}>
+                            <NavigateNextIcon />
+                          </IconButton>
                         </Tooltip>
                       </Grid>
                     ) : null}
