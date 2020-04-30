@@ -95,9 +95,9 @@ export default function Figure({
     return () => window?.removeEventListener('resize', getDimensions);
   });
 
-  console.group('Figure');
-  console.log(fullSize, canvasHeight, image);
-  console.groupEnd();
+  // console.group('Figure');
+  // console.log(fullSize, canvasHeight, image);
+  // console.groupEnd();
 
   return (
     <div
