@@ -55,6 +55,7 @@ const useStyles = (fullSize, textColor) =>
 
 export default function Figure({
   backgColor = null,
+  canvasHeight = false,
   fullSize = false,
   image,
   textColor = null,
@@ -94,9 +95,9 @@ export default function Figure({
     return () => window?.removeEventListener('resize', getDimensions);
   });
 
-  // console.group('Figure');
-  // console.log(props);
-  // console.groupEnd();
+  console.group('Figure');
+  console.log(fullSize, canvasHeight, image);
+  console.groupEnd();
 
   return (
     <div
@@ -110,7 +111,7 @@ export default function Figure({
         <figure
           className={classes.mask}
           style={{
-            height: fullSize ? `${winDimensions?.wh}px` : `auto`,
+            height: fullSize ? `${winDimensions?.wh}px` : `100%`,
           }}>
           <div className={classes.object}>
             {image?.childImageSharp ? (
