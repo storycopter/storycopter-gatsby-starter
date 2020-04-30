@@ -152,6 +152,7 @@ export default function Headline({
     margin: 'none',
     multiline: true,
     rowsMax: '5',
+    size: 'small',
     type: 'text',
     variant: 'outlined',
   };

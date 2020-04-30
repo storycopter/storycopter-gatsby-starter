@@ -28,7 +28,7 @@ export default function PageTpl({
   return (
     <>
       {_.sortBy(pageElements, [o => o.order]).map(({ id, type, settings }, i) => {
-        // if (type !== 'headline') return;
+        if (type === 'slideshow') return;
         const Component = componentMap[type];
 
         // construct backgImage object (e.g. Headline)

@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import _ from 'lodash';
 
+import Button from '@material-ui/core/Button';
+import PanoramaOutlinedIcon from '@material-ui/icons/PanoramaOutlined';
+import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
@@ -51,6 +54,12 @@ const useStyles = (fullSize, textColor) =>
         padding: `${theme.spacing(5)}px ${theme.spacing(7)}px ${theme.spacing(0)}px`,
       },
     },
+    title: {
+      ...theme.typography.h6,
+    },
+    titleInput: {
+      ...theme.typography.h6,
+    },
   }));
 
 export default function Figure({
@@ -58,6 +67,8 @@ export default function Figure({
   canvasHeight = false,
   fullSize = false,
   image,
+  isActivelyEditable = false,
+  isEditable = false,
   textColor = null,
   title = null,
   ...props
@@ -95,6 +106,22 @@ export default function Figure({
     return () => window?.removeEventListener('resize', getDimensions);
   });
 
+  const onInputBlur = (e, key) => {
+    props.onElementUpdate({
+      [key]: e.target.value,
+    });
+  };
+
+  const textFieldProps = {
+    fullWidth: true,
+    margin: 'none',
+    multiline: true,
+    rowsMax: '5',
+    size: 'small',
+    type: 'text',
+    variant: 'outlined',
+  };
+
   // console.group('Figure');
   // console.log(fullSize, canvasHeight, image);
   // console.groupEnd();
@@ -114,23 +141,56 @@ export default function Figure({
             height: fullSize ? `${winDimensions?.wh}px` : `100%`,
           }}>
           <div className={classes.object}>
-            {image?.childImageSharp ? (
-              <Img
-                alt={title}
-                fluid={image?.childImageSharp?.fluid}
-                style={{
-                  height: objDimensions?.oh,
-                  width: objDimensions?.ow,
-                }}
-              />
-            ) : (
-              <img alt={title} src={image.publicURL} style={{ maxHeight: '300px', height: '33vh' }} />
-            )}
+            {image?.name?.length > 0 ? (
+              image?.childImageSharp ? (
+                <Img
+                  alt={title}
+                  fluid={image?.childImageSharp?.fluid}
+                  style={{
+                    height: objDimensions?.oh,
+                    width: objDimensions?.ow,
+                  }}
+                />
+              ) : (
+                <img alt={title} src={image.publicURL} style={{ maxHeight: '300px', height: '33vh' }} />
+              )
+            ) : null}
+            {isEditable ? (
+              <Button
+                disabled={!isActivelyEditable}
+                onClick={isActivelyEditable ? props.onImageUpload : null}
+                startIcon={<PanoramaOutlinedIcon />}>
+                {image?.name?.length > 0 ? 'Replace image…' : 'Choose image…'}
+              </Button>
+            ) : null}
           </div>
           <figcaption className={classes.caption}>
-            <Typography align="center" component="p" style={textColor ? { color: textColor } : null} variant="h6">
-              {title}
-            </Typography>
+            {isEditable || title ? (
+              <Typography
+                className={classes.title}
+                align="center"
+                component="div"
+                style={{ color: textColor }}
+                variant="h6">
+                {isEditable ? (
+                  <TextField
+                    {...textFieldProps}
+                    defaultValue={title}
+                    id="title"
+                    inputProps={{
+                      className: classes.titleInput,
+                      maxLength: 200,
+                      onBlur: e => onInputBlur(e, 'title'),
+                      style: { textAlign: 'center', color: textColor },
+                    }}
+                    name="title"
+                    placeholder="Add caption…"
+                  />
+                ) : (
+                  title
+                )}
+              </Typography>
+            ) : null}
           </figcaption>
         </figure>
       </div>

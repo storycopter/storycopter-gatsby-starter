@@ -48,10 +48,10 @@ export default function Layout({
   const favicon = brand.favicon.name ? `/${brand.favicon.name}` : null;
   const image = brand.coverEnabled && brand.cover.name ? `/${brand.cover.name}` : null;
 
-  console.group('Layout.js');
-  console.log(props.data.page.elements[0].settings.title);
+  // console.group('Layout.js');
+  // console.log(props.data.page.elements[0].settings.title);
   // console.log({ props });
-  console.groupEnd();
+  // console.groupEnd();
 
   const barProps = {
     allPages,
