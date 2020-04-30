@@ -60,6 +60,9 @@ const useStyles = (fullSize, textColor) =>
     titleInput: {
       ...theme.typography.h6,
     },
+    cta: {
+      margin: theme.spacing(3),
+    },
   }));
 
 export default function Figure({
@@ -157,6 +160,7 @@ export default function Figure({
             ) : null}
             {isEditable ? (
               <Button
+                className={classes.cta}
                 disabled={!isActivelyEditable}
                 onClick={isActivelyEditable ? props.onImageUpload : null}
                 startIcon={<PanoramaOutlinedIcon />}>
