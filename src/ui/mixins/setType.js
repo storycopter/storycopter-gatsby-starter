@@ -9,7 +9,7 @@ const sizes = {
   600: ['21px', '35px', '1.4em'],
   700: ['24px', '45px', '1.3em'],
   800: ['27px', '55px', '1.2em'],
-  900: ['30px', '100px', '1.1em'],
+  900: ['30px', '90px', '1.1em'],
 };
 
 export default function setType(size) {

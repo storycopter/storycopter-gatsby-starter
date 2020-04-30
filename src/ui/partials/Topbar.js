@@ -198,7 +198,7 @@ export default function Topbar({ allPages, allSiteData, allStaticFiles, pageData
           <Toolbar>
             <Grid container alignItems="center">
               <Grid className={classes.left} container item xs spacing={1}>
-                {isEssential ? (
+                {isEssential || allPages.length === 1 ? (
                   <Grid item>
                     <AniLink color={theme.palette.primary.main} paintDrip to="/">
                       {logo.childImageSharp ? (
