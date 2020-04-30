@@ -50,7 +50,7 @@ export default function constructTheme({ backgColor, brandColor, fonts, textColo
       },
       h3: {
         ...setType(700),
-        fontFamily: fonts?.head || 'Gill Sans, sans-serif',
+        fontFamily: fonts?.body || 'Gill Sans, sans-serif',
         fontWeight: '400',
       },
       h4: {

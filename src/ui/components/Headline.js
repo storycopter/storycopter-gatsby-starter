@@ -80,10 +80,10 @@ const useStyles = (align, backgColor, fullSize, maskColor, textColor) =>
         marginTop: theme.spacing(4),
       },
       [theme.breakpoints.up('lg')]: {
-        marginTop: theme.spacing(3),
+        marginTop: theme.spacing(4),
       },
       [theme.breakpoints.up('xl')]: {
-        marginTop: theme.spacing(4),
+        marginTop: theme.spacing(5),
       },
     },
     headlineText: {
@@ -93,7 +93,7 @@ const useStyles = (align, backgColor, fullSize, maskColor, textColor) =>
         marginTop: theme.spacing(4),
       },
       [theme.breakpoints.up('lg')]: {
-        marginTop: theme.spacing(3),
+        marginTop: theme.spacing(4),
       },
       [theme.breakpoints.up('xl')]: {
         marginTop: theme.spacing(4),
