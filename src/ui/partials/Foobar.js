@@ -69,8 +69,17 @@ export default function Foobar({ allSiteData, allStaticFiles, ...props }) {
   const theme = useTheme();
   const isBrowser = typeof window !== `undefined`;
 
-  const soundtrack = _.find(allStaticFiles.edges, ({ node }) => node.base === allSiteData.sound.track.name)?.node
-    ?.publicURL;
+  console.group('Foobar.js');
+  console.log(allSiteData);
+  console.groupEnd();
+
+  const soundtrack =
+    allSiteData.sound.enabled && allSiteData?.sound?.track?.name
+      ? _.find(
+          allStaticFiles.edges.map(e => e.node),
+          o => o.base === allSiteData.sound.track.name
+        )?.publicURL
+      : null;
 
   const [sound, setSound] = useState(true);
 
@@ -83,10 +92,6 @@ export default function Foobar({ allSiteData, allStaticFiles, ...props }) {
   useEffect(() => {
     if (isBrowser) setSound(localStorage.getItem('sound') === 'false' ? false : true);
   }, []);
-
-  // console.group('Foobar.js');
-  // console.log({ theme });
-  // console.groupEnd();
 
   return (
     <>
@@ -104,7 +109,7 @@ export default function Foobar({ allSiteData, allStaticFiles, ...props }) {
                 </AniLink>
               </Grid>
               <Grid className={classes.right} container item xs spacing={1}>
-                {allSiteData?.sound?.enabled && allSiteData?.sound?.track ? (
+                {soundtrack ? (
                   <Grid item>
                     <Tooltip title="Background sound">
                       <IconButton edge="end" onClick={onSoundToggle}>
