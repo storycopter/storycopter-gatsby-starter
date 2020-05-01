@@ -69,10 +69,6 @@ export default function Foobar({ allSiteData, allStaticFiles, ...props }) {
   const theme = useTheme();
   const isBrowser = typeof window !== `undefined`;
 
-  console.group('Foobar.js');
-  console.log(allSiteData);
-  console.groupEnd();
-
   const soundtrack =
     allSiteData.sound.enabled && allSiteData?.sound?.track?.name
       ? _.find(
@@ -92,6 +88,10 @@ export default function Foobar({ allSiteData, allStaticFiles, ...props }) {
   useEffect(() => {
     if (isBrowser) setSound(localStorage.getItem('sound') === 'false' ? false : true);
   }, []);
+
+  // console.group('Foobar.js');
+  // console.log(allSiteData);
+  // console.groupEnd();
 
   return (
     <>
