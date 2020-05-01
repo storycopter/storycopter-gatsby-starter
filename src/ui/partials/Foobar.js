@@ -130,18 +130,20 @@ export default function Foobar({ allSiteData, allStaticFiles, ...props }) {
           </Toolbar>
         </AppBar>
       </HideOnScroll>
-      <NoSsr>
-        <ReactPlayer
-          height="1px"
-          loop
-          playing={sound}
-          playsinline
-          style={{ opacity: 0, position: 'absolute', right: 0, top: 0, visibility: 'hidden' }}
-          url={soundtrack}
-          volume={0.5}
-          width="1px"
-        />
-      </NoSsr>
+      {soundtrack ? (
+        <NoSsr>
+          <ReactPlayer
+            height="1px"
+            loop
+            playing={sound}
+            playsinline
+            style={{ opacity: 0, position: 'absolute', right: 0, top: 0, visibility: 'hidden' }}
+            url={soundtrack}
+            volume={0.5}
+            width="1px"
+          />
+        </NoSsr>
+      ) : null}
     </>
   );
 }
