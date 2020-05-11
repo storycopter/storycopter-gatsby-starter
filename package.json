@@ -1,5 +1,5 @@
 {
-  "name": "@storycopter/idoc",
+  "name": "@storycopter/gatsby-starter-storycopter",
   "version": "0.0.20",
   "main": "lib/index.js",
   "license": "BSD-3-Clause",
