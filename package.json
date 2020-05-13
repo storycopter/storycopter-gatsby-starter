@@ -6,6 +6,9 @@
   "dependencies": {
     "@material-ui/core": "4.9.12",
     "@material-ui/icons": "4.9.1",
+    "@material-ui/styles": "4.9.14",
+    "@reach/router": "1.1.1",
+    "@types/react": "15.0.0",
     "gatsby": "2.21.5",
     "gatsby-image": "2.4.0",
     "gatsby-link": "2.4.0",
@@ -25,6 +28,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-helmet": "6.0.0",
+    "react-is": "16.13.1",
     "react-player": "2.0.1",
     "react-slick": "0.25.2",
     "styled-components": "5.1.0"
@@ -39,8 +43,9 @@
     "styled-components": "5.1.0"
   },
   "devDependencies": {
+    "@babel/core": "7.9.6",
     "@hot-loader/react-dom": "16.13.0",
-    "acorn": "6.0.0",
+    "acorn": "6.4.1",
     "babel-eslint": "10.1.0",
     "babel-plugin-styled-components": "1.10.7",
     "eslint": "6.8.0",
@@ -56,6 +61,7 @@
     "stylelint": "13.3.3",
     "stylelint-config-prettier": "8.0.1",
     "stylelint-prettier": "1.1.2",
+    "typescript": "3.9.2",
     "webpack": "4.43.0",
     "webpack-cli": "3.3.11"
   },
