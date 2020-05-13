@@ -1,6 +1,6 @@
 {
   "name": "@storycopter/storycopter-gatsby-starter",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "main": "lib/index.js",
   "license": "BSD-3-Clause",
   "dependencies": {
